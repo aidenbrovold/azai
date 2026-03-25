@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A to Z AI Systems — Never Miss Another Lead</title>
+<meta name="description" content="AI-powered automation for local service businesses. Instant lead response, missed call text-back, review generation, and more. Starting at $297/mo.">
+<meta property="og:title" content="A to Z AI Systems — Never Miss Another Lead">
+<meta property="og:description" content="AI-powered automation for local service businesses. Stop losing leads. Start growing.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --navy: #0f172a;
+  --dark: #1e293b;
+  --blue: #2563eb;
+  --blue-light: #3b82f6;
+  --cyan: #06b6d4;
+  --white: #ffffff;
+  --gray-50: #f8fafc;
+  --gray-100: #f1f5f9;
+  --gray-300: #cbd5e1;
+  --gray-400: #94a3b8;
+  --gray-500: #64748b;
+  --gray-600: #475569;
+  --gray-900: #0f172a;
+  --green: #10b981;
+  --orange: #f59e0b;
+  --red: #ef4444;
+}
+html { scroll-behavior: smooth; }
+body { font-family: 'Inter', -apple-system, sans-serif; color: var(--gray-900); line-height: 1.6; }
+.container { max-width: 1140px; margin: 0 auto; padding: 0 24px; }
+a { color: var(--blue); text-decoration: none; }
+
+/* NAV */
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(15,23,42,0.95); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,0.08); }
+nav .container { display: flex; justify-content: space-between; align-items: center; height: 72px; }
+.logo { font-size: 20px; font-weight: 800; color: var(--white); letter-spacing: -0.5px; }
+.logo span { color: var(--blue-light); }
+nav ul { display: flex; list-style: none; gap: 32px; align-items: center; }
+nav ul li a { color: var(--gray-300); font-size: 14px; font-weight: 500; transition: color 0.2s; }
+nav ul li a:hover { color: var(--white); }
+.nav-cta { background: var(--blue); color: var(--white) !important; padding: 10px 24px; border-radius: 8px; font-weight: 600; transition: background 0.2s; }
+.nav-cta:hover { background: var(--blue-light); }
+.mobile-toggle { display: none; background: none; border: none; color: white; font-size: 28px; cursor: pointer; }
+
+/* HERO */
+.hero { background: var(--navy); padding: 160px 0 100px; position: relative; overflow: hidden; }
+.hero::before { content: ''; position: absolute; top: -50%; right: -20%; width: 800px; height: 800px; background: radial-gradient(circle, rgba(37,99,235,0.15) 0%, transparent 70%); }
+.hero::after { content: ''; position: absolute; bottom: -30%; left: -10%; width: 600px; height: 600px; background: radial-gradient(circle, rgba(6,182,212,0.1) 0%, transparent 70%); }
+.hero .container { position: relative; z-index: 1; }
+.hero-badge { display: inline-block; background: rgba(37,99,235,0.15); color: var(--blue-light); padding: 6px 16px; border-radius: 50px; font-size: 13px; font-weight: 600; margin-bottom: 24px; border: 1px solid rgba(37,99,235,0.3); }
+.hero h1 { font-size: clamp(36px, 5vw, 64px); font-weight: 900; color: var(--white); line-height: 1.1; letter-spacing: -1.5px; max-width: 700px; margin-bottom: 24px; }
+.hero h1 .highlight { background: linear-gradient(135deg, var(--blue-light), var(--cyan)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.hero p { font-size: 20px; color: var(--gray-400); max-width: 540px; margin-bottom: 40px; line-height: 1.7; }
+.hero-buttons { display: flex; gap: 16px; flex-wrap: wrap; }
+.btn-primary { display: inline-flex; align-items: center; gap: 8px; background: var(--blue); color: var(--white); padding: 16px 32px; border-radius: 10px; font-size: 16px; font-weight: 700; transition: all 0.2s; border: none; cursor: pointer; }
+.btn-primary:hover { background: var(--blue-light); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(37,99,235,0.35); }
+.btn-secondary { display: inline-flex; align-items: center; gap: 8px; background: transparent; color: var(--gray-300); padding: 16px 32px; border-radius: 10px; font-size: 16px; font-weight: 600; border: 1px solid var(--gray-600); transition: all 0.2s; }
+.btn-secondary:hover { border-color: var(--gray-400); color: var(--white); }
+.hero-stats { display: flex; gap: 48px; margin-top: 64px; padding-top: 40px; border-top: 1px solid rgba(255,255,255,0.08); }
+.hero-stat h3 { font-size: 32px; font-weight: 800; color: var(--white); }
+.hero-stat p { font-size: 14px; color: var(--gray-500); margin-top: 4px; }
+
+/* PROBLEM */
+.problem { padding: 100px 0; background: var(--white); }
+.section-label { font-size: 13px; font-weight: 700; color: var(--blue); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 16px; }
+.section-title { font-size: clamp(28px, 3.5vw, 42px); font-weight: 800; color: var(--gray-900); line-height: 1.2; letter-spacing: -1px; margin-bottom: 20px; max-width: 600px; }
+.section-subtitle { font-size: 18px; color: var(--gray-500); max-width: 560px; margin-bottom: 48px; }
+.problem-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
+.problem-card { background: var(--gray-50); border: 1px solid var(--gray-100); border-radius: 16px; padding: 32px; }
+.problem-card .icon { font-size: 36px; margin-bottom: 16px; }
+.problem-card h3 { font-size: 48px; font-weight: 900; color: var(--red); margin-bottom: 8px; }
+.problem-card p { color: var(--gray-600); font-size: 15px; line-height: 1.7; }
+
+/* SOLUTION */
+.solution { padding: 100px 0; background: var(--gray-50); }
+.solution .section-title { max-width: 700px; }
+.features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 24px; margin-top: 48px; }
+.feature-card { background: var(--white); border: 1px solid var(--gray-100); border-radius: 16px; padding: 32px; transition: all 0.3s; }
+.feature-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,0.08); border-color: var(--blue); }
+.feature-icon { width: 56px; height: 56px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 28px; margin-bottom: 20px; }
+.feature-card h3 { font-size: 20px; font-weight: 700; margin-bottom: 12px; color: var(--gray-900); }
+.feature-card p { color: var(--gray-500); font-size: 15px; line-height: 1.7; }
+.fi-blue { background: rgba(37,99,235,0.1); }
+.fi-orange { background: rgba(245,158,11,0.1); }
+.fi-green { background: rgba(16,185,129,0.1); }
+.fi-purple { background: rgba(124,58,237,0.1); }
+.fi-cyan { background: rgba(6,182,212,0.1); }
+.fi-pink { background: rgba(236,72,153,0.1); }
+
+/* HOW IT WORKS */
+.how { padding: 100px 0; background: var(--white); }
+.how .section-title { text-align: center; margin: 0 auto 16px; }
+.how .section-subtitle { text-align: center; margin: 0 auto 64px; }
+.how .section-label { text-align: center; }
+.steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 48px; position: relative; }
+.steps::before { content: ''; position: absolute; top: 40px; left: 16%; right: 16%; height: 2px; background: linear-gradient(90deg, var(--blue), var(--cyan)); opacity: 0.3; }
+.step { text-align: center; position: relative; }
+.step-number { width: 80px; height: 80px; border-radius: 50%; background: linear-gradient(135deg, var(--blue), var(--cyan)); color: var(--white); font-size: 32px; font-weight: 800; display: flex; align-items: center; justify-content: center; margin: 0 auto 24px; position: relative; z-index: 1; }
+.step h3 { font-size: 20px; font-weight: 700; margin-bottom: 12px; }
+.step p { color: var(--gray-500); font-size: 15px; max-width: 280px; margin: 0 auto; }
+
+/* INDUSTRIES */
+.industries { padding: 100px 0; background: var(--navy); }
+.industries .section-label { color: var(--cyan); }
+.industries .section-title { color: var(--white); text-align: center; margin: 0 auto 16px; }
+.industries .section-subtitle { color: var(--gray-400); text-align: center; margin: 0 auto 48px; }
+.industry-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 16px; max-width: 800px; margin: 0 auto; }
+.industry-tag { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 20px 16px; text-align: center; color: var(--gray-300); font-weight: 600; font-size: 15px; transition: all 0.2s; }
+.industry-tag:hover { background: rgba(37,99,235,0.15); border-color: rgba(37,99,235,0.3); color: var(--white); }
+.industry-tag .ind-icon { font-size: 28px; display: block; margin-bottom: 8px; }
+
+/* PRICING */
+.pricing { padding: 100px 0; background: var(--gray-50); }
+.pricing .section-label, .pricing .section-title, .pricing .section-subtitle { text-align: center; }
+.pricing .section-title { margin: 0 auto 16px; }
+.pricing .section-subtitle { margin: 0 auto 48px; max-width: 500px; }
+.pricing-card { max-width: 520px; margin: 0 auto; background: var(--white); border: 2px solid var(--blue); border-radius: 20px; overflow: hidden; box-shadow: 0 16px 48px rgba(37,99,235,0.12); }
+.pricing-header { background: linear-gradient(135deg, var(--blue), #4f46e5); padding: 40px; text-align: center; color: var(--white); }
+.pricing-header h3 { font-size: 24px; font-weight: 700; margin-bottom: 8px; }
+.pricing-header .price { font-size: 56px; font-weight: 900; letter-spacing: -2px; }
+.pricing-header .price-sub { font-size: 16px; opacity: 0.8; }
+.pricing-body { padding: 40px; }
+.pricing-body ul { list-style: none; margin-bottom: 32px; }
+.pricing-body li { padding: 12px 0; border-bottom: 1px solid var(--gray-100); font-size: 15px; color: var(--gray-600); display: flex; align-items: center; gap: 12px; }
+.pricing-body li::before { content: '✅'; font-size: 16px; }
+.pricing-body .btn-primary { width: 100%; justify-content: center; font-size: 18px; padding: 18px; }
+.pricing-guarantee { text-align: center; margin-top: 16px; font-size: 14px; color: var(--gray-500); }
+
+/* CTA */
+.cta { padding: 100px 0; background: var(--navy); text-align: center; position: relative; overflow: hidden; }
+.cta::before { content: ''; position: absolute; top: -50%; left: 50%; transform: translateX(-50%); width: 800px; height: 800px; background: radial-gradient(circle, rgba(37,99,235,0.2) 0%, transparent 70%); }
+.cta .container { position: relative; z-index: 1; }
+.cta h2 { font-size: clamp(28px, 4vw, 48px); font-weight: 900; color: var(--white); margin-bottom: 16px; letter-spacing: -1px; }
+.cta p { color: var(--gray-400); font-size: 18px; max-width: 500px; margin: 0 auto 40px; }
+
+/* FOOTER */
+footer { background: #0b1120; padding: 48px 0 24px; }
+footer .container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 24px; }
+.footer-left p { color: var(--gray-500); font-size: 14px; margin-top: 8px; }
+.footer-links { display: flex; gap: 24px; }
+.footer-links a { color: var(--gray-500); font-size: 14px; transition: color 0.2s; }
+.footer-links a:hover { color: var(--gray-300); }
+.footer-bottom { text-align: center; margin-top: 32px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.06); }
+.footer-bottom p { color: var(--gray-600); font-size: 13px; }
+
+/* MOBILE */
+@media (max-width: 768px) {
+  nav ul { display: none; }
+  .mobile-toggle { display: block; }
+  nav.open ul { display: flex; flex-direction: column; position: absolute; top: 72px; left: 0; right: 0; background: var(--navy); padding: 24px; gap: 16px; border-bottom: 1px solid rgba(255,255,255,0.08); }
+  .hero { padding: 120px 0 60px; }
+  .hero-stats { flex-direction: column; gap: 24px; }
+  .steps { grid-template-columns: 1fr; gap: 32px; }
+  .steps::before { display: none; }
+  .features-grid { grid-template-columns: 1fr; }
+  .industry-grid { grid-template-columns: repeat(2, 1fr); }
+  footer .container { flex-direction: column; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+<div class="container">
+<div class="logo">A to Z <span>AI</span></div>
+<button class="mobile-toggle" onclick="document.getElementById('nav').classList.toggle('open')">☰</button>
+<ul>
+<li><a href="#features">Features</a></li>
+<li><a href="#how">How It Works</a></li>
+<li><a href="#about">About</a></li>
+<li><a href="#pricing">Pricing</a></li>
+<li><a href="#contact" class="nav-cta">Get Started →</a></li>
+</ul>
+</div>
+</nav>
+
+<section class="hero">
+<div class="container">
+<div class="hero-badge">🤖 AI-Powered Automation for Local Businesses</div>
+<h1>Never Miss Another <span class="highlight">Lead</span> Again</h1>
+<p>Your customers are calling, texting, and filling out forms — but if you don't respond in minutes, they're gone. We fix that with AI automation that works 24/7.</p>
+<div class="hero-buttons">
+<a href="#contact" class="btn-primary">Get a Free Demo →</a>
+<a href="#features" class="btn-secondary">See How It Works</a>
+</div>
+<div class="hero-stats">
+<div class="hero-stat"><h3>60 sec</h3><p>Average response time</p></div>
+<div class="hero-stat"><h3>24/7</h3><p>Always-on automation</p></div>
+<div class="hero-stat"><h3>2x</h3><p>More Google reviews</p></div>
+</div>
+</div>
+</section>
+
+<section class="problem">
+<div class="container">
+<div class="section-label">The Problem</div>
+<div class="section-title">Every Missed Call Is Money Left on the Table</div>
+<div class="section-subtitle">Most local businesses lose thousands per month in leads they never even know about.</div>
+<div class="problem-grid">
+<div class="problem-card">
+<div class="icon">📞</div>
+<h3>62%</h3>
+<p>of phone calls to small businesses go unanswered. When you're on a job site, in a crawl space, or mowing a lawn — you can't always pick up.</p>
+</div>
+<div class="problem-card">
+<div class="icon">⏱️</div>
+<h3>78%</h3>
+<p>of customers hire the first business that responds. Wait 30 minutes? Your competitor already booked the job.</p>
+</div>
+<div class="problem-card">
+<div class="icon">⭐</div>
+<h3>5x</h3>
+<p>more expensive to find a new customer than to keep one. Yet most businesses never follow up or ask for reviews.</p>
+</div>
+</div>
+</div>
+</section>
+
+<section class="solution" id="features">
+<div class="container">
+<div class="section-label">The Solution</div>
+<div class="section-title">The "Never Miss a Lead" System</div>
+<div class="section-subtitle">Six AI-powered automations that capture every lead, book more jobs, and grow your reputation — on autopilot.</div>
+<div class="features-grid">
+<div class="feature-card">
+<div class="feature-icon fi-blue">⚡</div>
+<h3>Speed-to-Lead Response</h3>
+<p>Every inquiry gets an instant SMS and email response within 60 seconds — before your competitor even sees the notification. You get a real-time alert so you can follow up fast.</p>
+</div>
+<div class="feature-card">
+<div class="feature-icon fi-orange">📞</div>
+<h3>Missed Call Text-Back</h3>
+<p>When you can't answer the phone, we automatically text the caller: "Sorry we missed your call — how can we help?" No more lost leads while you're on a job.</p>
+</div>
+<div class="feature-card">
+<div class="feature-icon fi-green">⭐</div>
+<h3>Review Booster</h3>
+<p>After every completed job, we send a friendly text asking for a Google review. A follow-up goes out 48 hours later. Watch your rating climb and dominate local search.</p>
+</div>
+<div class="feature-card">
+<div class="feature-icon fi-purple">📅</div>
+<h3>Appointment Reminders</h3>
+<p>Booking confirmation + 24-hour reminder + 2-hour reminder. Reduce no-shows by up to 50% and keep your schedule full. Customers love the professionalism.</p>
+</div>
+<div class="feature-card">
+<div class="feature-icon fi-cyan">📊</div>
+<h3>Weekly Business Reports</h3>
+<p>Every Monday, get a clean summary: leads captured, calls missed, reviews requested, appointments booked. Know exactly what's happening in your business.</p>
+</div>
+<div class="feature-card">
+<div class="feature-icon fi-pink">🔄</div>
+<h3>Win-Back Campaigns</h3>
+<p>Customers who haven't booked in 60+ days get a personalized "we miss you" text with a special offer. Turn dormant customers back into paying ones.</p>
+</div>
+</div>
+</div>
+</section>
+
+<section class="how" id="how">
+<div class="container">
+<div class="section-label">How It Works</div>
+<div class="section-title">Up and Running in 48 Hours</div>
+<div class="section-subtitle">No complicated setup. No tech skills needed. We handle everything.</div>
+<div class="steps">
+<div class="step">
+<div class="step-number">1</div>
+<h3>Free Consultation</h3>
+<p>We learn about your business, your goals, and where you're losing leads. Takes 15 minutes.</p>
+</div>
+<div class="step">
+<div class="step-number">2</div>
+<h3>We Build It</h3>
+<p>Our team configures all 6 automations for your business — your name, your number, your brand. Done in 48 hours.</p>
+</div>
+<div class="step">
+<div class="step-number">3</div>
+<h3>Watch It Work</h3>
+<p>Leads start getting instant responses, reviews start flowing in, and you get weekly reports showing the ROI.</p>
+</div>
+</div>
+</div>
+</section>
+
+<section class="industries">
+<div class="container">
+<div class="section-label">Who We Serve</div>
+<div class="section-title" style="max-width:600px">Built for Businesses That Work With Their Hands</div>
+<div class="section-subtitle">If you're too busy doing great work to answer every call — we're built for you.</div>
+<div class="industry-grid">
+<div class="industry-tag"><span class="ind-icon">🔧</span>Plumbing</div>
+<div class="industry-tag"><span class="ind-icon">❄️</span>HVAC</div>
+<div class="industry-tag"><span class="ind-icon">🌿</span>Lawn Care</div>
+<div class="industry-tag"><span class="ind-icon">🧹</span>Cleaning</div>
+<div class="industry-tag"><span class="ind-icon">🚗</span>Auto Detailing</div>
+<div class="industry-tag"><span class="ind-icon">⚡</span>Electricians</div>
+<div class="industry-tag"><span class="ind-icon">🏠</span>Roofing</div>
+<div class="industry-tag"><span class="ind-icon">🔨</span>Contractors</div>
+</div>
+</div>
+</section>
+
+<section class="about" id="about" style="padding:100px 0;background:var(--white)">
+<div class="container" style="max-width:720px;text-align:center">
+<div class="section-label">Who We Are</div>
+<div class="section-title" style="margin:0 auto 24px">Your Business, Smarter</div>
+<p style="font-size:17px;color:var(--gray-600);line-height:1.8;margin-bottom:20px">A to Z AI Systems is an Arizona-based automation agency built for one purpose: making sure businesses never lose another customer to a missed call, slow response, or forgotten follow-up.</p>
+<p style="font-size:17px;color:var(--gray-600);line-height:1.8;margin-bottom:20px">From AI-powered voice assistants that answer your phones 24/7, to workflow automations that handle lead capture, follow-ups, scheduling, and review management — we build the systems that let you scale without hiring.</p>
+<p style="font-size:17px;color:var(--gray-600);line-height:1.8">Whether you need a single automation or a full AI-powered front office, we design solutions around your business — not the other way around.</p>
+</div>
+</section>
+
+<section class="pricing" id="pricing">
+<div class="container">
+<div class="section-label">Pricing</div>
+<div class="section-title">Simple, Transparent Pricing</div>
+<div class="section-subtitle">Everything you need to stop losing leads. No hidden fees. No long-term contracts.</div>
+<div class="pricing-card">
+<div class="pricing-header">
+<h3>Never Miss a Lead</h3>
+<div class="price">$297<span class="price-sub">/month</span></div>
+</div>
+<div class="pricing-body">
+<ul>
+<li>Speed-to-Lead instant response</li>
+<li>Missed call text-back</li>
+<li>Automated Google review requests</li>
+<li>3-step appointment reminders</li>
+<li>Weekly business summary reports</li>
+<li>Customer win-back campaigns</li>
+<li>Setup & onboarding included</li>
+<li>Dedicated support</li>
+</ul>
+<a href="#contact" class="btn-primary">Start Your Free Demo →</a>
+<p class="pricing-guarantee">✨ No contracts. Cancel anytime. 30-day money-back guarantee.</p>
+</div>
+</div>
+</div>
+</section>
+
+<section class="cta" id="contact">
+<div class="container">
+<h2>Ready to Stop Losing Leads?</h2>
+<p>Book a free 15-minute demo and see exactly how we'll help your business capture more customers.</p>
+<a href="mailto:itsaidenbrovold@gmail.com?subject=I'm interested in the Never Miss a Lead package" class="btn-primary" style="font-size:18px;padding:18px 40px">Book Your Free Demo →</a>
+<p style="margin-top:24px;color:var(--gray-500);font-size:14px">Or call us: <a href="tel:+15203483434" style="color:var(--cyan)">(520) 348-3434</a></p>
+</div>
+</section>
+
+<footer>
+<div class="container">
+<div class="footer-left">
+<div class="logo">A to Z <span style="color:var(--blue-light)">AI</span></div>
+<p>AI-powered automation for local businesses.<br>Based in Arizona.</p>
+</div>
+<div class="footer-links">
+<a href="https://aidenbrovold.github.io/legal/privacy-policy">Privacy Policy</a>
+<a href="https://aidenbrovold.github.io/legal/terms-of-service">Terms of Service</a>
+<a href="mailto:itsaidenbrovold@gmail.com">Contact</a>
+</div>
+</div>
+<div class="footer-bottom">
+<p>© 2026 A to Z AI Systems LLC. All rights reserved.</p>
+</div>
+</footer>
+
+<script>
+// Navbar scroll effect
+window.addEventListener('scroll', () => {
+  document.getElementById('nav').style.background = 
+    window.scrollY > 50 ? 'rgba(15,23,42,0.98)' : 'rgba(15,23,42,0.95)';
+});
+
+// Close mobile nav on link click
+document.querySelectorAll('nav ul li a').forEach(link => {
+  link.addEventListener('click', () => {
+    document.getElementById('nav').classList.remove('open');
+  });
+});
+</script>
+</body>
+</html>
