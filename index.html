@@ -502,10 +502,7 @@ footer .container { display: flex; justify-content: space-between; align-items: 
 <div class="container">
 <h2 class="reveal">Ready to Stop Losing Leads?</h2>
 <p class="reveal">Fill out the form below and we'll reach out within 24 hours to schedule your free demo.</p>
-<form class="contact-form reveal" action="https://formsubmit.co/aiden@azaisystems.com" method="POST">
-<input type="hidden" name="_captcha" value="false">
-<input type="hidden" name="_next" value="https://azaisystems.com">
-<input type="hidden" name="_subject" value="New Lead from azaisystems.com">
+<form class="contact-form reveal" id="contactForm" onsubmit="submitForm(event)">
 <div class="form-group">
 <label for="name">Name *</label>
 <input type="text" id="name" name="name" placeholder="John Smith" required>
@@ -522,7 +519,8 @@ footer .container { display: flex; justify-content: space-between; align-items: 
 <label for="message">Tell us about your business (optional)</label>
 <textarea id="message" name="message" placeholder="What kind of business do you run? What's your biggest challenge with leads?"></textarea>
 </div>
-<button type="submit" class="btn-primary">Book Your Free Demo →</button>
+<button type="submit" class="btn-primary" id="submitBtn">Book Your Free Demo →</button>
+<p id="formStatus" style="text-align:center;margin-top:16px;font-size:15px;display:none"></p>
 </form>
 <p class="reveal" style="margin-top:24px;color:var(--gray-500);font-size:14px">Or call us: <a href="tel:+15203483434" style="color:var(--cyan)">(520) 348-3434</a></p>
 </div>
@@ -581,6 +579,44 @@ document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 </script>
 
 <!-- Vapi Voice Widget -->
+<script>
+// Contact form AJAX submit
+async function submitForm(e) {
+  e.preventDefault();
+  const btn = document.getElementById('submitBtn');
+  const status = document.getElementById('formStatus');
+  const form = document.getElementById('contactForm');
+  
+  btn.disabled = true;
+  btn.textContent = 'Sending...';
+  status.style.display = 'none';
+  
+  try {
+    const res = await fetch('https://itsaidendavid.app.n8n.cloud/webhook/website-contact', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        name: form.name.value,
+        phone: form.phone.value,
+        email: form.email.value,
+        message: form.message.value
+      })
+    });
+    if (res.ok) {
+      status.style.display = 'block';
+      status.style.color = '#10b981';
+      status.textContent = '✅ Thanks! We\'ll reach out within 24 hours.';
+      form.reset();
+    } else { throw new Error(); }
+  } catch {
+    status.style.display = 'block';
+    status.style.color = '#ef4444';
+    status.textContent = '❌ Something went wrong. Please call us at (520) 348-3434.';
+  }
+  btn.disabled = false;
+  btn.textContent = 'Book Your Free Demo →';
+}
+</script>
 <script>
 var vapiInstance = null;
 const assistant = "25520a53-e9c0-4577-b057-4f9c53b772e4";
