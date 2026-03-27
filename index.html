@@ -536,14 +536,14 @@ const buttonConfig = {
   width: "50px",
   height: "50px",
   idle: {
-    color: "rgb(37, 99, 235)",
+    color: "rgb(77, 166, 255)",
     type: "pill",
     title: "Talk to Jamie",
     subtitle: "Our AI Receptionist",
     icon: "https://unpkg.com/lucide-static@0.321.0/icons/phone.svg",
   },
   loading: {
-    color: "rgb(37, 99, 235)",
+    color: "rgb(77, 166, 255)",
     type: "pill",
     title: "Connecting...",
     subtitle: "Please wait",
@@ -560,7 +560,7 @@ const buttonConfig = {
 (function (d, t) {
   var g = document.createElement(t),
     s = d.getElementsByTagName(t)[0];
-  g.src = "https://cdn.jsdelivr.net/gh/VapiAI/html-script-tag@latest/dist/assets/index.js";
+  g.src = "https://cdn.jsdelivr.net/gh/VapiAI/client-sdk-html-script-tag@v1.1.9/dist/assets/index.js";
   g.defer = true;
   g.onload = function () {
     vapiInstance = window.vapiSDK.run({
@@ -568,6 +568,15 @@ const buttonConfig = {
       assistant: assistant,
       config: buttonConfig,
     });
+    vapiInstance.on('error', function(e) {
+      console.error('Vapi error:', e);
+    });
+    vapiInstance.on('call-end', function() {
+      console.log('Call ended');
+    });
+  };
+  g.onerror = function() {
+    console.error('Failed to load Vapi SDK');
   };
   s.parentNode.insertBefore(g, s);
 })(document, "script");
