@@ -157,6 +157,11 @@ footer .container { display: flex; justify-content: space-between; align-items: 
 .footer-bottom { text-align: center; margin-top: 32px; padding-top: 24px; border-top: 1px solid rgba(77,166,255,0.07); }
 .footer-bottom p { color: var(--gray-600); font-size: 13px; }
 
+/* SCROLL TO TOP */
+.scroll-top { position: fixed; bottom: 110px; right: 40px; width: 44px; height: 44px; border-radius: 50%; background: rgba(77,166,255,0.12); border: 1px solid rgba(77,166,255,0.3); color: var(--electric); font-size: 20px; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 99; opacity: 0; pointer-events: none; transition: all 0.3s; backdrop-filter: blur(8px); }
+.scroll-top.visible { opacity: 1; pointer-events: all; }
+.scroll-top:hover { background: rgba(77,166,255,0.25); box-shadow: 0 0 20px rgba(77,166,255,0.3); transform: translateY(-2px); }
+
 /* SCROLL ANIMATIONS */
 .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.5s ease, transform 0.5s ease; }
 .revealed { opacity: 1; transform: translateY(0); }
@@ -388,6 +393,9 @@ footer .container { display: flex; justify-content: space-between; align-items: 
 </div>
 </section>
 
+<!-- SCROLL TO TOP -->
+<button class="scroll-top" id="scrollTop" aria-label="Scroll to top">↑</button>
+
 <!-- FOOTER -->
 <footer>
 <div class="container">
@@ -422,9 +430,14 @@ document.querySelectorAll('nav ul li a').forEach(link => {
   });
 });
 
-// Navbar scroll effect
+// Navbar scroll effect + scroll to top visibility
+const scrollTopBtn = document.getElementById('scrollTop');
 window.addEventListener('scroll', () => {
   nav.style.background = window.scrollY > 50 ? 'rgba(5,5,8,0.99)' : 'rgba(5,5,8,0.92)';
+  scrollTopBtn.classList.toggle('visible', window.scrollY > 400);
+});
+scrollTopBtn.addEventListener('click', () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 });
 
 // Scroll reveal animations
