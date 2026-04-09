@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Subscription Confirmed | A to Z AI Systems</title>
+<meta name="description" content="Your subscription setup is complete. A to Z AI Systems has received your request and will follow up with next steps.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --navy: #050508;
+  --dark: #0d0d14;
+  --blue: #3b82f6;
+  --blue-light: #60a5fa;
+  --cyan: #38bdf8;
+  --white: #ffffff;
+  --gray-100: #12121c;
+  --gray-300: #c0c8e0;
+  --gray-400: #8892aa;
+  --gray-500: #555f78;
+  --green: #10b981;
+  --electric: #4da6ff;
+}
+body {
+  font-family: 'Inter', -apple-system, sans-serif;
+  color: var(--white);
+  background: radial-gradient(circle at top, rgba(77,166,255,0.18) 0%, transparent 30%), var(--navy);
+  min-height: 100vh;
+  line-height: 1.6;
+}
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+nav {
+  position: sticky;
+  top: 0;
+  background: rgba(5,5,8,0.92);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(77,166,255,0.12);
+}
+nav .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 72px;
+}
+.logo {
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--white);
+  letter-spacing: -0.5px;
+}
+.logo span {
+  color: var(--electric);
+  text-shadow: 0 0 12px rgba(77,166,255,0.7);
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+.hero {
+  padding: 96px 0 80px;
+}
+.panel {
+  background: linear-gradient(180deg, rgba(18,18,28,0.96), rgba(9,9,14,0.98));
+  border: 1px solid rgba(77,166,255,0.18);
+  border-radius: 24px;
+  padding: 48px;
+  box-shadow: 0 24px 80px rgba(0,0,0,0.45);
+}
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(16,185,129,0.12);
+  border: 1px solid rgba(16,185,129,0.32);
+  color: #7ef0c0;
+  padding: 8px 16px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  margin-bottom: 22px;
+}
+.hero h1 {
+  font-size: clamp(34px, 6vw, 58px);
+  line-height: 1.05;
+  letter-spacing: -1.5px;
+  margin-bottom: 18px;
+}
+.hero p.lead {
+  max-width: 640px;
+  color: var(--gray-300);
+  font-size: 18px;
+  margin-bottom: 28px;
+}
+.summary {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin: 34px 0;
+}
+.card {
+  background: rgba(77,166,255,0.06);
+  border: 1px solid rgba(77,166,255,0.12);
+  border-radius: 16px;
+  padding: 20px;
+}
+.card h2 {
+  font-size: 15px;
+  color: var(--gray-300);
+  margin-bottom: 6px;
+}
+.card p {
+  color: var(--white);
+  font-size: 15px;
+}
+.list {
+  margin-top: 10px;
+}
+.list div {
+  color: var(--gray-400);
+  margin-bottom: 10px;
+  padding-left: 18px;
+  position: relative;
+}
+.list div::before {
+  content: '•';
+  color: var(--electric);
+  position: absolute;
+  left: 0;
+}
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 36px;
+}
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--electric);
+  color: #050508;
+  padding: 15px 28px;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 800;
+  box-shadow: 0 0 22px rgba(77,166,255,0.38);
+}
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(77,166,255,0.22);
+  color: var(--gray-300);
+  padding: 15px 28px;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 700;
+}
+.support {
+  margin-top: 40px;
+  padding-top: 26px;
+  border-top: 1px solid rgba(77,166,255,0.12);
+  color: var(--gray-400);
+  font-size: 14px;
+}
+.support a {
+  color: var(--electric);
+}
+footer {
+  padding: 0 0 48px;
+  text-align: center;
+  color: var(--gray-500);
+  font-size: 13px;
+}
+@media (max-width: 720px) {
+  .hero {
+    padding: 72px 0 48px;
+  }
+  .panel {
+    padding: 30px 22px;
+    border-radius: 20px;
+  }
+  .actions {
+    flex-direction: column;
+  }
+  .btn-primary,
+  .btn-secondary {
+    width: 100%;
+  }
+}
+</style>
+</head>
+<body>
+<nav>
+  <div class="container">
+    <a href="/" class="logo">A to Z <span>AI</span></a>
+  </div>
+</nav>
+<section class="hero">
+  <div class="container">
+    <div class="panel">
+      <div class="badge">✓ Subscription Request Received</div>
+      <h1>You’re in. We’ve got your setup request.</h1>
+      <p class="lead">Your billing flow completed successfully. We’ll use the details from your signup to begin onboarding and follow up with the next steps for launch.</p>
+      <div class="summary">
+        <div class="card">
+          <h2>What Happens Next</h2>
+          <p>We review the order, confirm scope, and send your onboarding steps.</p>
+        </div>
+        <div class="card">
+          <h2>Support Contact</h2>
+          <p><a href="mailto:aiden@azaisystems.com">aiden@azaisystems.com</a></p>
+        </div>
+        <div class="card">
+          <h2>Billing Policy</h2>
+          <p>Recurring service continues until canceled at the end of the current billing period.</p>
+        </div>
+      </div>
+      <div class="list">
+        <div>You should receive a payment confirmation from Stripe.</div>
+        <div>We’ll reach out with implementation details and timeline.</div>
+        <div>If you purchased setup, we’ll use that to kick off onboarding immediately.</div>
+      </div>
+      <div class="actions">
+        <a class="btn-primary" href="/">Back to Home</a>
+        <a class="btn-secondary" href="mailto:aiden@azaisystems.com?subject=New%20Subscription%20Questions">Contact Support</a>
+      </div>
+      <div class="support">
+        Questions before kickoff? Email <a href="mailto:aiden@azaisystems.com">aiden@azaisystems.com</a> and we’ll handle it.
+      </div>
+    </div>
+  </div>
+</section>
+<footer>
+  <p>&copy; 2026 A to Z AI Systems. All rights reserved.</p>
+</footer>
+</body>
+</html>
