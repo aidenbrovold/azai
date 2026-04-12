@@ -37,11 +37,16 @@ body { font-family: 'Inter', -apple-system, sans-serif; color: var(--white); lin
 .container { max-width: 1140px; margin: 0 auto; padding: 0 24px; }
 a { color: var(--blue); text-decoration: none; }
 
+.brand-mark {
+  display: block;
+  width: 172px;
+  height: auto;
+}
+
 /* NAV */
 nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(5,5,8,0.92); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(77,166,255,0.12); }
 nav .container { display: flex; justify-content: space-between; align-items: center; height: 72px; }
-.logo { font-size: 20px; font-weight: 800; color: var(--white); letter-spacing: -0.5px; }
-.logo span { color: var(--electric); text-shadow: 0 0 12px rgba(77,166,255,0.7); }
+.logo { display: inline-flex; align-items: center; }
 nav ul { display: flex; list-style: none; gap: 32px; align-items: center; transition: all 0.3s ease; }
 nav ul li a { color: var(--gray-300); font-size: 14px; font-weight: 500; transition: color 0.2s; }
 nav ul li a:hover { color: var(--electric); }
@@ -55,6 +60,28 @@ nav ul li a:hover { color: var(--electric); }
 .hero::after { content: ''; position: absolute; bottom: -30%; left: -10%; width: 600px; height: 600px; background: radial-gradient(circle, rgba(56,189,248,0.07) 0%, transparent 70%); }
 .hero-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(77,166,255,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(77,166,255,0.04) 1px, transparent 1px); background-size: 60px 60px; z-index: 0; }
 .hero .container { position: relative; z-index: 1; }
+.hero-layout { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(320px, 0.95fr); gap: 40px; align-items: center; }
+.hero-copy { min-width: 0; }
+.hero-visual {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+.hero-visual::before {
+  content: '';
+  position: absolute;
+  inset: 8% 10% auto;
+  height: 76%;
+  border-radius: 28px;
+  background: radial-gradient(circle, rgba(77,166,255,0.18) 0%, rgba(77,166,255,0) 70%);
+  filter: blur(22px);
+}
+.hero-illustration {
+  position: relative;
+  width: min(100%, 560px);
+  height: auto;
+  filter: drop-shadow(0 24px 60px rgba(0,0,0,0.45));
+}
 .hero-badge { display: inline-block; background: rgba(77,166,255,0.1); color: var(--electric); padding: 6px 16px; border-radius: 50px; font-size: 13px; font-weight: 600; margin-bottom: 24px; border: 1px solid rgba(77,166,255,0.3); letter-spacing: 0.5px; }
 .hero h1 { font-size: clamp(36px, 5vw, 64px); font-weight: 900; color: var(--white); line-height: 1.1; letter-spacing: -1.5px; max-width: 700px; margin-bottom: 24px; }
 .hero h1 .highlight { background: linear-gradient(135deg, var(--electric), var(--cyan)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; filter: drop-shadow(0 0 20px rgba(77,166,255,0.4)); }
@@ -172,6 +199,8 @@ footer .container { display: flex; justify-content: space-between; align-items: 
   .mobile-toggle { display: block; }
   nav ul { display: none; flex-direction: column; position: absolute; top: 72px; left: 0; right: 0; background: rgba(5,5,8,0.98); padding: 24px; gap: 16px; border-bottom: 1px solid rgba(77,166,255,0.1); }
   .hero { padding: 120px 0 60px; }
+  .hero-layout { grid-template-columns: 1fr; }
+  .hero-visual { order: -1; }
   .hero-stats { flex-direction: column; gap: 24px; }
   .steps { grid-template-columns: 1fr; gap: 32px; }
   .steps::before { display: none; }
@@ -189,7 +218,9 @@ footer .container { display: flex; justify-content: space-between; align-items: 
 <!-- NAV -->
 <nav id="nav">
 <div class="container">
-<div class="logo">A to Z <span>AI</span></div>
+<a href="/" class="logo" aria-label="A to Z AI Systems home">
+<img src="/assets/logo-azai.svg" alt="A to Z AI Systems" class="brand-mark">
+</a>
 <button class="mobile-toggle" id="navToggle" aria-label="Toggle menu">☰</button>
 <ul>
 <li><a href="#features">Features</a></li>
@@ -205,6 +236,8 @@ footer .container { display: flex; justify-content: space-between; align-items: 
 <section class="hero">
 <div class="hero-grid"></div>
 <div class="container">
+<div class="hero-layout">
+<div class="hero-copy">
 <div class="hero-badge">🤖 Complete AI Systems for Local Businesses</div>
 <h1>Transform Your Business With <span class="highlight">AI That Works</span></h1>
 <p>We build end-to-end AI systems that automate your operations, save you hours every week, and help your business grow — without hiring a single extra person.</p>
@@ -216,6 +249,11 @@ footer .container { display: flex; justify-content: space-between; align-items: 
 <div class="hero-stat"><h3>48 hrs</h3><p>Average setup time</p></div>
 <div class="hero-stat"><h3>24/7</h3><p>Always-on automation</p></div>
 <div class="hero-stat"><h3>10x</h3><p>Average ROI reported</p></div>
+</div>
+</div>
+<div class="hero-visual">
+<img src="/assets/hero-ai-system.svg" alt="Illustration of an AI business system dashboard" class="hero-illustration">
+</div>
 </div>
 </div>
 </section>
@@ -401,7 +439,9 @@ footer .container { display: flex; justify-content: space-between; align-items: 
 <footer>
 <div class="container">
 <div class="footer-left">
-<div class="logo">A to Z <span style="color:var(--blue-light)">AI</span></div>
+<a href="/" class="logo" aria-label="A to Z AI Systems home">
+<img src="/assets/logo-azai.svg" alt="A to Z AI Systems" class="brand-mark">
+</a>
 <p>Complete AI systems for local businesses.<br>Based in Arizona.</p>
 </div>
 <div class="footer-links">
