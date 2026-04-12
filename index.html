@@ -83,27 +83,9 @@ nav ul li a:hover { color: var(--electric); }
   filter: drop-shadow(0 24px 60px rgba(0,0,0,0.45));
 }
 .hero-badge { display: inline-block; background: rgba(77,166,255,0.1); color: var(--electric); padding: 6px 16px; border-radius: 50px; font-size: 13px; font-weight: 600; margin-bottom: 24px; border: 1px solid rgba(77,166,255,0.3); letter-spacing: 0.5px; }
-.hero h1 { font-size: clamp(40px, 5.6vw, 72px); font-weight: 900; color: var(--white); line-height: 1.02; letter-spacing: -2px; max-width: 760px; margin-bottom: 20px; }
+.hero h1 { font-size: clamp(36px, 5vw, 64px); font-weight: 900; color: var(--white); line-height: 1.1; letter-spacing: -1.5px; max-width: 700px; margin-bottom: 24px; }
 .hero h1 .highlight { background: linear-gradient(135deg, var(--electric), var(--cyan)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; filter: drop-shadow(0 0 20px rgba(77,166,255,0.4)); }
-.hero p { font-size: 20px; color: var(--gray-400); max-width: 590px; margin-bottom: 28px; line-height: 1.75; }
-.hero-proof {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  margin-bottom: 34px;
-}
-.hero-proof span {
-  display: inline-flex;
-  align-items: center;
-  min-height: 36px;
-  padding: 0 14px;
-  border-radius: 999px;
-  border: 1px solid rgba(77,166,255,0.18);
-  background: rgba(77,166,255,0.06);
-  color: var(--gray-300);
-  font-size: 13px;
-  font-weight: 600;
-}
+.hero p { font-size: 20px; color: var(--gray-400); max-width: 540px; margin-bottom: 40px; line-height: 1.7; }
 .hero-buttons { display: flex; gap: 16px; flex-wrap: wrap; }
 .btn-primary { display: inline-flex; align-items: center; gap: 8px; background: var(--electric); color: #050508; padding: 16px 32px; border-radius: 10px; font-size: 16px; font-weight: 700; transition: all 0.2s; border: none; cursor: pointer; box-shadow: 0 0 20px rgba(77,166,255,0.35); }
 .btn-primary:hover { background: var(--blue-light); transform: translateY(-2px); box-shadow: 0 8px 32px rgba(77,166,255,0.55); }
@@ -219,7 +201,6 @@ footer .container { display: flex; justify-content: space-between; align-items: 
   .hero { padding: 120px 0 60px; }
   .hero-layout { grid-template-columns: 1fr; }
   .hero-visual { order: -1; }
-  .hero-proof { gap: 10px; }
   .hero-stats { flex-direction: column; gap: 24px; }
   .steps { grid-template-columns: 1fr; gap: 32px; }
   .steps::before { display: none; }
@@ -257,15 +238,9 @@ footer .container { display: flex; justify-content: space-between; align-items: 
 <div class="container">
 <div class="hero-layout">
 <div class="hero-copy">
-<div class="hero-badge">AI OPERATIONS FOR SERVICE BUSINESSES</div>
-<h1>AI systems that answer, follow up, book, and keep your business moving.</h1>
-<p>We build complete AI systems for service businesses that need leads answered fast, appointments booked cleanly, and repetitive admin handled without adding more staff.</p>
-<div class="hero-proof">
-<span>Phone answering</span>
-<span>Lead follow-up</span>
-<span>Booking workflows</span>
-<span>Reporting and reminders</span>
-</div>
+<div class="hero-badge">🤖 Complete AI Systems for Local Businesses</div>
+<h1>Transform Your Business With <span class="highlight">AI That Works</span></h1>
+<p>We build end-to-end AI systems that automate your operations, save you hours every week, and help your business grow — without hiring a single extra person.</p>
 <div class="hero-buttons">
 <a href="/pricing" class="btn-primary">See Pricing & Options →</a>
 <a href="#contact" class="btn-secondary">Book a Strategy Call</a>
