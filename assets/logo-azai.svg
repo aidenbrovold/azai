@@ -1,14 +1,14 @@
-<svg width="220" height="64" viewBox="0 0 220 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg width="240" height="64" viewBox="0 0 240 64" fill="none" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <linearGradient id="logoGlow" x1="0" y1="0" x2="220" y2="64" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#4DA6FF"/>
-      <stop offset="1" stop-color="#38BDF8"/>
+    <linearGradient id="mark" x1="14" y1="12" x2="58" y2="52" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#7DD3FC"/>
+      <stop offset="1" stop-color="#3B82F6"/>
     </linearGradient>
   </defs>
-  <rect x="2" y="2" width="60" height="60" rx="18" fill="#0D0D14" stroke="url(#logoGlow)" stroke-width="3"/>
-  <path d="M18 42L31 18H36L23 42H18Z" fill="url(#logoGlow)"/>
-  <path d="M27 42L40 18H45L32 42H27Z" fill="#FFFFFF" opacity="0.92"/>
-  <path d="M36 42L49 18H54L41 42H36Z" fill="url(#logoGlow)"/>
-  <text x="78" y="28" fill="#FFFFFF" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="800" letter-spacing="-0.5">A to Z</text>
-  <text x="78" y="50" fill="url(#logoGlow)" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="900" letter-spacing="-0.5">AI Systems</text>
+  <rect x="4" y="4" width="56" height="56" rx="18" fill="#0B1020" stroke="#1E3A8A" stroke-opacity="0.55" stroke-width="2"/>
+  <path d="M19 42L31 18H36L24 42H19Z" fill="#FFFFFF"/>
+  <path d="M28 42L40 18H45L33 42H28Z" fill="url(#mark)"/>
+  <path d="M18 47H46" stroke="#7DD3FC" stroke-width="2.5" stroke-linecap="round" opacity="0.8"/>
+  <text x="76" y="28" fill="#E5EEF9" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="700" letter-spacing="0.2">A to Z</text>
+  <text x="76" y="49" fill="#7DD3FC" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="900" letter-spacing="0.1">AI SYSTEMS</text>
 </svg>
