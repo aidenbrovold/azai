@@ -6,8 +6,9 @@
     </linearGradient>
   </defs>
   <circle cx="32" cy="32" r="24" fill="#09101C" stroke="url(#ring)" stroke-width="3"/>
-  <path d="M20 39L31.5 16L43 39" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M24 32H39" stroke="#7DD3FC" stroke-width="3.2" stroke-linecap="round"/>
+  <path d="M19 42L31.5 17L44 42" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M24 33H39" stroke="#7DD3FC" stroke-width="3.4" stroke-linecap="round"/>
+  <path d="M31.5 17V12" stroke="#4DA6FF" stroke-width="3" stroke-linecap="round" opacity="0.9"/>
   <text x="72" y="28" fill="#E8F3FF" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="700" letter-spacing="0.6">A TO Z</text>
   <text x="72" y="49" fill="#7DD3FC" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="900" letter-spacing="1">AI SYSTEMS</text>
 </svg>
