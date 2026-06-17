@@ -135,14 +135,8 @@ nav ul li a:hover { color: var(--electric); }
 .step h3 { font-size: 20px; font-weight: 700; margin-bottom: 12px; color: var(--white); }
 .step p { color: var(--gray-400); font-size: 15px; max-width: 280px; margin: 0 auto; }
 
-
-
-
-
 /* ABOUT */
 .about { padding: 100px 0; background: var(--dark); }
-
-
 
 /* FAQ */
 .faq { padding: 100px 0; background: var(--navy); }
@@ -205,10 +199,6 @@ footer .container { display: flex; justify-content: space-between; align-items: 
   .steps { grid-template-columns: 1fr; gap: 32px; }
   .steps::before { display: none; }
   .features-grid { grid-template-columns: 1fr; }
-  .testimonials-grid { grid-template-columns: 1fr; }
-  .industry-grid { grid-template-columns: repeat(2, 1fr); }
-  .pricing-cards-wrap { flex-direction: column; align-items: center; }
-  .pricing-card { min-width: unset; width: 100%; max-width: 460px; }
   footer .container { flex-direction: column; text-align: center; }
 }
 </style>
@@ -246,8 +236,8 @@ footer .container { display: flex; justify-content: space-between; align-items: 
 <a href="#contact" class="btn-secondary">Book a Strategy Call</a>
 </div>
 <div class="hero-stats">
-<div class="hero-stat"><h3>48 hrs</h3><p>Average setup time</p></div>
 <div class="hero-stat"><h3>24/7</h3><p>Always-on automation</p></div>
+<div class="hero-stat"><h3>~1 wk</h3><p>Live and tested</p></div>
 <div class="hero-stat"><h3>10x</h3><p>Average ROI reported</p></div>
 </div>
 </div>
@@ -314,7 +304,7 @@ footer .container { display: flex; justify-content: space-between; align-items: 
 <div class="feature-card reveal">
 <div class="feature-icon fi-cyan">📊</div>
 <h3>Business Intelligence Reports</h3>
-<p>Weekly automated reports delivered every Monday with a clear picture of your pipeline, performance, and growth metrics. Know your numbers without digging for them.</p>
+<p>Daily automated summaries with a clear picture of your calls, bookings, and leads. Know your numbers without digging for them.</p>
 </div>
 <div class="feature-card reveal">
 <div class="feature-icon fi-pink">🔄</div>
@@ -329,7 +319,7 @@ footer .container { display: flex; justify-content: space-between; align-items: 
 <section class="how" id="how">
 <div class="container">
 <div class="section-label reveal">How It Works</div>
-<div class="section-title reveal">From Strategy to Live System in 48 Hours</div>
+<div class="section-title reveal">From Strategy to Live System in About a Week</div>
 <div class="section-subtitle reveal">No tech skills needed. No long onboarding. We do the heavy lifting — you get the results.</div>
 <div class="steps">
 <div class="step reveal">
@@ -339,8 +329,8 @@ footer .container { display: flex; justify-content: space-between; align-items: 
 </div>
 <div class="step reveal">
 <div class="step-number">2</div>
-<h3>We Build Everything</h3>
-<p>Our team builds, configures, and tests your entire AI system — branded to your business, connected to your tools. Done in 48 hours.</p>
+<h3>We Build & Test Everything</h3>
+<p>Our team builds, configures, and back-tests your entire AI system — branded to your business, connected to your tools — before it ever takes a real call.</p>
 </div>
 <div class="step reveal">
 <div class="step-number">3</div>
@@ -350,10 +340,6 @@ footer .container { display: flex; justify-content: space-between; align-items: 
 </div>
 </div>
 </section>
-
-
-
-
 
 <!-- ABOUT -->
 <section class="about" id="about">
@@ -365,8 +351,6 @@ footer .container { display: flex; justify-content: space-between; align-items: 
 <p class="reveal" style="font-size:17px;color:var(--gray-400);line-height:1.8">The result? You reclaim your time, your team runs leaner, and your business grows faster. From A to Z — we handle the AI so you can focus on what you do best.</p>
 </div>
 </section>
-
-
 
 <!-- FAQ -->
 <section class="faq" id="faq">
@@ -381,7 +365,7 @@ footer .container { display: flex; justify-content: space-between; align-items: 
 </div>
 <div class="faq-item reveal">
 <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">How long does setup take? <span class="faq-icon">+</span></button>
-<div class="faq-answer"><p>Most systems are fully live within 48 hours. We start with a free strategy call to understand your business, then build and test everything before going live. Fast and done right.</p></div>
+<div class="faq-answer"><p>Most systems are fully live within about a week. We start with a free strategy call to understand your business, then build and back-test everything before going live — so it's right, not rushed.</p></div>
 </div>
 <div class="faq-item reveal">
 <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">Can this work with my existing tools? <span class="faq-icon">+</span></button>
@@ -397,7 +381,7 @@ footer .container { display: flex; justify-content: space-between; align-items: 
 </div>
 <div class="faq-item reveal">
 <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">How do I know it's actually working? <span class="faq-icon">+</span></button>
-<div class="faq-answer"><p>Every Monday you'll receive a detailed business report showing exactly what your AI system did — leads handled, automations triggered, reviews generated, and more. Full visibility, real results.</p></div>
+<div class="faq-answer"><p>You'll receive a daily summary email showing exactly what your AI system did — calls handled, appointments booked, leads captured, and more. Full visibility, real results.</p></div>
 </div>
 </div>
 </div>
@@ -424,6 +408,11 @@ footer .container { display: flex; justify-content: space-between; align-items: 
 <div class="form-group">
 <label for="message">Tell us about your business (optional)</label>
 <textarea id="message" name="message" placeholder="What kind of business do you run? What does your day-to-day look like?"></textarea>
+</div>
+<!-- Honeypot: hidden from humans, bots fill it and get filtered out -->
+<div style="position:absolute;left:-9999px;top:-9999px;" aria-hidden="true">
+<label>Website</label>
+<input type="text" id="azai-hp" name="website" tabindex="-1" autocomplete="off">
 </div>
 <button type="submit" class="btn-primary" id="submitBtn">Book Your Free Strategy Call →</button>
 <p id="formStatus" style="text-align:center;margin-top:16px;font-size:15px;display:none"></p>
@@ -492,7 +481,46 @@ const revealObserver = new IntersectionObserver((entries) => {
 }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 
 document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+// Contact form -> hot lead webhook
+function submitForm(e) {
+  e.preventDefault();
+  var btn = document.getElementById('submitBtn');
+  var status = document.getElementById('formStatus');
+  var hp = document.getElementById('azai-hp');
+  if (hp && hp.value) { return false; } // honeypot tripped = bot, silently ignore
+  var payload = {
+    name: document.getElementById('name').value.trim(),
+    phone: document.getElementById('phone').value.trim(),
+    email: document.getElementById('email').value.trim(),
+    message: document.getElementById('message').value.trim(),
+    source: "website_contact"
+  };
+  btn.disabled = true; btn.textContent = "Sending...";
+  status.style.display = "none";
+  fetch("https://itsaidendavid.app.n8n.cloud/webhook/azai-new-lead", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(payload)
+  })
+  .then(function () {
+    document.getElementById('contactForm').reset();
+    status.style.display = "block";
+    status.style.color = "#4da6ff";
+    status.textContent = "✓ Thanks! We got your info and will reach out shortly.";
+    btn.textContent = "Sent ✓";
+  })
+  .catch(function () {
+    status.style.display = "block";
+    status.style.color = "#ef4444";
+    status.textContent = "Something went wrong — please call (520) 348-3434.";
+    btn.disabled = false;
+    btn.textContent = "Book Your Free Strategy Call →";
+  });
+  return false;
+}
 </script>
+
 <div id="azai-chat-root"></div>
 <script>
 (function () {
