@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Pricing | A to Z AI Systems</title>
-<meta name="description" content="Recurring AI services from A to Z AI Systems. Compare plans and choose the setup that fits your business.">
+<meta name="description" content="Three simple plans from A to Z AI Systems. An AI receptionist that answers every call, books appointments, and follows up — so your business never misses a customer.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
@@ -33,10 +33,7 @@ body {
   margin: 0 auto;
   padding: 0 24px;
 }
-a {
-  color: inherit;
-  text-decoration: none;
-}
+a { color: inherit; text-decoration: none; }
 nav {
   position: sticky;
   top: 0;
@@ -51,24 +48,10 @@ nav .container {
   align-items: center;
   height: 72px;
 }
-.logo {
-  font-size: 20px;
-  font-weight: 800;
-  letter-spacing: -0.5px;
-}
-.logo span {
-  color: var(--electric);
-  text-shadow: 0 0 12px rgba(77,166,255,0.7);
-}
-.nav-link {
-  color: var(--gray-300);
-  font-size: 14px;
-  font-weight: 600;
-}
-.hero {
-  padding: 88px 0 40px;
-  text-align: center;
-}
+.logo { font-size: 20px; font-weight: 800; letter-spacing: -0.5px; }
+.logo span { color: var(--electric); text-shadow: 0 0 12px rgba(77,166,255,0.7); }
+.nav-link { color: var(--gray-300); font-size: 14px; font-weight: 600; }
+.hero { padding: 88px 0 40px; text-align: center; }
 .eyebrow {
   display: inline-block;
   background: rgba(77,166,255,0.1);
@@ -81,22 +64,18 @@ nav .container {
   margin-bottom: 22px;
 }
 .hero h1 {
-  font-size: clamp(34px, 6vw, 62px);
+  font-size: clamp(34px, 6vw, 60px);
   line-height: 1.04;
   letter-spacing: -1.6px;
   margin-bottom: 18px;
 }
 .hero p {
-  max-width: 720px;
+  max-width: 730px;
   margin: 0 auto;
   color: var(--gray-300);
   font-size: 18px;
 }
-.hero-actions {
-  display: flex;
-  justify-content: center;
-  margin-top: 26px;
-}
+.hero-actions { display: flex; justify-content: center; gap: 12px; margin-top: 26px; flex-wrap: wrap; }
 .back-home {
   display: inline-flex;
   align-items: center;
@@ -110,26 +89,24 @@ nav .container {
   font-size: 14px;
   font-weight: 700;
 }
-.setup-banner {
-  margin: 34px auto 0;
-  max-width: 760px;
-  background: linear-gradient(90deg, rgba(245,158,11,0.16), rgba(77,166,255,0.12));
-  border: 1px solid rgba(245,158,11,0.24);
-  border-radius: 16px;
-  padding: 18px 22px;
-  color: var(--gray-300);
-  text-align: left;
+.trust-row {
+  display: flex;
+  justify-content: center;
+  gap: 28px;
+  flex-wrap: wrap;
+  margin-top: 30px;
+  color: var(--gray-400);
+  font-size: 14px;
+  font-weight: 600;
 }
-.setup-banner strong {
-  color: var(--white);
-}
-.pricing {
-  padding: 48px 0 40px;
-}
+.trust-row span { display: inline-flex; align-items: center; gap: 7px; }
+.trust-row span::before { content: '✓'; color: var(--electric); font-weight: 800; }
+.pricing { padding: 44px 0 40px; }
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 24px;
+  align-items: stretch;
 }
 .card {
   position: relative;
@@ -142,8 +119,24 @@ nav .container {
   flex-direction: column;
 }
 .card.featured {
-  border-color: rgba(77,166,255,0.38);
-  box-shadow: 0 22px 72px rgba(77,166,255,0.18);
+  border-color: rgba(77,166,255,0.45);
+  box-shadow: 0 22px 72px rgba(77,166,255,0.2);
+}
+.badge {
+  position: absolute;
+  top: -13px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--electric);
+  color: #050508;
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  padding: 6px 16px;
+  border-radius: 999px;
+  box-shadow: 0 0 18px rgba(77,166,255,0.5);
+  white-space: nowrap;
 }
 .tag {
   display: inline-block;
@@ -152,63 +145,42 @@ nav .container {
   text-transform: uppercase;
   letter-spacing: 0.7px;
   color: var(--electric);
-  margin-bottom: 16px;
+  margin-bottom: 14px;
 }
-.card h2 {
-  font-size: 28px;
-  letter-spacing: -0.8px;
-  margin-bottom: 10px;
-}
-.card p.sub {
-  color: var(--gray-400);
-  min-height: 52px;
-}
-.price {
-  display: flex;
-  align-items: baseline;
-  gap: 8px;
-  margin: 26px 0 10px;
-}
-.price .amount {
-  font-size: 54px;
-  font-weight: 900;
-  letter-spacing: -2px;
-}
-.price .term {
-  color: var(--gray-400);
-  font-size: 16px;
-  font-weight: 600;
-}
-.rule {
-  color: var(--gray-500);
-  font-size: 14px;
-  margin-bottom: 24px;
-}
-.features {
-  display: grid;
-  gap: 12px;
-  margin-bottom: 28px;
-  flex: 1;
-}
-.features div {
+.card h2 { font-size: 28px; letter-spacing: -0.8px; margin-bottom: 10px; }
+.card p.sub { color: var(--gray-400); min-height: 48px; font-size: 15px; }
+.price { display: flex; align-items: baseline; gap: 7px; margin: 24px 0 4px; }
+.price .amount { font-size: 52px; font-weight: 900; letter-spacing: -2px; }
+.price .term { color: var(--gray-400); font-size: 16px; font-weight: 600; }
+.setup-line {
   color: var(--gray-300);
-  padding-left: 20px;
-  position: relative;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 8px;
 }
+.setup-line b { color: var(--white); }
+.rule { color: var(--gray-500); font-size: 13px; margin-bottom: 22px; }
+.feat-head {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--gray-400);
+  margin-bottom: 12px;
+}
+.features { display: grid; gap: 11px; margin-bottom: 26px; flex: 1; }
+.features div { color: var(--gray-300); padding-left: 22px; position: relative; font-size: 14.5px; }
 .features div::before {
-  content: '•';
+  content: '✓';
   color: var(--electric);
+  font-weight: 800;
   position: absolute;
   left: 0;
 }
-.actions {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  margin-top: auto;
-}
-.btn-primary,
-.btn-secondary {
+.features div.muted { color: var(--gray-500); }
+.features div.muted::before { content: '+'; color: var(--gray-500); }
+.actions { display: flex; flex-direction: column; gap: 12px; margin-top: auto; }
+.btn-primary, .btn-secondary {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -223,39 +195,34 @@ nav .container {
   color: #050508;
   box-shadow: 0 0 22px rgba(77,166,255,0.35);
 }
-.btn-secondary {
-  border: 1px solid rgba(77,166,255,0.18);
+.btn-secondary { border: 1px solid rgba(77,166,255,0.18); color: var(--gray-300); }
+.guarantee {
+  margin: 34px auto 0;
+  max-width: 760px;
+  background: linear-gradient(90deg, rgba(245,158,11,0.14), rgba(77,166,255,0.12));
+  border: 1px solid rgba(245,158,11,0.24);
+  border-radius: 16px;
+  padding: 18px 22px;
   color: var(--gray-300);
+  text-align: center;
+  font-size: 15px;
 }
-.note {
-  padding: 16px 0 72px;
-}
+.guarantee strong { color: var(--white); }
+.note { padding: 30px 0 72px; }
 .note-wrap {
   border-top: 1px solid rgba(77,166,255,0.1);
   padding-top: 28px;
   color: var(--gray-400);
   display: grid;
   gap: 10px;
+  font-size: 14px;
 }
-.note-wrap strong {
-  color: var(--white);
-}
-footer {
-  padding: 0 0 48px;
-  text-align: center;
-  color: var(--gray-500);
-  font-size: 13px;
-}
+.note-wrap strong { color: var(--white); }
+footer { padding: 0 0 48px; text-align: center; color: var(--gray-500); font-size: 13px; }
 @media (max-width: 720px) {
-  .hero {
-    padding: 64px 0 24px;
-  }
-  .card {
-    padding: 24px;
-  }
-  .price .amount {
-    font-size: 46px;
-  }
+  .hero { padding: 64px 0 24px; }
+  .card { padding: 24px; }
+  .price .amount { font-size: 46px; }
 }
 </style>
 </head>
@@ -268,60 +235,100 @@ footer {
 </nav>
 <section class="hero">
   <div class="container">
-    <div class="eyebrow">Recurring AI Services</div>
-    <h1>Choose the AI system that fits your business.</h1>
-    <p>Baseline pricing for custom AI systems. Final pricing depends on scope, integrations, complexity, and support requirements. Cancel at the end of your current billing period.</p>
+    <div class="eyebrow">Simple Plans · No Contracts</div>
+    <h1>An AI system that never misses a customer.</h1>
+    <p>Every plan includes a 24/7 AI receptionist that answers your calls, books appointments, and keeps you informed — so you stop losing business to voicemail. Pick the level that fits, and we handle the rest.</p>
     <div class="hero-actions">
       <a href="/" class="back-home">← Back to Home</a>
+      <a href="/#contact" class="back-home" style="background:var(--electric);color:#050508;border-color:var(--electric);">Talk to us</a>
     </div>
-    <div class="setup-banner"><strong>One-time setup fee starts at:</strong> $2,000 for onboarding, implementation, and custom launch work.</div>
+    <div class="trust-row">
+      <span>Month-to-month</span>
+      <span>30-day money-back guarantee</span>
+      <span>Live in about a week</span>
+    </div>
   </div>
 </section>
 <section class="pricing">
   <div class="container">
     <div class="grid">
-      <div class="card featured">
-        <div class="tag">Voice AI Bot</div>
-        <h2>Voice AI Bot</h2>
-        <p class="sub">A dedicated phone assistant that answers calls like a real front desk operator.</p>
-        <div class="price"><span class="term">Starts at</span><span class="amount">$649</span><span class="term">/month</span></div>
-        <div class="rule">Best for businesses that want instant phone coverage without hiring staff. Final monthly price depends on your call flow, integrations, and coverage needs.</div>
-        <div class="features">
-          <div>Personal voice AI that answers incoming calls like an assistant</div>
-          <div>Consistent business greeting and call handling</div>
-          <div>Monthly recurring billing through Stripe after scope is confirmed</div>
-          <div>Support handled through A to Z AI Systems</div>
-        </div>
-        <div class="actions">
-          <a class="btn-primary" href="/#contact">Request a Quote</a>
-        </div>
-      </div>
+
+      <!-- CORE -->
       <div class="card">
-        <div class="tag">Automated Workflow</div>
-        <h2>Automated Workflow</h2>
-        <p class="sub">Business automation systems that replace repetitive manual work with reliable flow-based operations.</p>
-        <div class="price"><span class="term">Starts at</span><span class="amount">$399</span><span class="term">/month</span></div>
-        <div class="rule">Best for follow-ups, notifications, internal processes, and recurring admin work. Final monthly price depends on workflow count, system complexity, and integration depth.</div>
+        <div class="tag">Core</div>
+        <h2>Core</h2>
+        <p class="sub">The essentials, so you never miss a call.</p>
+        <div class="price"><span class="amount">$400</span><span class="term">/month</span></div>
+        <div class="setup-line"><b>+ $2,000</b> one-time setup</div>
+        <div class="rule">Best for owner-operated businesses that just need the phone answered and appointments booked.</div>
+        <div class="feat-head">What's included</div>
         <div class="features">
-          <div>A set of automated workflows for your business</div>
-          <div>Recurring process automation and event handling</div>
-          <div>Operational support and iteration over time</div>
-          <div>Monthly recurring billing through Stripe after scope is confirmed</div>
+          <div>24/7 AI receptionist that answers in a natural voice</div>
+          <div>Books appointments straight into your calendar</div>
+          <div>Takes messages and instantly emails them to you</div>
+          <div>Instant owner alerts on every call</div>
+          <div>Daily summary email of all activity</div>
         </div>
         <div class="actions">
-          <a class="btn-primary" href="/#contact">Request a Quote</a>
+          <a class="btn-primary" href="/#contact">Get Started</a>
         </div>
       </div>
+
+      <!-- PRO (featured) -->
+      <div class="card featured">
+        <div class="badge">Most Popular</div>
+        <div class="tag">Pro</div>
+        <h2>Pro</h2>
+        <p class="sub">Everything in Core, plus it works your customers for you.</p>
+        <div class="price"><span class="amount">$650</span><span class="term">/month</span></div>
+        <div class="setup-line"><b>+ $3,000</b> one-time setup</div>
+        <div class="rule">Best for busy service businesses that want more booked jobs, fewer no-shows, and more reviews.</div>
+        <div class="feat-head">Everything in Core, plus</div>
+        <div class="features">
+          <div>Recognizes repeat callers and greets them by name</div>
+          <div>Flags calls that need your attention (upset caller, big opportunity)</div>
+          <div>Automated appointment reminders that cut no-shows</div>
+          <div>Automated review requests to happy customers</div>
+        </div>
+        <div class="actions">
+          <a class="btn-primary" href="/#contact">Get Started</a>
+        </div>
+      </div>
+
+      <!-- COMPLETE -->
+      <div class="card">
+        <div class="tag">Complete</div>
+        <h2>Complete</h2>
+        <p class="sub">The full growth engine — front desk, follow-up, and website in one.</p>
+        <div class="price"><span class="amount">$1,000</span><span class="term">/month</span></div>
+        <div class="setup-line"><b>+ $5,000</b> one-time setup</div>
+        <div class="rule">Best for businesses that want every lead captured, every invoice followed up, and a website that books for them.</div>
+        <div class="feat-head">Everything in Pro, plus</div>
+        <div class="features">
+          <div>Instant response to every new lead the moment it comes in</div>
+          <div>Automated invoice follow-ups so you get paid faster</div>
+          <div>A professional website with built-in AI chat &amp; booking</div>
+        </div>
+        <div class="actions">
+          <a class="btn-primary" href="/#contact">Get Started</a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="guarantee">
+      <strong>Try it risk-free.</strong> Every plan comes with a 30-day money-back guarantee. If your AI isn't paying for itself, you get your money back — no questions asked.
     </div>
   </div>
 </section>
 <section class="note">
   <div class="container">
     <div class="note-wrap">
-      <div><strong>Billing terms:</strong> service renews monthly until canceled at period end.</div>
-      <div><strong>Pricing model:</strong> published amounts are starting points. Final pricing is scoped per client.</div>
-      <div><strong>Failed payments:</strong> Stripe retries automatically. Service can be suspended after the final failed retry.</div>
-      <div><strong>Support:</strong> <a href="mailto:aiden@azaisystems.com">aiden@azaisystems.com</a></div>
+      <div><strong>Billing:</strong> a one-time setup fee plus a monthly subscription, billed through Stripe. Month-to-month — cancel anytime, effective at the end of your current billing period.</div>
+      <div><strong>Setup:</strong> most businesses are live in about a week. We build, test, and back-test your system before it ever takes a real call — you don't touch any tech.</div>
+      <div><strong>Pricing:</strong> the amounts above cover the vast majority of small businesses. Final pricing can vary with scope, integrations, and call volume — we confirm everything before you pay.</div>
+      <div><strong>Failed payments:</strong> Stripe retries automatically. Service may pause after the final failed retry.</div>
+      <div><strong>Questions?</strong> <a href="mailto:aiden@azaisystems.com" style="color:var(--electric);">aiden@azaisystems.com</a></div>
     </div>
   </div>
 </section>
