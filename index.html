@@ -237,8 +237,8 @@ footer .container { display: flex; justify-content: space-between; align-items: 
 </div>
 <div class="hero-stats">
 <div class="hero-stat"><h3>24/7</h3><p>Always-on automation</p></div>
-<div class="hero-stat"><h3>~1 wk</h3><p>Live and tested</p></div>
-<div class="hero-stat"><h3>10x</h3><p>Average ROI reported</p></div>
+<div class="hero-stat"><h3>78%</h3><p>of customers buy from whoever responds first</p></div>
+<div class="hero-stat"><h3>~1 wk</h3><p>From kickoff to live</p></div>
 </div>
 </div>
 <div class="hero-visual">
@@ -373,7 +373,7 @@ footer .container { display: flex; justify-content: space-between; align-items: 
 </div>
 <div class="faq-item reveal">
 <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">Is there a long-term contract? <span class="faq-icon">+</span></button>
-<div class="faq-answer"><p>No contracts, no lock-ins. Everything is month-to-month. We're confident in the results we deliver, so we let the work speak for itself. There's also a 30-day money-back guarantee.</p></div>
+<div class="faq-answer"><p>No contracts, no lock-ins. Everything is month-to-month. We're confident in the results we deliver, so we let the work speak for itself — cancel anytime.</p></div>
 </div>
 <div class="faq-item reveal">
 <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">What kinds of businesses do you work with? <span class="faq-icon">+</span></button>
@@ -417,7 +417,7 @@ footer .container { display: flex; justify-content: space-between; align-items: 
 <button type="submit" class="btn-primary" id="submitBtn">Book Your Free Strategy Call →</button>
 <p id="formStatus" style="text-align:center;margin-top:16px;font-size:15px;display:none"></p>
 </form>
-<p class="reveal" style="margin-top:24px;color:var(--gray-500);font-size:14px">Or call us: <a href="tel:+14244756287" style="color:var(--cyan)">(424) 475-6278</a></p>
+<p class="reveal" style="margin-top:24px;color:var(--gray-500);font-size:14px">Or call us: <a href="tel:+14244756287" style="color:var(--cyan)">(424) 475-6287</a></p>
 </div>
 </section>
 
@@ -513,7 +513,7 @@ function submitForm(e) {
   .catch(function () {
     status.style.display = "block";
     status.style.color = "#ef4444";
-    status.textContent = "Something went wrong — please call (520) 348-3434.";
+    status.textContent = "Something went wrong — please call (424) 475-6287.";
     btn.disabled = false;
     btn.textContent = "Book Your Free Strategy Call →";
   });
@@ -608,7 +608,7 @@ function submitForm(e) {
       .then(function(r){return r.json();})
       .then(function(data){
         hideTyping();
-        if(!data||!data.ok||!data.slots||!data.slots.length){ addMsg("I couldn't find open times just now. Leave your name and email in the chat and we'll reach out to schedule, or call (520) 348-3434.","bot"); return; }
+        if(!data||!data.ok||!data.slots||!data.slots.length){ addMsg("I couldn't find open times just now. Leave your name and email in the chat and we'll reach out to schedule, or call (424) 475-6287.","bot"); return; }
         addMsg("Here are the next open times ("+data.slots[0].tzLabel+" time). Tap one that works:","bot");
         var wrap=document.createElement("div"); wrap.className="azai-actions"; wrap.style.flexDirection="column";
         data.slots.forEach(function(s){
@@ -618,7 +618,7 @@ function submitForm(e) {
         });
         body.appendChild(wrap); scrollDown();
       })
-      .catch(function(){ hideTyping(); addMsg("Something went wrong pulling times. Please call (520) 348-3434 and we'll get you booked.","bot"); });
+      .catch(function(){ hideTyping(); addMsg("Something went wrong pulling times. Please call (424) 475-6287 and we'll get you booked.","bot"); });
   }
   function showDetailsForm(slot){
     addMsg("You're booking "+slot.label+" "+slot.tzLabel+" time. Just need your details:","bot");
@@ -637,9 +637,9 @@ function submitForm(e) {
         .then(function(res){
           form.remove();
           if(res&&res.ok){ addMsg("\u2705 You're booked for "+res.whenSpoken+" "+res.tzLabel+" time! A calendar invite with the Google Meet link is on its way to "+em+". See you then!","bot"); }
-          else{ addMsg("I couldn't confirm that booking \u2014 the time may have just filled. Please call (520) 348-3434 and we'll sort it out.","bot"); }
+          else{ addMsg("I couldn't confirm that booking \u2014 the time may have just filled. Please call (424) 475-6287 and we'll sort it out.","bot"); }
         })
-        .catch(function(){ form.remove(); addMsg("Something went wrong confirming. Please call (520) 348-3434 and we'll get you booked.","bot"); });
+        .catch(function(){ form.remove(); addMsg("Something went wrong confirming. Please call (424) 475-6287 and we'll get you booked.","bot"); });
     };
   }
  
@@ -660,7 +660,7 @@ function submitForm(e) {
     fetch(CHAT_URL,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({message:text,history:history.slice(-8)})})
       .then(function(r){ return r.json(); })
       .then(function(data){ hideTyping(); var reply=(data&&data.reply)?data.reply:"Thanks for that! Want to book a quick consultation? Tap below."; addMsg(reply,"bot"); history.push({role:"assistant",content:reply}); addBookButton(); })
-      .catch(function(){ hideTyping(); addMsg("Sorry, I had trouble connecting. Please try again, or call us at (520) 348-3434.","bot"); })
+      .catch(function(){ hideTyping(); addMsg("Sorry, I had trouble connecting. Please try again, or call us at (424) 475-6287.","bot"); })
       .finally(function(){ sending=false; sendBtn.disabled=false; input.focus(); });
   }
   sendBtn.addEventListener("click",send);
