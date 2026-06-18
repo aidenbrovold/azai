@@ -504,11 +504,7 @@ function submitForm(e) {
     body: JSON.stringify(payload)
   })
   .then(function () {
-    document.getElementById('contactForm').reset();
-    status.style.display = "block";
-    status.style.color = "#4da6ff";
-    status.textContent = "✓ Thanks! We got your info and will reach out shortly.";
-    btn.textContent = "Sent ✓";
+    window.location.href = "/confirmed?type=contact&name=" + encodeURIComponent(payload.name);
   })
   .catch(function () {
     status.style.display = "block";
@@ -636,7 +632,7 @@ function submitForm(e) {
         .then(function(r){return r.json();})
         .then(function(res){
           form.remove();
-          if(res&&res.ok){ addMsg("\u2705 You're booked for "+res.whenSpoken+" "+res.tzLabel+" time! A calendar invite with the Google Meet link is on its way to "+em+". See you then!","bot"); }
+          if(res&&res.ok){ window.location.href = "/confirmed?type=booking&name=" + encodeURIComponent(nm) + "&when=" + encodeURIComponent(res.whenSpoken); return; }
           else{ addMsg("I couldn't confirm that booking \u2014 the time may have just filled. Please call (424) 475-6287 and we'll sort it out.","bot"); }
         })
         .catch(function(){ form.remove(); addMsg("Something went wrong confirming. Please call (424) 475-6287 and we'll get you booked.","bot"); });
