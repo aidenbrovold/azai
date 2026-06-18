@@ -522,6 +522,7 @@ function submitForm(e) {
 (function () {
   // ---- CONFIG -------------------------------------------------
   var CHAT_URL  = "https://itsaidendavid.app.n8n.cloud/webhook/azai-website-chat";
+  var DAYS_URL  = "https://itsaidendavid.app.n8n.cloud/webhook/azai-chat-days";
   var SLOTS_URL = "https://itsaidendavid.app.n8n.cloud/webhook/azai-chat-slots";
   var BOOK_URL  = "https://itsaidendavid.app.n8n.cloud/webhook/azai-chat-book";
   var GREETING  = "Hey! I'm the A to Z AI assistant. Ask me anything \u2014 or tap below to book a free consultation and pick a time that works for you.";
@@ -598,20 +599,50 @@ function submitForm(e) {
     wrap.appendChild(b); body.appendChild(wrap); scrollDown();
   }
   function startBooking(){
-    addMsg("Great \u2014 let me pull up some open times.","bot");
+    addMsg("Great \u2014 first, pick a day that works for you.","bot");
     showTyping();
-    fetch(SLOTS_URL,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({period:"any"})})
+    fetch(DAYS_URL,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({})})
       .then(function(r){return r.json();})
       .then(function(data){
         hideTyping();
-        if(!data||!data.ok||!data.slots||!data.slots.length){ addMsg("I couldn't find open times just now. Leave your name and email in the chat and we'll reach out to schedule, or call (424) 475-6287.","bot"); return; }
-        addMsg("Here are the next open times ("+data.slots[0].tzLabel+" time). Tap one that works:","bot");
+        if(!data||!data.ok||!data.days||!data.days.length){ addMsg("I couldn't find open days just now. Leave your name and email in the chat and we'll reach out to schedule, or call (424) 475-6287.","bot"); return; }
+        addMsg("Here are the next available days. Tap one:","bot");
         var wrap=document.createElement("div"); wrap.className="azai-actions"; wrap.style.flexDirection="column";
-        data.slots.forEach(function(s){
-          var b=document.createElement("button"); b.className="azai-slot"; b.textContent=s.label+"  ("+s.tzLabel+")";
-          b.onclick=function(){ wrap.remove(); chosenSlot=s; addMsg(s.label,"user"); showDetailsForm(s); };
+        data.days.forEach(function(d){
+          var b=document.createElement("button"); b.className="azai-slot"; b.textContent=d.label;
+          b.onclick=function(){ wrap.remove(); addMsg(d.label,"user"); showTimesForDay(d); };
           wrap.appendChild(b);
         });
+        body.appendChild(wrap); scrollDown();
+      })
+      .catch(function(){ hideTyping(); addMsg("Something went wrong pulling available days. Please call (424) 475-6287 and we'll get you booked.","bot"); });
+  }
+  function showTimesForDay(day){
+    addMsg("Got it \u2014 pulling open times for "+day.label+".","bot");
+    showTyping();
+    fetch(SLOTS_URL,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({date:day.date,period:"any"})})
+      .then(function(r){return r.json();})
+      .then(function(data){
+        hideTyping();
+        if(!data||!data.ok||!data.slots||!data.slots.length){
+          addMsg("Hmm, that day just filled up. Want to pick another day?","bot");
+          var back=document.createElement("div"); back.className="azai-actions";
+          var bb=document.createElement("button"); bb.className="azai-chip"; bb.textContent="\u2190 Pick another day";
+          bb.onclick=function(){ back.remove(); startBooking(); };
+          back.appendChild(bb); body.appendChild(back); scrollDown();
+          return;
+        }
+        addMsg("Here are the open times ("+data.slots[0].tzLabel+" time). Tap one:","bot");
+        var wrap=document.createElement("div"); wrap.className="azai-actions"; wrap.style.flexDirection="column";
+        data.slots.forEach(function(s){
+          var t=document.createElement("button"); t.className="azai-slot"; t.textContent=s.label+"  ("+s.tzLabel+")";
+          t.onclick=function(){ wrap.remove(); chosenSlot=s; addMsg(s.label,"user"); showDetailsForm(s); };
+          wrap.appendChild(t);
+        });
+        // option to go back to days
+        var backBtn=document.createElement("button"); backBtn.className="azai-chip"; backBtn.textContent="\u2190 Different day"; backBtn.style.marginTop="4px";
+        backBtn.onclick=function(){ wrap.remove(); startBooking(); };
+        wrap.appendChild(backBtn);
         body.appendChild(wrap); scrollDown();
       })
       .catch(function(){ hideTyping(); addMsg("Something went wrong pulling times. Please call (424) 475-6287 and we'll get you booked.","bot"); });
