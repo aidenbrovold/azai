@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Book A Prospect | A To Z AI Systems (Internal)</title>
+<meta name="robots" content="noindex,nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --navy:#050508;--dark:#0d0d14;--blue:#3b82f6;--blue-light:#60a5fa;
+  --cyan:#38bdf8;--white:#fff;--gray-100:#12121c;--gray-300:#c0c8e0;
+  --gray-400:#8892aa;--gray-500:#555f78;--green:#10b981;--electric:#4da6ff;
+}
+body{
+  font-family:'Inter',-apple-system,sans-serif;color:var(--white);
+  background:radial-gradient(circle at top,rgba(77,166,255,0.18) 0%,transparent 32%),var(--navy);
+  min-height:100vh;line-height:1.6;display:flex;align-items:center;justify-content:center;padding:32px 16px;
+}
+.card{
+  width:100%;max-width:540px;
+  background:linear-gradient(180deg,rgba(18,18,28,0.96),rgba(9,9,14,0.98));
+  border:1px solid rgba(77,166,255,0.18);border-radius:22px;padding:38px 34px;
+  box-shadow:0 24px 80px rgba(0,0,0,0.45);
+}
+.tag{display:inline-block;background:rgba(77,166,255,0.1);border:1px solid rgba(77,166,255,0.3);
+  color:var(--electric);font-size:12px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;
+  padding:6px 14px;border-radius:999px;margin-bottom:16px;}
+h1{font-size:26px;font-weight:800;letter-spacing:-0.5px;margin-bottom:6px;}
+.sub{color:var(--gray-400);font-size:14.5px;margin-bottom:26px;}
+label{display:block;font-size:13px;font-weight:600;color:var(--gray-300);margin:16px 0 7px;}
+input,select{
+  width:100%;background:rgba(255,255,255,0.04);border:1px solid rgba(77,166,255,0.18);
+  border-radius:10px;padding:13px 15px;color:var(--white);font-size:15px;font-family:inherit;transition:border-color .2s;
+}
+input:focus,select:focus{outline:none;border-color:var(--electric);}
+.row{display:flex;gap:12px;}
+.row>div{flex:1;}
+.hint{font-size:12px;color:var(--gray-500);margin-top:6px;}
+button{
+  width:100%;margin-top:26px;background:var(--electric);color:#050508;border:none;cursor:pointer;
+  padding:15px;border-radius:10px;font-size:16px;font-weight:800;font-family:inherit;transition:all .2s;
+  box-shadow:0 0 20px rgba(77,166,255,0.35);
+}
+button:hover{background:var(--blue-light);transform:translateY(-1px);box-shadow:0 8px 30px rgba(77,166,255,0.5);}
+button:disabled{opacity:.6;cursor:not-allowed;transform:none;}
+.status{margin-top:18px;padding:14px 16px;border-radius:10px;font-size:14px;display:none;}
+.status.ok{display:block;background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.3);color:#7ef0c0;}
+.status.err{display:block;background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.3);color:#fca5a5;}
+.status a{color:var(--electric);}
+.foot{margin-top:24px;padding-top:18px;border-top:1px solid rgba(77,166,255,0.1);font-size:12px;color:var(--gray-500);text-align:center;}
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="tag">Internal · Book A Prospect</div>
+  <h1>Set Up A Consultation</h1>
+  <p class="sub">Use this right after a cold call. Fills the prospect's calendar invite + Google Meet link automatically — it's also their first proof the AI works.</p>
+
+  <label for="name">Prospect Name</label>
+  <input id="name" type="text" placeholder="e.g. Mike Reynolds" autocomplete="off">
+
+  <label for="email">Prospect Email</label>
+  <input id="email" type="email" placeholder="mike@reynoldsplumbing.com" autocomplete="off">
+
+  <div class="row">
+    <div>
+      <label for="date">Date</label>
+      <input id="date" type="date">
+    </div>
+    <div>
+      <label for="time">Time (Arizona)</label>
+      <input id="time" type="time" value="10:00">
+    </div>
+  </div>
+  <div class="hint">Arizona time (MST, no daylight saving). 30-minute consultation.</div>
+
+  <label for="service">What They're Interested In (Optional)</label>
+  <input id="service" type="text" placeholder="e.g. AI receptionist for after-hours calls">
+
+  <button id="bookBtn" onclick="book()">Book &amp; Send Invite →</button>
+
+  <div class="status" id="status"></div>
+
+  <div class="foot">Fires the same booking system as the website — invite, Meet link, owner alert, and sheet log all happen automatically.</div>
+</div>
+
+<script>
+var BOOK_URL = "https://itsaidendavid.app.n8n.cloud/webhook/azai-chat-book";
+
+// default date to tomorrow
+(function(){
+  var t = new Date(); t.setDate(t.getDate()+1);
+  document.getElementById('date').value = t.toISOString().slice(0,10);
+})();
+
+function book(){
+  var name = document.getElementById('name').value.trim();
+  var email = document.getElementById('email').value.trim();
+  var date = document.getElementById('date').value;
+  var time = document.getElementById('time').value;
+  var service = document.getElementById('service').value.trim();
+  var status = document.getElementById('status');
+  var btn = document.getElementById('bookBtn');
+
+  status.className = 'status';
+  if(!name){ return showErr("Enter the prospect's name."); }
+  if(!email || email.indexOf('@')<0){ return showErr("Enter a valid email so they get the invite."); }
+  if(!date || !time){ return showErr("Pick a date and time."); }
+
+  // Build an Arizona-time ISO (MST = -07:00, no DST)
+  var iso = date + "T" + time + ":00-07:00";
+  var when = new Date(iso);
+  if(isNaN(when.getTime())){ return showErr("That date/time didn't parse. Try again."); }
+
+  btn.disabled = true; btn.textContent = "Booking…";
+
+  fetch(BOOK_URL, {
+    method:"POST",
+    headers:{"Content-Type":"application/json"},
+    body:JSON.stringify({
+      name: name,
+      email: email,
+      datetime: when.toISOString(),
+      service: service || "Consultation (booked from call)"
+    })
+  })
+  .then(function(r){ return r.json(); })
+  .then(function(res){
+    btn.disabled = false; btn.textContent = "Book & Send Invite →";
+    if(res && res.ok){
+      status.className = 'status ok';
+      status.innerHTML = "✓ Booked for <strong>"+res.whenSpoken+" ("+res.tzLabel+")</strong>. Invite + Meet link sent to "+email+"."+(res.meetLink ? " <a href='"+res.meetLink+"' target='_blank'>Open Meet</a>" : "");
+      document.getElementById('name').value='';
+      document.getElementById('email').value='';
+      document.getElementById('service').value='';
+    } else {
+      showErr("Booking didn't go through. Check the date/time and try again, or book via the website widget.");
+    }
+  })
+  .catch(function(){
+    btn.disabled = false; btn.textContent = "Book & Send Invite →";
+    showErr("Couldn't reach the booking system. Check your connection and try again.");
+  });
+
+  function noop(){}
+}
+function showErr(msg){
+  var status = document.getElementById('status');
+  status.className = 'status err';
+  status.textContent = msg;
+  return false;
+}
+</script>
+</body>
+</html>
