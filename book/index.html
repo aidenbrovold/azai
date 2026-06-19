@@ -57,6 +57,9 @@ button:disabled{opacity:.6;cursor:not-allowed;transform:none;}
 .linkbtn{width:auto;margin:12px 0 0;padding:0;background:none;border:none;box-shadow:none;color:var(--gray-400);font-size:13px;font-weight:600;cursor:pointer;}
 .linkbtn:hover{color:var(--electric);background:none;transform:none;box-shadow:none;}
 .chosen{background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.3);color:#7ef0c0;border-radius:10px;padding:13px 15px;font-size:15px;font-weight:600;}
+.slot-taken{opacity:.55;border-color:rgba(239,68,68,0.3)!important;background:rgba(239,68,68,0.06)!important;}
+.slot-taken:hover{border-color:rgba(239,68,68,0.6)!important;background:rgba(239,68,68,0.1)!important;}
+.slot-tag{display:inline-block;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.4px;color:#fca5a5;background:rgba(239,68,68,0.15);padding:1px 6px;border-radius:5px;margin-left:4px;vertical-align:middle;}
 @media (max-width:480px){.slot-grid{grid-template-columns:1fr;}}
 </style>
 </head>
@@ -142,18 +145,20 @@ function pickDay(day){
   grid.innerHTML = '<div class="hint" style="grid-column:1/-1;">Loading open times…</div>';
   wrap.style.display='block';
 
-  fetch(SLOTS_URL,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({date:day.date,period:"any"})})
+  fetch(SLOTS_URL,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({date:day.date,period:"any",showAll:true})})
     .then(function(r){return r.json();})
     .then(function(data){
       if(!data || !data.ok || !data.slots || !data.slots.length){
-        grid.innerHTML = '<div class="hint" style="grid-column:1/-1;">That day just filled up — pick another day.</div>';
+        grid.innerHTML = '<div class="hint" style="grid-column:1/-1;">No slots in the 9–6 window for that day. Pick another day.</div>';
         return;
       }
       grid.innerHTML='';
       data.slots.forEach(function(s){
         var b=document.createElement('button');
-        b.type='button'; b.className='slot-btn';
-        b.textContent = s.label.replace(/^\w+, /,'') + ' (' + s.tzLabel + ')';
+        b.type='button';
+        b.className='slot-btn' + (s.available ? '' : ' slot-taken');
+        var timeTxt = s.time || s.label.replace(/^\w+, /,'');
+        b.innerHTML = timeTxt + (s.available ? '' : ' <span class="slot-tag">' + (s.reason==='too soon'?'too soon':'booked') + '</span>');
         b.onclick=function(){ pickTime(s); };
         grid.appendChild(b);
       });
@@ -164,10 +169,17 @@ function pickDay(day){
 }
 
 function pickTime(slot){
+  if(!slot.available){
+    var why = slot.reason === 'too soon'
+      ? "That time is within the 6-hour minimum-notice window."
+      : "You already have something on your calendar at that time.";
+    if(!confirm(why + "\n\nBook a prospect into it anyway? (This will double-book you.)")){ return; }
+  }
   chosenSlot = slot;
   document.getElementById('timeWrap').style.display='none';
   document.getElementById('chosenWrap').style.display='block';
-  document.getElementById('chosenLabel').textContent = '✓ ' + slot.label + ' (' + slot.tzLabel + ')';
+  var warn = slot.available ? '' : '  ⚠️ double-booked';
+  document.getElementById('chosenLabel').textContent = '✓ ' + slot.label + ' (' + slot.tzLabel + ')' + warn;
   var btn = document.getElementById('bookBtn');
   btn.disabled = false;
   btn.textContent = 'Book & Send Invite →';
