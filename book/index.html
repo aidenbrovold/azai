@@ -51,6 +51,13 @@ button:disabled{opacity:.6;cursor:not-allowed;transform:none;}
 .status.err{display:block;background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.3);color:#fca5a5;}
 .status a{color:var(--electric);}
 .foot{margin-top:24px;padding-top:18px;border-top:1px solid rgba(77,166,255,0.1);font-size:12px;color:var(--gray-500);text-align:center;}
+.slot-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:4px;}
+.slot-btn{margin:0;padding:12px 10px;border-radius:9px;border:1px solid rgba(77,166,255,0.22);background:rgba(77,166,255,0.05);color:var(--white);font-size:14px;font-weight:600;cursor:pointer;box-shadow:none;transition:all .15s;text-align:center;width:100%;}
+.slot-btn:hover{border-color:var(--electric);background:rgba(77,166,255,0.12);transform:translateY(-1px);box-shadow:none;}
+.linkbtn{width:auto;margin:12px 0 0;padding:0;background:none;border:none;box-shadow:none;color:var(--gray-400);font-size:13px;font-weight:600;cursor:pointer;}
+.linkbtn:hover{color:var(--electric);background:none;transform:none;box-shadow:none;}
+.chosen{background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.3);color:#7ef0c0;border-radius:10px;padding:13px 15px;font-size:15px;font-weight:600;}
+@media (max-width:480px){.slot-grid{grid-template-columns:1fr;}}
 </style>
 </head>
 <body>
@@ -65,22 +72,27 @@ button:disabled{opacity:.6;cursor:not-allowed;transform:none;}
   <label for="email">Prospect Email</label>
   <input id="email" type="email" placeholder="mike@reynoldsplumbing.com" autocomplete="off">
 
-  <div class="row">
-    <div>
-      <label for="date">Date</label>
-      <input id="date" type="date">
-    </div>
-    <div>
-      <label for="time">Time (Arizona)</label>
-      <input id="time" type="time" value="10:00">
-    </div>
-  </div>
-  <div class="hint">Arizona time (MST, no daylight saving). 30-minute consultation.</div>
-
   <label for="service">What They're Interested In (Optional)</label>
   <input id="service" type="text" placeholder="e.g. AI receptionist for after-hours calls">
 
-  <button id="bookBtn" onclick="book()">Book &amp; Send Invite →</button>
+  <label style="margin-top:22px;">Pick A Day</label>
+  <div id="dayLoading" class="hint" style="margin-top:2px;">Loading your available days…</div>
+  <div class="slot-grid" id="dayGrid" style="display:none;"></div>
+
+  <div id="timeWrap" style="display:none;">
+    <label style="margin-top:20px;">Pick A Time <span id="timeDayLabel" style="color:var(--gray-500);font-weight:500;"></span></label>
+    <div class="slot-grid" id="timeGrid"></div>
+    <button type="button" class="linkbtn" onclick="backToDays()">← Different day</button>
+  </div>
+
+  <div id="chosenWrap" style="display:none;margin-top:18px;">
+    <div class="chosen" id="chosenLabel"></div>
+    <button type="button" class="linkbtn" onclick="backToTimes()">← Change time</button>
+  </div>
+
+  <div class="hint" style="margin-top:14px;">Arizona time · 30-minute consultation · only times you're actually free are shown.</div>
+
+  <button id="bookBtn" onclick="book()" disabled>Pick A Time To Continue</button>
 
   <div class="status" id="status"></div>
 
@@ -88,19 +100,101 @@ button:disabled{opacity:.6;cursor:not-allowed;transform:none;}
 </div>
 
 <script>
-var BOOK_URL = "https://itsaidendavid.app.n8n.cloud/webhook/azai-chat-book";
+var DAYS_URL  = "https://itsaidendavid.app.n8n.cloud/webhook/azai-chat-days";
+var SLOTS_URL = "https://itsaidendavid.app.n8n.cloud/webhook/azai-chat-slots";
+var BOOK_URL  = "https://itsaidendavid.app.n8n.cloud/webhook/azai-chat-book";
 
-// default date to tomorrow
-(function(){
-  var t = new Date(); t.setDate(t.getDate()+1);
-  document.getElementById('date').value = t.toISOString().slice(0,10);
+var chosenSlot = null;
+
+// Load available days on page open
+(function loadDays(){
+  fetch(DAYS_URL,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({})})
+    .then(function(r){return r.json();})
+    .then(function(data){
+      var loading = document.getElementById('dayLoading');
+      var grid = document.getElementById('dayGrid');
+      if(!data || !data.ok || !data.days || !data.days.length){
+        loading.textContent = "No open days right now. Book via the website widget or call (424) 475-6287.";
+        return;
+      }
+      grid.innerHTML = '';
+      data.days.forEach(function(d){
+        var b = document.createElement('button');
+        b.type='button'; b.className='slot-btn'; b.textContent=d.label;
+        b.onclick=function(){ pickDay(d); };
+        grid.appendChild(b);
+      });
+      loading.style.display='none';
+      grid.style.display='grid';
+    })
+    .catch(function(){
+      document.getElementById('dayLoading').textContent = "Couldn't load your available days. Check your connection or call (424) 475-6287.";
+    });
 })();
+
+function pickDay(day){
+  // hide day grid, show times loading
+  document.getElementById('dayGrid').style.display='none';
+  document.getElementById('dayLoading').style.display='none';
+  var wrap = document.getElementById('timeWrap');
+  var grid = document.getElementById('timeGrid');
+  document.getElementById('timeDayLabel').textContent = '· ' + day.label;
+  grid.innerHTML = '<div class="hint" style="grid-column:1/-1;">Loading open times…</div>';
+  wrap.style.display='block';
+
+  fetch(SLOTS_URL,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({date:day.date,period:"any"})})
+    .then(function(r){return r.json();})
+    .then(function(data){
+      if(!data || !data.ok || !data.slots || !data.slots.length){
+        grid.innerHTML = '<div class="hint" style="grid-column:1/-1;">That day just filled up — pick another day.</div>';
+        return;
+      }
+      grid.innerHTML='';
+      data.slots.forEach(function(s){
+        var b=document.createElement('button');
+        b.type='button'; b.className='slot-btn';
+        b.textContent = s.label.replace(/^\w+, /,'') + ' (' + s.tzLabel + ')';
+        b.onclick=function(){ pickTime(s); };
+        grid.appendChild(b);
+      });
+    })
+    .catch(function(){
+      grid.innerHTML = '<div class="hint" style="grid-column:1/-1;">Couldn\u2019t load times. Pick another day or call (424) 475-6287.</div>';
+    });
+}
+
+function pickTime(slot){
+  chosenSlot = slot;
+  document.getElementById('timeWrap').style.display='none';
+  document.getElementById('chosenWrap').style.display='block';
+  document.getElementById('chosenLabel').textContent = '✓ ' + slot.label + ' (' + slot.tzLabel + ')';
+  var btn = document.getElementById('bookBtn');
+  btn.disabled = false;
+  btn.textContent = 'Book & Send Invite →';
+}
+
+function backToDays(){
+  chosenSlot = null;
+  document.getElementById('timeWrap').style.display='none';
+  document.getElementById('chosenWrap').style.display='none';
+  document.getElementById('dayGrid').style.display='grid';
+  resetBtn();
+}
+function backToTimes(){
+  chosenSlot = null;
+  document.getElementById('chosenWrap').style.display='none';
+  document.getElementById('timeWrap').style.display='block';
+  resetBtn();
+}
+function resetBtn(){
+  var btn = document.getElementById('bookBtn');
+  btn.disabled = true;
+  btn.textContent = 'Pick A Time To Continue';
+}
 
 function book(){
   var name = document.getElementById('name').value.trim();
   var email = document.getElementById('email').value.trim();
-  var date = document.getElementById('date').value;
-  var time = document.getElementById('time').value;
   var service = document.getElementById('service').value.trim();
   var status = document.getElementById('status');
   var btn = document.getElementById('bookBtn');
@@ -108,12 +202,7 @@ function book(){
   status.className = 'status';
   if(!name){ return showErr("Enter the prospect's name."); }
   if(!email || email.indexOf('@')<0){ return showErr("Enter a valid email so they get the invite."); }
-  if(!date || !time){ return showErr("Pick a date and time."); }
-
-  // Build an Arizona-time ISO (MST = -07:00, no DST)
-  var iso = date + "T" + time + ":00-07:00";
-  var when = new Date(iso);
-  if(isNaN(when.getTime())){ return showErr("That date/time didn't parse. Try again."); }
+  if(!chosenSlot){ return showErr("Pick a day and time first."); }
 
   btn.disabled = true; btn.textContent = "Booking…";
 
@@ -123,29 +212,25 @@ function book(){
     body:JSON.stringify({
       name: name,
       email: email,
-      datetime: when.toISOString(),
+      datetime: chosenSlot.iso,
       service: service || "Consultation (booked from call)"
     })
   })
   .then(function(r){ return r.json(); })
   .then(function(res){
-    btn.disabled = false; btn.textContent = "Book & Send Invite →";
     if(res && res.ok){
+      btn.textContent = "Booked ✓";
       status.className = 'status ok';
       status.innerHTML = "✓ Booked for <strong>"+res.whenSpoken+" ("+res.tzLabel+")</strong>. Invite + Meet link sent to "+email+"."+(res.meetLink ? " <a href='"+res.meetLink+"' target='_blank'>Open Meet</a>" : "");
-      document.getElementById('name').value='';
-      document.getElementById('email').value='';
-      document.getElementById('service').value='';
     } else {
-      showErr("Booking didn't go through. Check the date/time and try again, or book via the website widget.");
+      btn.disabled = false; btn.textContent = "Book & Send Invite →";
+      showErr("Booking didn't go through. That slot may have just been taken — pick another time.");
     }
   })
   .catch(function(){
     btn.disabled = false; btn.textContent = "Book & Send Invite →";
     showErr("Couldn't reach the booking system. Check your connection and try again.");
   });
-
-  function noop(){}
 }
 function showErr(msg){
   var status = document.getElementById('status');
