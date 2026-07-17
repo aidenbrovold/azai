@@ -325,7 +325,8 @@ footer .container { display: flex; justify-content: space-between; align-items: 
           <div>Daily summary email of all activity</div>
         </div>
         <div class="actions">
-          <a class="btn-primary" href="/#contact" data-plan="core">Get Started</a>
+          <a class="btn-primary" href="https://buy.stripe.com/14AeVf1NJ33R5ab8ft33W08" data-plan="core">Get Started — $2,400 today</a>
+          <a class="btn-secondary" href="/#contact" data-talk="core">Talk to us first</a>
         </div>
       </div>
 
@@ -346,7 +347,8 @@ footer .container { display: flex; justify-content: space-between; align-items: 
           <div>Automated review requests to happy customers</div>
         </div>
         <div class="actions">
-          <a class="btn-primary" href="/#contact" data-plan="pro">Get Started</a>
+          <a class="btn-primary" href="https://buy.stripe.com/28E00l3VR33R4671R533W09" data-plan="pro">Get Started — $3,650 today</a>
+          <a class="btn-secondary" href="/#contact" data-talk="pro">Talk to us first</a>
         </div>
       </div>
 
@@ -365,7 +367,8 @@ footer .container { display: flex; justify-content: space-between; align-items: 
           <div>A professional website with built-in AI chat &amp; booking</div>
         </div>
         <div class="actions">
-          <a class="btn-primary" href="/#contact" data-plan="complete">Get Started</a>
+          <a class="btn-primary" href="https://buy.stripe.com/6oUfZj7838ob5abgLZ33W0a" data-plan="complete">Get Started — $6,000 today</a>
+          <a class="btn-secondary" href="/#contact" data-talk="complete">Talk to us first</a>
         </div>
       </div>
 
@@ -424,7 +427,10 @@ document.querySelectorAll('nav ul li a').forEach(link => {
     a.addEventListener('click', function () { ph('demo_call_tapped', { label: (a.textContent || '').trim().slice(0, 60), page: 'pricing' }); });
   });
   document.querySelectorAll('a[data-plan]').forEach(function (a) {
-    a.addEventListener('click', function () { ph('plan_get_started_clicked', { plan: a.getAttribute('data-plan') }); });
+    a.addEventListener('click', function () { ph('checkout_started', { plan: a.getAttribute('data-plan') }); });
+  });
+  document.querySelectorAll('a[data-talk]').forEach(function (a) {
+    a.addEventListener('click', function () { ph('plan_talk_first_clicked', { plan: a.getAttribute('data-talk') }); });
   });
 })();
 </script>
