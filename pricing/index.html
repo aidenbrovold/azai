@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <script>  
- !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="init capture register register_once register_for_session unregister opt_out_capturing has_opted_out_capturing opt_in_capturing reset isFeatureEnabled getFeatureFlag getFeatureFlagPayload reloadFeatureFlags group identify setPersonProperties setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroups onFeatureFlags addFeatureFlagsHandler onSessionId getSurveys getActiveMatchingSurveys renderSurvey canRenderSurvey getNextSurveyStep".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);  
- posthog.init('phc_peFdqZJDTj3h9huUsZe3XgYiEg9nkBKxCApweEqUoiYd', {  
- api_host: 'https://us.i.posthog.com',  
- defaults: '2026-01-30'  
- })  
-</script> 
+  <script>
+ !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="init capture register register_once register_for_session unregister opt_out_capturing has_opted_out_capturing opt_in_capturing reset isFeatureEnabled getFeatureFlag getFeatureFlagPayload reloadFeatureFlags group identify setPersonProperties setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroups onFeatureFlags addFeatureFlagsHandler onSessionId getSurveys getActiveMatchingSurveys renderSurvey canRenderSurvey getNextSurveyStep".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+ posthog.init('phc_peFdqZJDTj3h9huUsZe3XgYiEg9nkBKxCApweEqUoiYd', {
+ api_host: 'https://us.i.posthog.com',
+ defaults: '2026-01-30'
+ })
+</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Pricing | A to Z AI Systems</title>
@@ -109,6 +109,12 @@ nav ul li a:hover { color: var(--electric); }
   font-size: 14px;
   font-weight: 700;
 }
+.demo-line {
+  margin-top: 22px;
+  color: var(--gray-400);
+  font-size: 15px;
+}
+.demo-line a { color: var(--cyan); font-weight: 700; }
 .trust-row {
   display: flex;
   justify-content: center;
@@ -290,6 +296,7 @@ footer .container { display: flex; justify-content: space-between; align-items: 
       <a href="/" class="back-home">← Back to Home</a>
       <a href="/#contact" class="back-home" style="background:var(--electric);color:#050508;border-color:var(--electric);">Talk to us</a>
     </div>
+    <p class="demo-line">Not sure yet? <a href="tel:+14244756287">📞 Call our AI receptionist right now: (424) 475-6287</a> — every plan includes her.</p>
     <div class="trust-row">
       <span>Month-to-month</span>
       <span>No long-term contract</span>
@@ -318,7 +325,7 @@ footer .container { display: flex; justify-content: space-between; align-items: 
           <div>Daily summary email of all activity</div>
         </div>
         <div class="actions">
-          <a class="btn-primary" href="/#contact">Get Started</a>
+          <a class="btn-primary" href="/#contact" data-plan="core">Get Started</a>
         </div>
       </div>
 
@@ -339,7 +346,7 @@ footer .container { display: flex; justify-content: space-between; align-items: 
           <div>Automated review requests to happy customers</div>
         </div>
         <div class="actions">
-          <a class="btn-primary" href="/#contact">Get Started</a>
+          <a class="btn-primary" href="/#contact" data-plan="pro">Get Started</a>
         </div>
       </div>
 
@@ -358,7 +365,7 @@ footer .container { display: flex; justify-content: space-between; align-items: 
           <div>A professional website with built-in AI chat &amp; booking</div>
         </div>
         <div class="actions">
-          <a class="btn-primary" href="/#contact">Get Started</a>
+          <a class="btn-primary" href="/#contact" data-plan="complete">Get Started</a>
         </div>
       </div>
 
@@ -408,6 +415,18 @@ navToggle.addEventListener('click', () => {
 document.querySelectorAll('nav ul li a').forEach(link => {
   link.addEventListener('click', () => { nav.classList.remove('open'); navToggle.textContent = '☰'; });
 });
+</script>
+<!-- Conversion tracking -->
+<script>
+(function () {
+  function ph(name, props) { try { window.posthog && posthog.capture(name, props || {}); } catch (e) {} }
+  document.querySelectorAll('a[href^="tel:"]').forEach(function (a) {
+    a.addEventListener('click', function () { ph('demo_call_tapped', { label: (a.textContent || '').trim().slice(0, 60), page: 'pricing' }); });
+  });
+  document.querySelectorAll('a[data-plan]').forEach(function (a) {
+    a.addEventListener('click', function () { ph('plan_get_started_clicked', { plan: a.getAttribute('data-plan') }); });
+  });
+})();
 </script>
 </body>
 </html>
