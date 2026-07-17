@@ -1,152 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
- <script>  
- !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="init capture register register_once register_for_session unregister opt_out_capturing has_opted_out_capturing opt_in_capturing reset isFeatureEnabled getFeatureFlag getFeatureFlagPayload reloadFeatureFlags group identify setPersonProperties setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroups onFeatureFlags addFeatureFlagsHandler onSessionId getSurveys getActiveMatchingSurveys renderSurvey canRenderSurvey getNextSurveyStep".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);  
- posthog.init('<YOUR_PROJECT_API_KEY>', {  
- api_host: 'https://us.i.posthog.com',  
- defaults: '2026-01-30'  
- })  
-</script>  
+ <script>
+ !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="init capture register register_once register_for_session unregister opt_out_capturing has_opted_out_capturing opt_in_capturing reset isFeatureEnabled getFeatureFlag getFeatureFlagPayload reloadFeatureFlags group identify setPersonProperties setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroups onFeatureFlags addFeatureFlagsHandler onSessionId getSurveys getActiveMatchingSurveys renderSurvey canRenderSurvey getNextSurveyStep".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+ posthog.init('phc_peFdqZJDTj3h9huUsZe3XgYiEg9nkBKxCApweEqUoiYd', {
+ api_host: 'https://us.i.posthog.com',
+ defaults: '2026-01-30'
+ })
+</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Subscription Confirmed | A to Z AI Systems</title>
+<title>Payment Confirmed — Let's Build Your System | A to Z AI Systems</title>
 <meta name="robots" content="noindex">
-<meta name="description" content="Your subscription setup is complete. A to Z AI Systems has received your request and will follow up with next steps.">
+<meta name="description" content="Payment confirmed. Tell us about your business so we can start building your AI system today.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 :root {
-  --navy: #050508;
-  --dark: #0d0d14;
-  --blue: #3b82f6;
-  --blue-light: #60a5fa;
-  --cyan: #38bdf8;
-  --white: #ffffff;
-  --gray-50: #0a0a10;
-  --gray-100: #12121c;
-  --gray-300: #c0c8e0;
-  --gray-400: #8892aa;
-  --gray-500: #555f78;
-  --gray-600: #3d4560;
-  --gray-900: #050508;
-  --green: #10b981;
-  --orange: #f59e0b;
-  --red: #ef4444;
-  --electric: #4da6ff;
-  --glow: rgba(77,166,255,0.18);
+  --navy: #050508; --dark: #0d0d14; --blue: #3b82f6; --blue-light: #60a5fa;
+  --cyan: #38bdf8; --white: #ffffff; --gray-100: #12121c; --gray-300: #c0c8e0;
+  --gray-400: #8892aa; --gray-500: #555f78; --green: #10b981; --electric: #4da6ff;
 }
 body {
-  font-family: 'Inter', -apple-system, sans-serif;
-  color: var(--white);
+  font-family: 'Inter', -apple-system, sans-serif; color: var(--white);
   background: radial-gradient(circle at top, rgba(77,166,255,0.18) 0%, transparent 30%), var(--navy);
-  min-height: 100vh;
-  line-height: 1.6;
-  display: flex;
-  flex-direction: column;
+  min-height: 100vh; line-height: 1.6; display: flex; flex-direction: column;
 }
 .container { max-width: 1140px; margin: 0 auto; padding: 0 24px; width: 100%; }
-nav {
-  position: sticky; top: 0; z-index: 100;
-  background: rgba(5,5,8,0.92);
-  backdrop-filter: blur(16px);
-  border-bottom: 1px solid rgba(77,166,255,0.12);
-}
+nav { position: sticky; top: 0; z-index: 100; background: rgba(5,5,8,0.92); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(77,166,255,0.12); }
 nav .container { display: flex; justify-content: space-between; align-items: center; height: 72px; }
 .logo { display: inline-flex; align-items: center; }
 .brand-mark { display: block; width: 172px; height: auto; }
-nav ul { display: flex; list-style: none; gap: 32px; align-items: center; transition: all 0.3s ease; }
-nav ul li a { color: var(--gray-300); font-size: 14px; font-weight: 500; transition: color 0.2s; }
-nav ul li a:hover { color: var(--electric); }
-.nav-cta { background: var(--electric); color: #050508 !important; padding: 10px 24px; border-radius: 8px; font-weight: 700; transition: all 0.2s; box-shadow: 0 0 16px rgba(77,166,255,0.35); }
-.nav-cta:hover { box-shadow: 0 0 28px rgba(77,166,255,0.6); }
-.mobile-toggle { display: none; background: none; border: none; color: white; font-size: 28px; cursor: pointer; z-index: 101; }
 a { color: inherit; text-decoration: none; }
-.wrap { flex: 1; display: flex; align-items: center; padding: 72px 0; }
-.inner { max-width: 760px; margin: 0 auto; width: 100%; }
+.wrap { flex: 1; display: flex; align-items: center; padding: 56px 0; }
+.inner { max-width: 680px; margin: 0 auto; width: 100%; }
 .panel {
   background: linear-gradient(180deg, rgba(18,18,28,0.96), rgba(9,9,14,0.98));
-  border: 1px solid rgba(77,166,255,0.18);
-  border-radius: 24px;
-  padding: 48px;
-  box-shadow: 0 24px 80px rgba(0,0,0,0.45);
+  border: 1px solid rgba(77,166,255,0.18); border-radius: 24px;
+  padding: 44px 40px; box-shadow: 0 24px 80px rgba(0,0,0,0.45);
 }
 .badge {
   display: inline-flex; align-items: center; gap: 10px;
-  background: rgba(16,185,129,0.12);
-  border: 1px solid rgba(16,185,129,0.32);
-  color: #7ef0c0;
-  padding: 8px 16px; border-radius: 999px;
-  font-size: 13px; font-weight: 700; letter-spacing: 0.3px;
-  margin-bottom: 22px;
+  background: rgba(16,185,129,0.12); border: 1px solid rgba(16,185,129,0.32);
+  color: #7ef0c0; padding: 8px 16px; border-radius: 999px;
+  font-size: 13px; font-weight: 700; letter-spacing: 0.3px; margin-bottom: 22px;
 }
-h1 { font-size: clamp(34px, 6vw, 52px); line-height: 1.05; letter-spacing: -1.5px; margin-bottom: 18px; }
-.lead { max-width: 640px; color: var(--gray-300); font-size: 18px; margin-bottom: 28px; }
-.summary {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 16px;
-  margin: 34px 0;
+h1 { font-size: clamp(28px, 5vw, 42px); line-height: 1.1; letter-spacing: -1.2px; margin-bottom: 14px; }
+.lead { color: var(--gray-300); font-size: 16.5px; margin-bottom: 30px; }
+.lead strong { color: var(--white); }
+label { display: block; font-size: 13px; font-weight: 600; color: var(--gray-300); margin: 18px 0 7px; }
+label .opt { color: var(--gray-500); font-weight: 500; }
+input, select, textarea {
+  width: 100%; background: rgba(255,255,255,0.04); border: 1px solid rgba(77,166,255,0.18);
+  border-radius: 10px; padding: 13px 15px; color: var(--white); font-size: 15px; font-family: inherit;
+  transition: border-color .2s;
 }
-.card {
-  background: rgba(77,166,255,0.06);
-  border: 1px solid rgba(77,166,255,0.12);
-  border-radius: 16px;
-  padding: 20px;
+input:focus, select:focus, textarea:focus { outline: none; border-color: var(--electric); }
+textarea { resize: vertical; min-height: 90px; }
+select { appearance: none; }
+.row { display: flex; gap: 14px; }
+.row > div { flex: 1; }
+.hint { font-size: 12.5px; color: var(--gray-500); margin-top: 6px; }
+button {
+  width: 100%; margin-top: 30px; background: var(--electric); color: #050508; border: none; cursor: pointer;
+  padding: 16px; border-radius: 10px; font-size: 16px; font-weight: 800; font-family: inherit;
+  transition: all .2s; box-shadow: 0 0 20px rgba(77,166,255,0.35);
 }
-.card h2 { font-size: 15px; color: var(--gray-300); margin-bottom: 6px; }
-.card p { color: var(--white); font-size: 15px; }
-.list { margin-top: 10px; }
-.list div { color: var(--gray-400); margin-bottom: 10px; padding-left: 18px; position: relative; }
-.list div::before { content: '•'; color: var(--electric); position: absolute; left: 0; }
-.actions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 36px; }
-.btn-primary { display: inline-flex; align-items: center; justify-content: center; gap: 8px; background: var(--electric); color: #050508; padding: 16px 32px; border-radius: 10px; font-size: 16px; font-weight: 700; transition: all 0.2s; border: none; cursor: pointer; box-shadow: 0 0 20px rgba(77,166,255,0.35); }
-.btn-primary:hover { background: var(--blue-light); transform: translateY(-2px); box-shadow: 0 8px 32px rgba(77,166,255,0.55); }
-.btn-secondary { display: inline-flex; align-items: center; justify-content: center; gap: 8px; background: transparent; color: var(--gray-300); padding: 16px 32px; border-radius: 10px; font-size: 16px; font-weight: 600; border: 1px solid rgba(77,166,255,0.25); transition: all 0.2s; }
-.btn-secondary:hover { border-color: var(--electric); color: var(--electric); box-shadow: 0 0 16px rgba(77,166,255,0.15); }
-.support {
-  margin-top: 40px; padding-top: 26px;
-  border-top: 1px solid rgba(77,166,255,0.12);
-  color: var(--gray-400); font-size: 14px;
-}
+button:hover { background: var(--blue-light); transform: translateY(-1px); box-shadow: 0 8px 30px rgba(77,166,255,0.5); }
+button:disabled { opacity: .6; cursor: not-allowed; transform: none; }
+.status { margin-top: 18px; padding: 14px 16px; border-radius: 10px; font-size: 14px; display: none; }
+.status.err { display: block; background: rgba(239,68,68,0.1); border: 1px solid rgba(239,68,68,0.3); color: #fca5a5; }
+.done { text-align: center; padding: 30px 0 10px; display: none; }
+.done h2 { font-size: 26px; margin-bottom: 10px; }
+.done p { color: var(--gray-400); font-size: 15.5px; }
+.support { margin-top: 34px; padding-top: 22px; border-top: 1px solid rgba(77,166,255,0.12); color: var(--gray-400); font-size: 14px; }
 .support a { color: var(--electric); }
-footer { padding: 48px 0 24px; border-top: 1px solid rgba(77,166,255,0.1); background: #020204; }
-footer .container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 24px; }
-.footer-left p { color: var(--gray-500); font-size: 14px; margin-top: 8px; }
-.footer-links { display: flex; gap: 24px; }
-.footer-links a { color: var(--gray-500); font-size: 14px; transition: color 0.2s; }
-.footer-links a:hover { color: var(--electric); }
-.footer-bottom { text-align: center; margin-top: 32px; padding-top: 24px; border-top: 1px solid rgba(77,166,255,0.07); }
-.footer-bottom p { color: #3d4560; font-size: 13px; }
-@media (max-width: 768px) {
-  nav.open ul { display: flex; }
-  .mobile-toggle { display: block; }
-  nav ul { display: none; flex-direction: column; position: absolute; top: 72px; left: 0; right: 0; background: rgba(5,5,8,0.98); padding: 24px; gap: 16px; border-bottom: 1px solid rgba(77,166,255,0.1); }
-}
-@media (max-width: 720px) {
-  .wrap { padding: 48px 0; }
-  .panel { padding: 30px 22px; border-radius: 20px; }
-  .actions { flex-direction: column; }
-  .btn-primary, .btn-secondary { width: 100%; }
-  footer .container { flex-direction: column; text-align: center; }
-}
+footer { padding: 40px 0 24px; border-top: 1px solid rgba(77,166,255,0.1); background: #020204; text-align: center; }
+footer p { color: #3d4560; font-size: 13px; }
+@media (max-width: 640px) { .panel { padding: 30px 22px; } .row { flex-direction: column; gap: 0; } }
 </style>
 </head>
 <body>
-<nav id="nav">
+<nav>
   <div class="container">
     <a href="/" class="logo" aria-label="A to Z AI Systems home">
       <img src="/assets/logo-azai.svg" alt="A to Z AI Systems" class="brand-mark">
     </a>
-    <button class="mobile-toggle" id="navToggle" aria-label="Toggle menu">☰</button>
-    <ul>
-      <li><a href="/#features">Features</a></li>
-      <li><a href="/#how">How It Works</a></li>
-      <li><a href="/pricing">Pricing</a></li>
-      <li><a href="/#faq">FAQ</a></li>
-      <li><a href="/#contact" class="nav-cta">Get Started →</a></li>
-    </ul>
   </div>
 </nav>
 
@@ -154,34 +94,87 @@ footer .container { display: flex; justify-content: space-between; align-items: 
   <div class="container">
     <div class="inner">
       <div class="panel">
-        <div class="badge">✓ Subscription Request Received</div>
-        <h1>You're in. We've got your setup request.</h1>
-        <p class="lead">Your billing flow completed successfully. We'll use the details from your signup to begin onboarding and follow up with the next steps for launch.</p>
-        <div class="summary">
-          <div class="card">
-            <h2>What Happens Next</h2>
-            <p>We review the order, confirm scope, and send your onboarding steps.</p>
+        <div class="badge">✓ Payment confirmed — welcome aboard</div>
+        <h1>Let's build your AI receptionist.</h1>
+        <p class="lead">You're officially in. Tell us about your business below — this is everything we need to start building <strong id="planLabel">your system</strong> today. Takes about 3 minutes, and you're done.</p>
+
+        <form id="onboardForm">
+          <label for="business">Business name *</label>
+          <input id="business" type="text" placeholder="e.g. Reynolds Plumbing" required>
+
+          <div class="row">
+            <div>
+              <label for="owner">Your name *</label>
+              <input id="owner" type="text" placeholder="Mike Reynolds" required>
+            </div>
+            <div>
+              <label for="notifyEmail">Best email for alerts *</label>
+              <input id="notifyEmail" type="email" placeholder="mike@reynoldsplumbing.com" required>
+            </div>
           </div>
-          <div class="card">
-            <h2>Support Contact</h2>
-            <p><a href="mailto:aiden@azaisystems.com" style="color:var(--electric)">aiden@azaisystems.com</a></p>
+
+          <div class="row">
+            <div>
+              <label for="bizPhone">Business phone number *</label>
+              <input id="bizPhone" type="tel" placeholder="(555) 123-4567" required>
+              <div class="hint">The number customers call — your AI will answer it.</div>
+            </div>
+            <div>
+              <label for="carrier">Phone carrier <span class="opt">(if known)</span></label>
+              <input id="carrier" type="text" placeholder="e.g. Verizon, T-Mobile, VoIP">
+            </div>
           </div>
-          <div class="card">
-            <h2>Billing Policy</h2>
-            <p>Recurring service continues until canceled at the end of the current billing period.</p>
+
+          <div class="row">
+            <div>
+              <label for="hours">Business hours *</label>
+              <input id="hours" type="text" placeholder="Mon–Fri 8am–5pm, Sat 9–1" required>
+            </div>
+            <div>
+              <label for="timezone">Timezone *</label>
+              <select id="timezone" required>
+                <option value="Arizona" selected>Arizona</option>
+                <option value="Pacific">Pacific</option>
+                <option value="Mountain">Mountain</option>
+                <option value="Central">Central</option>
+                <option value="Eastern">Eastern</option>
+                <option value="Alaska">Alaska</option>
+                <option value="Hawaii">Hawaii</option>
+              </select>
+            </div>
           </div>
+
+          <label for="services">What services do you offer? *</label>
+          <textarea id="services" placeholder="e.g. Drain cleaning, water heater repair and install, emergency plumbing. Typical job runs $150–$800." required></textarea>
+
+          <div class="row">
+            <div>
+              <label for="calendar">Booking calendar email <span class="opt">(Google Calendar)</span></label>
+              <input id="calendar" type="email" placeholder="Same as alerts email if blank">
+            </div>
+            <div>
+              <label for="apptLength">Typical appointment length</label>
+              <input id="apptLength" type="text" placeholder="e.g. 1 hour">
+            </div>
+          </div>
+
+          <label for="faqs">Questions customers always ask <span class="opt">(and how you answer)</span></label>
+          <textarea id="faqs" placeholder="e.g. 'Do you do free estimates?' — Yes, always. 'Service area?' — Phoenix metro, 30 mile radius."></textarea>
+
+          <label for="notes">Anything else we should know?</label>
+          <textarea id="notes" placeholder="How you greet callers, things the AI should never say, competitors to know about..."></textarea>
+
+          <button type="submit" id="goBtn">Submit & Start My Build →</button>
+          <div class="status" id="status"></div>
+        </form>
+
+        <div class="done" id="done">
+          <h2>🎉 That's everything.</h2>
+          <p>Your build starts now. You'll hear from us within one business day with your kickoff details, and your system will be live in about a week. Watch your inbox.</p>
         </div>
-        <div class="list">
-          <div>You should receive a payment confirmation from Stripe.</div>
-          <div>We'll reach out with implementation details and timeline.</div>
-          <div>If you purchased setup, we'll use that to kick off onboarding immediately.</div>
-        </div>
-        <div class="actions">
-          <a class="btn-primary" href="/">Back to Home</a>
-          <a class="btn-secondary" href="mailto:aiden@azaisystems.com?subject=New%20Subscription%20Questions">Contact Support</a>
-        </div>
+
         <div class="support">
-          Questions before kickoff? Email <a href="mailto:aiden@azaisystems.com">aiden@azaisystems.com</a> or call <a href="tel:+14244756287">(424) 475-6287</a> and we'll take care of it.
+          Prefer to talk it through? Email <a href="mailto:aiden@azaisystems.com">aiden@azaisystems.com</a> or call <a href="tel:+14244756287">(424) 475-6287</a> — you can fill this out together with us on the phone.
         </div>
       </div>
     </div>
@@ -189,37 +182,69 @@ footer .container { display: flex; justify-content: space-between; align-items: 
 </div>
 
 <footer>
-  <div class="container">
-    <div class="footer-left">
-      <a href="/" class="logo" aria-label="A to Z AI Systems home">
-        <img src="/assets/logo-azai.svg" alt="A to Z AI Systems" class="brand-mark">
-      </a>
-      <p>Complete AI systems for local businesses.<br>Based in Arizona.</p>
-    </div>
-    <div class="footer-links">
-      <a href="https://aidenbrovold.github.io/legal/privacy-policy">Privacy Policy</a>
-      <a href="https://aidenbrovold.github.io/legal/terms-of-service">Terms of Service</a>
-      <a href="mailto:itsaidenbrovold@gmail.com">Contact</a>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <p>&copy; 2026 A to Z AI Systems LLC. All rights reserved.</p>
-  </div>
+  <p>&copy; 2026 A to Z AI Systems LLC. All rights reserved.</p>
 </footer>
 
 <script>
 (function () {
-  var navToggle = document.getElementById('navToggle');
-  var nav = document.getElementById('nav');
-  if (navToggle && nav) {
-    navToggle.addEventListener('click', function () {
-      nav.classList.toggle('open');
-      navToggle.textContent = nav.classList.contains('open') ? '\u2715' : '\u2630';
-    });
-    document.querySelectorAll('nav ul li a').forEach(function (link) {
-      link.addEventListener('click', function () { nav.classList.remove('open'); navToggle.textContent = '\u2630'; });
-    });
+  function ph(name, props) { try { window.posthog && posthog.capture(name, props || {}); } catch (e) {} }
+
+  // Read plan from ?plan= and record the conversion
+  var plan = (new URLSearchParams(window.location.search).get('plan') || '').toLowerCase();
+  var planNames = { core: 'Core', pro: 'Pro', complete: 'Complete' };
+  var tier = planNames[plan] || '';
+  if (tier) {
+    document.getElementById('planLabel').textContent = 'your ' + tier + ' system';
+    document.title = tier + ' Plan Confirmed — Let’s Build Your System | A to Z AI Systems';
   }
+  ph('purchase_completed', { plan: plan || 'unknown' });
+
+  document.getElementById('onboardForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var btn = document.getElementById('goBtn');
+    var status = document.getElementById('status');
+    status.className = 'status';
+
+    var v = function (id) { return (document.getElementById(id).value || '').trim(); };
+    var payload = {
+      business: v('business'),
+      owner: v('owner'),
+      notifyEmail: v('notifyEmail'),
+      bizPhone: v('bizPhone'),
+      carrier: v('carrier'),
+      hours: v('hours'),
+      timezone: v('timezone'),
+      services: v('services'),
+      calendar: v('calendar') || v('notifyEmail'),
+      apptLength: v('apptLength'),
+      faqs: v('faqs'),
+      notes: v('notes'),
+      tier: tier || 'Unknown (paid via Stripe)',
+      source: 'stripe_success_page'
+    };
+
+    btn.disabled = true; btn.textContent = 'Submitting…';
+    fetch('https://itsaidendavid.app.n8n.cloud/webhook/azai-intake', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    })
+    .then(function (r) { return r.json(); })
+    .then(function (res) {
+      if (res && res.ok) {
+        ph('onboarding_form_submitted', { plan: plan || 'unknown' });
+        document.getElementById('onboardForm').style.display = 'none';
+        document.getElementById('done').style.display = 'block';
+      } else {
+        throw new Error('bad response');
+      }
+    })
+    .catch(function () {
+      btn.disabled = false; btn.textContent = 'Submit & Start My Build →';
+      status.className = 'status err';
+      status.textContent = "Something went wrong — your payment is safe. Email aiden@azaisystems.com or call (424) 475-6287 and we'll take your details by phone.";
+    });
+  });
 })();
 </script>
 </body>
