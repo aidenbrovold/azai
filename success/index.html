@@ -128,6 +128,19 @@ footer p { color: #3d4560; font-size: 13px; }
 
           <div class="row">
             <div>
+              <label for="website">Website <span class="opt">(optional)</span></label>
+              <input id="website" type="text" placeholder="reynoldsplumbing.com">
+              <div class="hint">We’ll read it so your AI knows your business.</div>
+            </div>
+            <div>
+              <label for="pricingUrl">Link to Your Price List <span class="opt">(optional)</span></label>
+              <input id="pricingUrl" type="text" placeholder="reynoldsplumbing.com/pricing">
+              <div class="hint">We’ll scan it and teach your AI every price.</div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div>
               <label for="hours">Business Hours *</label>
               <input id="hours" type="text" placeholder="Mon–Fri 8am–5pm, Sat 9–1" required>
             </div>
@@ -220,6 +233,8 @@ footer p { color: #3d4560; font-size: 13px; }
       apptLength: v('apptLength'),
       faqs: v('faqs'),
       notes: v('notes'),
+      website: v('website'),
+      pricingUrl: v('pricingUrl'),
       tier: tier || 'Unknown (paid via Stripe)',
       source: 'stripe_success_page'
     };
