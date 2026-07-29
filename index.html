@@ -248,7 +248,7 @@ footer .container { display: flex; justify-content: space-between; align-items: 
 <div class="hero-stats">
 <div class="hero-stat"><h3>24/7</h3><p>Every call answered — nights, weekends, mid-job</p></div>
 <div class="hero-stat"><h3>78%</h3><p>of customers buy from whoever responds first (Lead Connect)</p></div>
-<div class="hero-stat"><h3>~1 wk</h3><p>From first call to live on your phone line</p></div>
+<div class="hero-stat"><h3>~1 Wk</h3><p>From first call to live on your phone line</p></div>
 </div>
 </div>
 <div class="hero-visual">
@@ -272,12 +272,12 @@ footer .container { display: flex; justify-content: space-between; align-items: 
 </div>
 <div class="problem-card reveal">
 <div class="icon">⏱️</div>
-<h3>5 min</h3>
+<h3>5 Min</h3>
 <p>is how fast you need to respond before a lead goes cold. Respond within 5 minutes and you're 21x more likely to qualify them than waiting half an hour. (Source: Lead Response Management study)</p>
 </div>
 <div class="problem-card reveal">
 <div class="icon">⏰</div>
-<h3>20+ hrs</h3>
+<h3>20+ Hrs</h3>
 <p>per week lost to the phone and the follow-up treadmill — answering, scheduling, reminding, chasing reviews. Time you should be spending on the actual work.</p>
 </div>
 </div>
@@ -354,19 +354,19 @@ footer .container { display: flex; justify-content: space-between; align-items: 
 <div class="section-subtitle reveal">Everything you need to know before getting started.</div>
 <div class="faq-list">
 <div class="faq-item reveal">
-<button class="faq-question" onclick="this.parentElement.classList.toggle('open')">Do I need any technical skills? <span class="faq-icon">+</span></button>
+<button class="faq-question" onclick="this.parentElement.classList.toggle('open')">Do I Need Any Technical Skills? <span class="faq-icon">+</span></button>
 <div class="faq-answer"><p>None at all. We handle everything — design, build, configuration, and ongoing support. You don't need to touch a single line of code or log into any platform. We set it all up and hand you the keys.</p></div>
 </div>
 <div class="faq-item reveal">
-<button class="faq-question" onclick="this.parentElement.classList.toggle('open')">How long does setup take? <span class="faq-icon">+</span></button>
+<button class="faq-question" onclick="this.parentElement.classList.toggle('open')">How Long Does Setup Take? <span class="faq-icon">+</span></button>
 <div class="faq-answer"><p>Most systems are fully live within about a week. We start with a free demo call to understand your business, then build and back-test everything before going live — so it's right, not rushed.</p></div>
 </div>
 <div class="faq-item reveal">
-<button class="faq-question" onclick="this.parentElement.classList.toggle('open')">Is there a long-term contract? <span class="faq-icon">+</span></button>
+<button class="faq-question" onclick="this.parentElement.classList.toggle('open')">Is There a long-term Contract? <span class="faq-icon">+</span></button>
 <div class="faq-answer"><p>No contracts, no lock-ins. Everything is month-to-month. We're confident in the results we deliver, so we let the work speak for itself — cancel anytime.</p></div>
 </div>
 <div class="faq-item reveal">
-<button class="faq-question" onclick="this.parentElement.classList.toggle('open')">How do I know it's actually working? <span class="faq-icon">+</span></button>
+<button class="faq-question" onclick="this.parentElement.classList.toggle('open')">How Do I Know It's Actually Working? <span class="faq-icon">+</span></button>
 <div class="faq-answer"><p>You'll receive a daily summary email showing exactly what your AI system did — calls handled, appointments booked, leads captured, and more. Full visibility, real results.</p></div>
 </div>
 </div>
@@ -388,11 +388,11 @@ footer .container { display: flex; justify-content: space-between; align-items: 
 <input type="tel" id="phone" name="phone" placeholder="(555) 123-4567" required>
 </div>
 <div class="form-group">
-<label for="email">Email (optional)</label>
+<label for="email">Email (Optional)</label>
 <input type="email" id="email" name="email" placeholder="john@example.com">
 </div>
 <div class="form-group">
-<label for="message">Tell us about your business (optional)</label>
+<label for="message">Tell Us About Your Business (Optional)</label>
 <textarea id="message" name="message" placeholder="What kind of business do you run? What does your day-to-day look like?"></textarea>
 </div>
 <!-- Honeypot: hidden from humans, bots fill it and get filtered out -->
@@ -645,7 +645,7 @@ function submitForm(e) {
   function showDetailsForm(slot){
     addMsg("You're booking "+slot.label+" "+slot.tzLabel+" time. Just need your details:","bot");
     var form=document.createElement("div"); form.className="azai-form";
-    form.innerHTML='<label>Your name</label><input id="azai-bk-name" type="text" placeholder="Jane Smith" /><label>Your email</label><input id="azai-bk-email" type="email" placeholder="jane@business.com" /><button id="azai-bk-go">Confirm booking</button>';
+    form.innerHTML='<label>Your Name</label><input id="azai-bk-name" type="text" placeholder="Jane Smith" /><label>Your Email</label><input id="azai-bk-email" type="email" placeholder="jane@business.com" /><button id="azai-bk-go">Confirm Booking</button>';
     body.appendChild(form); scrollDown();
     var nameI=form.querySelector("#azai-bk-name"), emailI=form.querySelector("#azai-bk-email"), go=form.querySelector("#azai-bk-go");
     setTimeout(function(){ nameI.focus(); },200);
