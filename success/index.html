@@ -126,6 +126,10 @@ footer p { color: #3d4560; font-size: 13px; }
             </div>
           </div>
 
+          <label for="transferPhone">Emergency Transfer Number <span class="opt">(Optional)</span></label>
+          <input id="transferPhone" type="tel" placeholder="Cell number for true emergencies">
+          <div class="hint">If a caller has a real emergency, your AI transfers them live to this number.</div>
+
           <div class="row">
             <div>
               <label for="website">Website <span class="opt">(Optional)</span></label>
@@ -226,6 +230,7 @@ footer p { color: #3d4560; font-size: 13px; }
       notifyEmail: v('notifyEmail'),
       bizPhone: v('bizPhone'),
       carrier: v('carrier'),
+      transferPhone: v('transferPhone'),
       hours: v('hours'),
       timezone: v('timezone'),
       services: v('services'),
