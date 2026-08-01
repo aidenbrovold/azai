@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="My AI Report">
+<meta name="theme-color" content="#050508">
+<title>Your AI Receptionist — Live Dashboard</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--navy:#050508;--card:#12121c;--card2:#171722;--white:#fff;--g3:#c0c8e0;--g4:#8892aa;--g5:#555f78;--g6:#3a4058;--electric:#4da6ff;--cyan:#38bdf8;--green:#10b981;--amber:#f59e0b;--red:#ef4444;--line:rgba(77,166,255,.12)}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',-apple-system,sans-serif;background:radial-gradient(1200px 600px at 80% -10%,rgba(77,166,255,.12),transparent 60%),radial-gradient(900px 500px at -10% 20%,rgba(56,189,248,.08),transparent 55%),var(--navy);color:var(--white);min-height:100vh;line-height:1.6;padding:0 0 60px}
+.wrap{max-width:1000px;margin:0 auto;padding:0 22px}
+.grid-bg{position:fixed;inset:0;z-index:0;pointer-events:none;background-image:linear-gradient(rgba(77,166,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(77,166,255,.035) 1px,transparent 1px);background-size:64px 64px;mask-image:radial-gradient(circle at 50% 0,black,transparent 75%)}
+.content{position:relative;z-index:1}
+.topbar{border-bottom:1px solid var(--line);background:rgba(5,5,8,.7);backdrop-filter:blur(14px);position:sticky;top:0;z-index:10}
+.topbar .wrap{display:flex;align-items:center;gap:14px;height:62px}
+.logo{font-weight:800;letter-spacing:-.3px;font-size:16px}.logo .a{color:var(--electric)}
+.topbar .spacer{flex:1}
+.powered{font-size:12px;color:var(--g5)}.powered b{color:var(--g3);font-weight:600}
+.reload{background:none;border:1px solid var(--line);color:var(--g3);font-size:12.5px;font-weight:600;padding:6px 12px;border-radius:8px;cursor:pointer;font-family:inherit}
+.reload:hover{border-color:var(--electric);color:var(--electric)}
+.rangewrap{padding:16px 0 0}
+.rlabel{font-size:12px;color:var(--g5);margin-bottom:7px}
+#rangebar{display:inline-flex;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:4px;gap:3px;flex-wrap:wrap}
+.rbtn{background:none;border:none;color:var(--g4);font-size:13.5px;font-weight:600;font-family:inherit;padding:8px 15px;border-radius:9px;cursor:pointer}
+.rbtn.active{background:var(--electric);color:#050508}
+.hdr{display:flex;align-items:center;gap:16px;flex-wrap:wrap;padding:26px 0 22px}
+.avatar{width:54px;height:54px;border-radius:15px;background:linear-gradient(135deg,rgba(77,166,255,.22),rgba(56,189,248,.12));border:1px solid rgba(77,166,255,.3);display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:800;color:var(--electric);box-shadow:0 0 30px rgba(77,166,255,.22)}
+.hdr h1{font-size:25px;font-weight:800;letter-spacing:-.6px;line-height:1.1}
+.hdr .sub{color:var(--g4);font-size:14px;margin-top:3px}
+.hdr .spacer{flex:1}
+.pill{display:inline-flex;align-items:center;gap:7px;font-size:12.5px;font-weight:600;padding:7px 14px;border-radius:999px;border:1px solid var(--line)}
+.pill.live{color:var(--green);border-color:rgba(16,185,129,.35);background:rgba(16,185,129,.08)}
+.pill.live .b{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 0 4px rgba(16,185,129,.18);animation:pulse 2s infinite}
+.pill.review{color:var(--amber);border-color:rgba(245,158,11,.35);background:rgba(245,158,11,.08)}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.pill.month{color:var(--g3)}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:16px}
+.stat{background:linear-gradient(180deg,#1a1a28,var(--card));border:1px solid rgba(77,166,255,.2);border-radius:20px;box-shadow:0 16px 44px -20px rgba(0,0,0,.7);padding:20px 22px;position:relative;overflow:hidden}
+.stat::after{content:'';position:absolute;top:-40px;right:-40px;width:120px;height:120px;background:radial-gradient(circle,rgba(77,166,255,.14),transparent 70%)}
+.stat .lbl{font-size:13px;color:var(--g4);display:flex;align-items:center;gap:7px}
+.stat .num{font-size:36px;font-weight:800;letter-spacing:-1.5px;margin:6px 0 2px;text-shadow:0 0 24px rgba(77,166,255,.25)}
+.stat .foot{font-size:12.5px;color:var(--g5)}.stat .foot.good{color:var(--green)}
+.roi{background:linear-gradient(90deg,rgba(16,185,129,.14),rgba(77,166,255,.12));border:1px solid rgba(16,185,129,.24);border-radius:18px;padding:20px 24px;display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin:8px 0 30px}
+.roi .ic{width:44px;height:44px;border-radius:12px;background:rgba(16,185,129,.15);display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0}
+.roi .txt{flex:1;min-width:220px;font-size:15px;color:var(--g3)}.roi .txt b{color:var(--white);font-weight:700}
+.roi .big{text-align:right}.roi .big .n{font-size:26px;font-weight:800;color:var(--green);letter-spacing:-.5px}.roi .big .c{font-size:12px;color:var(--g5)}
+.cols{display:grid;grid-template-columns:1.4fr 1fr;gap:20px}
+.panel{background:linear-gradient(180deg,#1a1a28,var(--card));border:1px solid rgba(77,166,255,.2);border-radius:20px;box-shadow:0 16px 44px -20px rgba(0,0,0,.7);padding:20px 22px}
+.panel h3{font-size:15px;font-weight:700;display:flex;align-items:center;gap:9px;margin-bottom:16px}
+.panel h3 .cnt{margin-left:auto;font-size:12px;color:var(--g5);font-weight:500}
+.feed{display:flex;flex-direction:column;gap:10px}
+.item{display:flex;gap:12px;align-items:flex-start;padding:12px 14px;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.04);border-radius:13px}
+.item .ico{width:34px;height:34px;border-radius:10px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:16px;background:rgba(77,166,255,.12);color:var(--electric)}
+.item .m{flex:1;min-width:0}.item .t{font-size:14px;font-weight:600;line-height:1.35}.item .d{font-size:12.5px;color:var(--g4);margin-top:2px}
+.item .time{font-size:11.5px;color:var(--g6);white-space:nowrap;padding-top:2px}
+.mrow{display:flex;align-items:center;justify-content:space-between;padding:12px 2px;border-bottom:1px solid rgba(77,166,255,.08)}
+.mrow:last-child{border-bottom:none}.mrow .k{font-size:13.5px;color:var(--g4)}.mrow .v{font-size:18px;font-weight:800}
+.note{background:rgba(77,166,255,.06);border:1px solid var(--line);border-radius:14px;padding:16px 18px;font-size:14px;color:var(--g3);line-height:1.6;margin-bottom:20px}
+.state{text-align:center;padding:70px 20px;color:var(--g4)}.state .big{font-size:46px;margin-bottom:12px}.state h3{font-size:20px;font-weight:800;color:#fff;margin-bottom:6px}
+.demobar{background:rgba(245,158,11,.14);border:1px solid rgba(245,158,11,.4);color:#fcd34d;font-size:12.5px;font-weight:700;padding:9px 14px;border-radius:10px;margin-top:16px;text-align:center}
+.footer{text-align:center;color:var(--g6);font-size:12.5px;margin-top:40px;padding-top:22px;border-top:1px solid var(--line)}.footer b{color:var(--g4)}.footer a{color:var(--electric);text-decoration:none}
+@media(max-width:820px){.stats{grid-template-columns:repeat(2,1fr)}.cols{grid-template-columns:1fr}}
+@media(max-width:480px){.hdr h1{font-size:22px}}
+
+/* ---- Polish layer: depth, finish, consistency ---- */
+::selection{background:rgba(77,166,255,.35)}
+*{scrollbar-width:thin;scrollbar-color:rgba(77,166,255,.25) transparent}
+::-webkit-scrollbar{width:8px;height:8px}
+::-webkit-scrollbar-thumb{background:rgba(77,166,255,.22);border-radius:99px}
+::-webkit-scrollbar-track{background:transparent}
+
+</style>
+</head>
+<body>
+<div class="grid-bg"></div>
+<div class="content">
+
+<div class="topbar"><div class="wrap">
+  <span class="logo">A to Z <span class="a">AI</span></span>
+  <span class="spacer"></span>
+  <span class="powered">Client Dashboard · <b>A to Z AI Systems</b></span>
+  <button class="reload" onclick="load()">↻</button>
+</div></div>
+
+<div class="wrap">
+  <div class="rangewrap">
+    <div class="rlabel">Showing Numbers For:</div>
+    <div id="rangebar">
+      <button class="rbtn" data-r="today" onclick="setRange('today')">Today</button>
+      <button class="rbtn" data-r="7d" onclick="setRange('7d')">7 Days</button>
+      <button class="rbtn" data-r="30d" onclick="setRange('30d')">30 Days</button>
+      <button class="rbtn" data-r="all" onclick="setRange('all')">All Time</button>
+    </div>
+  </div>
+  <div id="root">
+    <div class="state"><div class="big">📊</div><h3>Loading Your Dashboard…</h3></div>
+  </div>
+</div>
+</div>
+
+<script>
+var PORTAL_URL="https://itsaidendavid.app.n8n.cloud/webhook/client-portal";
+var AVG_JOB_VALUE=250;
+function qp(k){var m=new RegExp("[?&]"+k+"=([^&]*)").exec(location.search);return m?decodeURIComponent(m[1]):"";}
+var slug=qp("c"),token=qp("t");
+var range=localStorage.getItem("azai_portal_range")||"30d";
+function n(x){return (x==null?0:x).toLocaleString();}
+function rangeLabel(){return ({today:"today","7d":"the last 7 days","30d":"the last 30 days",all:"all time"})[range]||"";}
+function highlightRange(){var b=document.querySelectorAll("#rangebar .rbtn");for(var i=0;i<b.length;i++){b[i].className="rbtn"+(b[i].getAttribute("data-r")===range?" active":"");}}
+function setRange(rg){range=rg;localStorage.setItem("azai_portal_range",rg);highlightRange();load();}
+var DEMO={ok:true,business:"Summit Roofing Co.",status:"live",owner:"Mike",calls:143,afterHours:38,successful:129,minutes:412,bookings:27,upcoming:9,leads:19,recentCalls:[{caller_name:"Dana W.",category:"New Booking",started_at:"2026-07-24T09:12:00"},{caller_name:"Miguel R.",category:"Quote Request",started_at:"2026-07-24T08:40:00"},{caller_name:"After-hours caller",category:"Message Taken",started_at:"2026-07-23T21:05:00"},{caller_name:"Priya S.",category:"Reschedule",started_at:"2026-07-23T16:22:00"}]};
+function scaledDemo(rg){var f=({today:0.06,"7d":0.3,"30d":1,"all":1.25})[rg]||1;function s(x){return Math.round((x||0)*f);}var d={};for(var k in DEMO){d[k]=DEMO[k];}d.calls=s(DEMO.calls);d.afterHours=s(DEMO.afterHours);d.successful=s(DEMO.successful);d.minutes=s(DEMO.minutes);d.bookings=s(DEMO.bookings);d.leads=s(DEMO.leads);return d;}
+function esc(s){return String(s==null?"":s).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[c];});}
+function animateCounts(){document.querySelectorAll('[data-count]').forEach(function(el){var target=+el.getAttribute('data-count'),start=null,dur=1100;function step(ts){if(!start)start=ts;var p=Math.min((ts-start)/dur,1);var e=1-Math.pow(1-p,3);el.textContent=Math.round(target*e).toLocaleString();if(p<1)requestAnimationFrame(step);}requestAnimationFrame(step);});}
+function render(d,demo){
+  var root=document.getElementById("root");
+  var live=String(d.status||"").toLowerCase()==="live";
+  var initial=(String(d.business||"?").trim()[0]||"?").toUpperCase();
+  var estVal=(d.bookings||0)*AVG_JOB_VALUE;
+  var hours=Math.round((d.minutes||0)/60);
+  var totalActivity=(d.calls||0)+(d.bookings||0)+(d.leads||0);
+  var h='';
+  if(demo)h+='<div class="demobar">DEMO PREVIEW · sample numbers — each client opens their own live dashboard from a private link · want to hear the AI answer live? Call <a href="tel:+14244756287" style="color:inherit;text-decoration:underline">(424) 475-6287</a></div>';
+  h+='<div class="hdr"><div class="avatar">'+esc(initial)+'</div><div><h1>'+esc(d.business||"Your Business")+'</h1><div class="sub">'+(d.owner?esc(d.owner)+" · ":"")+'Powered by A to Z AI</div></div><span class="spacer"></span>'
+   +(live?'<span class="pill live"><span class="b"></span> AI is answering — live</span>':'<span class="pill review">Setup in Progress</span>')
+   +'<span class="pill month">'+rangeLabel()+'</span></div>';
+  if(totalActivity===0){
+    h+='<div class="note">🤖 Your AI receptionist is '+(live?"live and ready":"being set up")+'. As calls come in during this period, every call, appointment, and lead will appear here automatically — try switching to <b>All Time</b> above.</div>';
+  }
+  h+='<div class="stats">'
+   +'<div class="stat"><div class="lbl">📞 Calls Handled</div><div class="num" data-count="'+(d.calls||0)+'">0</div><div class="foot good">'+n(d.successful)+' Resolved</div></div>'
+   +'<div class="stat"><div class="lbl">🌙 After Hours</div><div class="num" data-count="'+(d.afterHours||0)+'">0</div><div class="foot">Nights &amp; Weekends Caught</div></div>'
+   +'<div class="stat"><div class="lbl">📅 Appointments</div><div class="num" data-count="'+(d.bookings||0)+'">0</div><div class="foot">Booked Into Your Calendar</div></div>'
+   +'<div class="stat"><div class="lbl">✨ Leads Captured</div><div class="num" data-count="'+(d.leads||0)+'">0</div><div class="foot">New Opportunities</div></div>'
+   +'</div>';
+  h+='<div class="roi"><div class="ic">📈</div><div class="txt">Your AI handled <b>'+n(d.calls)+' calls</b>'+(hours>0?', saved you about <b>'+hours+' hours</b> on the phone':'')+(d.afterHours>0?', and caught <b>'+n(d.afterHours)+'</b> after-hours calls you’d have missed':'')+'.</div><div class="big"><div class="n">$'+n(estVal)+'</div><div class="c">Est. Booked Value</div></div></div>';
+  h+='<div class="cols"><div class="panel"><h3>📞 Recent Calls <span class="cnt">Latest</span></h3><div class="feed" id="callfeed"></div></div>'
+   +'<div class="panel"><h3>📊 At a Glance</h3>'
+   +'<div class="mrow"><span class="k">Upcoming Appointments</span><span class="v" style="color:var(--green)">'+n(d.upcoming)+'</span></div>'
+   +'<div class="mrow"><span class="k">Calls Resolved</span><span class="v">'+n(d.successful)+'</span></div>'
+   +'<div class="mrow"><span class="k">Minutes on the Phone for You</span><span class="v">'+n(d.minutes)+'</span></div>'
+   +'<div class="mrow"><span class="k">Leads Captured</span><span class="v">'+n(d.leads)+'</span></div>'
+   +'</div></div>';
+  h+='<div class="footer">Your AI receptionist never sleeps, never takes a day off, and never sends a caller to voicemail.<br>Questions? <a href="mailto:aiden@azaisystems.com">aiden@azaisystems.com</a> · Updated '+new Date().toLocaleString()+'</div>';
+  root.innerHTML=h;
+  var rc=d.recentCalls||[];var cf=document.getElementById("callfeed");
+  if(!rc.length){cf.innerHTML='<div style="color:var(--g5);font-size:13px;padding:8px">No calls in this period yet.</div>';}
+  else{cf.innerHTML=rc.map(function(c){var when=c.started_at?new Date(c.started_at).toLocaleString(undefined,{month:'short',day:'numeric',hour:'numeric',minute:'2-digit'}):'';var cat=(c.category||'').toLowerCase();var ic=cat.indexOf('book')!==-1?'📅':cat.indexOf('message')!==-1||cat.indexOf('msg')!==-1?'💬':cat.indexOf('quote')!==-1?'💵':'📞';return '<div class="item"><div class="ico">'+ic+'</div><div class="m"><div class="t">'+esc(c.caller_name||"Caller")+'</div><div class="d">'+esc(c.category||"Call Handled")+'</div></div><div class="time">'+when+'</div></div>';}).join('');}
+  animateCounts();
+}
+function load(){
+  var root=document.getElementById("root");
+  if(!slug||slug==="demo"){render(scaledDemo(range),true);return;}
+  root.innerHTML='<div class="state"><div class="big">📊</div><h3>Loading Your Dashboard…</h3></div>';
+  fetch(PORTAL_URL+"?c="+encodeURIComponent(slug)+"&t="+encodeURIComponent(token)+"&range="+encodeURIComponent(range)).then(function(r){return r.json();}).then(function(d){
+    if(!d||!d.ok){root.innerHTML='<div class="state"><div class="big">🔎</div><h3>Dashboard Not Found</h3><p>We couldn’t find an account for this link. Reach out to A to Z AI and we’ll sort it out.</p></div>';return;}
+    render(d,false);
+  }).catch(function(){document.getElementById("root").innerHTML='<div class="state"><div class="big">⚠️</div><h3>Couldn’t Load Your Dashboard</h3><p>Please refresh in a moment.</p></div>';});
+}
+highlightRange();
+load();
+</script>
+</body>
+</html>
