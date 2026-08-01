@@ -1,4 +1,4 @@
 <svg width="248" height="64" viewBox="0 0 248 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <text x="0" y="48" font-family="Inter, Arial, Helvetica, sans-serif" font-weight="800" font-size="42" fill="#FFFFFF">A to Z</text>
-  <text x="124" y="48" font-family="Inter, Arial, Helvetica, sans-serif" font-weight="900" font-size="42" fill="#4DA6FF">AI</text>
+  <text x="0" y="36" font-family="Inter, Arial, Helvetica, sans-serif" font-weight="800" font-size="36" fill="#FFFFFF">A to Z <tspan fill="#4DA6FF" font-weight="900">AI</tspan></text>
+  <text x="2" y="58" font-family="Inter, Arial, Helvetica, sans-serif" font-weight="600" font-size="13" letter-spacing="7.5" fill="#8892aa">SYSTEMS</text>
 </svg>
