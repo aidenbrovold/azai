@@ -239,6 +239,7 @@ if(stat){var sidx=[].indexOf.call(stat.parentElement.children,stat);openStat(sid
 });
 var mo=new MutationObserver(function(){var s=document.querySelector(".stats");if(s&&!document.getElementById("azHint")){var d=document.createElement("div");d.id="azHint";d.className="azhint";d.textContent="💡 Click any box or call to see the full conversation and details";s.parentElement.insertBefore(d,s.nextSibling);}});
 var root=document.getElementById("root");if(root)mo.observe(root,{childList:true});
+var hintTries=0;var ht=setInterval(function(){hintTries++;var s=document.querySelector(".stats");if(s&&!document.getElementById("azHint")){var d=document.createElement("div");d.id="azHint";d.className="azhint";d.textContent="💡 Click any box or call to see the full conversation and details";s.parentElement.insertBefore(d,s.nextSibling);clearInterval(ht);}else if(hintTries>20){clearInterval(ht);}},500);
 })();</script>
 </body>
 </html>
