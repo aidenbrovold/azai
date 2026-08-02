@@ -129,7 +129,7 @@ function render(d,demo){
   var hours=Math.round((d.minutes||0)/60);
   var totalActivity=(d.calls||0)+(d.bookings||0)+(d.leads||0);
   var h='';
-  if(demo)h+='<div class="demobar">Demo Preview · Sample numbers — each client opens their own live dashboard from a private link<br><span style="display:inline-block;margin-top:4px">Want to hear the AI answer live? <a href="tel:+14244756287" style="color:inherit;text-decoration:underline">Call (424) 475-6287</a></span></div>';
+  if(demo)h+='<div class="demobar">Demo Preview · Sample Numbers — Each Client Opens Their Own Live Dashboard From a Private Link<br><span style="display:inline-block;margin-top:4px">Want to Hear the AI Answer Live? <a href="tel:+14244756287" style="color:inherit;text-decoration:underline">Call (424) 475-6287</a></span></div>';
   h+='<div class="hdr"><div class="avatar">'+esc(initial)+'</div><div><h1>'+esc(d.business||"Your Business")+'</h1><div class="sub">'+(d.owner?esc(d.owner)+" · ":"")+'Powered by A to Z AI</div></div><span class="spacer"></span>'
    +(live?'<span class="pill live"><span class="b"></span> AI is answering — live</span>':'<span class="pill review">Setup in Progress</span>')
    +'<span class="pill month">'+rangeLabel()+'</span></div>';
