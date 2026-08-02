@@ -114,7 +114,7 @@ function qp(k){var m=new RegExp("[?&]"+k+"=([^&]*)").exec(location.search);retur
 var slug=qp("c"),token=qp("t");
 var range=localStorage.getItem("azai_portal_range")||"30d";
 function n(x){return (x==null?0:x).toLocaleString();}
-function rangeLabel(){return ({today:"today","7d":"the last 7 days","30d":"the last 30 days",all:"all time"})[range]||"";}
+function rangeLabel(){return ({today:"today","7d":"the last 7 days","30d":"the last 30 days",all:"all time · rolling 12-month history"})[range]||"";}
 function highlightRange(){var b=document.querySelectorAll("#rangebar .rbtn");for(var i=0;i<b.length;i++){b[i].className="rbtn"+(b[i].getAttribute("data-r")===range?" active":"");}}
 function setRange(rg){range=rg;localStorage.setItem("azai_portal_range",rg);highlightRange();load();}
 var DEMO={ok:true,business:"Summit Roofing Co.",status:"live",owner:"Mike",calls:143,afterHours:38,successful:129,minutes:412,bookings:27,upcoming:9,leads:19,recentCalls:[{caller_name:"Dana W.",category:"New Booking",started_at:"2026-07-24T09:12:00"},{caller_name:"Miguel R.",category:"Quote Request",started_at:"2026-07-24T08:40:00"},{caller_name:"After-hours caller",category:"Message Taken",started_at:"2026-07-23T21:05:00"},{caller_name:"Priya S.",category:"Reschedule",started_at:"2026-07-23T16:22:00"}]};
