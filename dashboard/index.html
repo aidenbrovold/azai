@@ -171,5 +171,74 @@ function load(){
 highlightRange();
 load();
 </script>
+<style>/*azaiDemoDrillCss*/
+body.azDemo .stats .stat{cursor:pointer;transition:border-color .15s,transform .15s}
+body.azDemo .stats .stat:hover{border-color:rgba(77,166,255,.5);transform:translateY(-2px)}
+body.azDemo #callfeed .item{cursor:pointer;transition:border-color .15s,transform .15s}
+body.azDemo #callfeed .item:hover{border-color:rgba(77,166,255,.35);transform:translateY(-1px)}
+.azdm-ov{display:none;position:fixed;inset:0;z-index:100;background:rgba(3,5,10,.85);backdrop-filter:blur(4px);overflow:auto;padding:30px 14px}
+.azdm{max-width:620px;margin:0 auto;background:linear-gradient(180deg,#1a1a28,#12121c);border:1px solid rgba(77,166,255,.3);border-radius:20px;box-shadow:0 30px 80px -20px rgba(0,0,0,.9);padding:26px 28px}
+.azdm h2{font-size:19px;font-weight:800;letter-spacing:-.4px;color:#fff;margin:0}
+.azdm .mh{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:6px}
+.azdm .mclose{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);color:#c0c8e0;font-size:13px;font-weight:600;padding:7px 14px;border-radius:9px;cursor:pointer;font-family:inherit}
+.azdm .chips{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0 18px}
+.azdm .chip{font-size:11.5px;font-weight:700;padding:5px 12px;border-radius:999px;border:1px solid rgba(77,166,255,.12);color:#c0c8e0}
+.azdm .chip.g{color:#10b981;border-color:rgba(16,185,129,.35);background:rgba(16,185,129,.08)}
+.azdm .chip.b{color:#4da6ff;border-color:rgba(77,166,255,.35);background:rgba(77,166,255,.08)}
+.azdm .chip.a{color:#f59e0b;border-color:rgba(245,158,11,.35);background:rgba(245,158,11,.08)}
+.azdm .mlabel{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#555f78;margin:16px 0 10px}
+.azdm .convo{display:flex;flex-direction:column;gap:9px}
+.azdm .bub{max-width:86%;padding:10px 14px;border-radius:14px;font-size:13.5px;line-height:1.55;color:#e8eaf0}
+.azdm .bub.ai{background:rgba(77,166,255,.1);border:1px solid rgba(77,166,255,.18);align-self:flex-start;border-bottom-left-radius:4px}
+.azdm .bub.cu{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);align-self:flex-end;border-bottom-right-radius:4px}
+.azdm .who{font-size:10.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#555f78;margin-bottom:3px}
+.azdm .bub.ai .who{color:#4da6ff}
+.azdm .apptbox{background:rgba(16,185,129,.07);border:1px solid rgba(16,185,129,.22);border-radius:13px;padding:13px 16px;font-size:13.5px;line-height:1.9;color:#c0c8e0}
+.azdm .apptbox b{color:#fff}
+.azdm .brow{display:flex;gap:12px;align-items:flex-start;padding:12px 14px;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.04);border-radius:13px;margin-bottom:9px}
+.azdm .brow .ico{width:34px;height:34px;border-radius:10px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:16px;background:rgba(77,166,255,.12)}
+.azdm .brow .t{font-size:14px;font-weight:600;color:#fff;line-height:1.35}
+.azdm .brow .d{font-size:12.5px;color:#8892aa;margin-top:2px}
+.azhint{font-size:11.5px;color:#3a4058;text-align:right;margin:-6px 0 12px}
+</style>
+<div class="azdm-ov" id="azdmOv"><div class="azdm" id="azdmBody"></div></div>
+<script>/*azaiDemoDrill*/(function(){
+var isDemo=(function(){var m=/[?&]c=([^&]*)/.exec(location.search);return !m||decodeURIComponent(m[1])==="demo";})();
+if(!isDemo)return;
+document.body.classList.add("azDemo");
+var CALLS=[
+{title:"Dana W. — New Booking",when:"Thursday, 9:12 AM",dur:"2m 31s",sent:"Positive",sc:"g",outcome:"Booked · Roof inspection",convo:[["cu","Hi, we had that big storm last night and I think I lost some shingles. Do you guys do inspections?"],["ai","We do — storm inspections are free, and if there is damage we photograph everything for your insurance. Want me to get you on the schedule this week?"],["cu","Yes please, the sooner the better."],["ai","I have Thursday at nine or Friday at one. Which works better?"],["cu","Thursday at nine. Dana Whitfield, 480-555-0142."],["ai","That was four eight zero, five five five, zero one four two — right? You are booked, Dana. Thursday nine AM, free storm inspection."]],appt:"<b>Service:</b> Storm damage roof inspection (free)<br><b>When:</b> Thursday, 9:00 AM<br><b>Customer:</b> Dana W. · verified phone read back digit by digit<br><b>Status:</b> Confirmed · on the calendar · insurance photos included"},
+{title:"Miguel R. — Quote Request",when:"Thursday, 8:40 AM",dur:"3m 02s",sent:"High value",sc:"a",outcome:"Estimate visit booked",convo:[["cu","I need a price on a full reroof. House is about twenty-two hundred square feet."],["ai","For a full replacement we do a free on-site estimate — materials change the price a lot, so a real number beats a guess. Most jobs that size land in the fifteen to twenty-four thousand range depending on shingle choice."],["cu","That is about what I expected. When can someone come out?"],["ai","I can get an estimator out Saturday morning at ten. Can I grab your name and address?"],["cu","Miguel Reyes, 2214 East Cactus Wren Road."],["ai","Read that back — twenty-two fourteen East Cactus Wren Road, Saturday at ten for Miguel. You are on the books."]],appt:"<b>Service:</b> Full reroof estimate (~$15–24k job)<br><b>When:</b> Saturday, 10:00 AM<br><b>Customer:</b> Miguel R. · address verified back<br><b>Note:</b> High-value lead — flagged to the owner the moment the call ended"},
+{title:"After-Hours Caller — Message Taken",when:"Wednesday, 9:05 PM",dur:"1m 44s",sent:"Urgent — handled calmly",sc:"a",outcome:"Message + owner alerted",convo:[["cu","Water is coming through my ceiling right now. Is anyone there?"],["ai","I am here — first, if water is pooling, poke a small hole in the bubble and put a bucket under it so the ceiling does not collapse. Now let me get your details to the team tonight."],["cu","Okay, done. It slowed down."],["ai","Good. What is your name and number? The on-call team gets this the second we hang up."],["cu","Sam Porter, 602-555-0171."],["ai","Six zero two, five five five, zero one seven one — correct? Help is on the way, Sam. Keep that bucket under it tonight."]],appt:"<b>Type:</b> After-hours leak — damage-control advice given live<br><b>Message:</b> delivered to owner instantly at 9:05 PM<br><b>Would have been:</b> a voicemail at 9 PM — and a customer calling the next roofer at 8 AM"},
+{title:"Priya S. — Reschedule",when:"Wednesday, 4:22 PM",dur:"1m 12s",sent:"Positive",sc:"g",outcome:"Moved · no slot lost",convo:[["ai","Summit Roofing, this is Riley — hi Priya, welcome back! What can I do for you?"],["cu","I hate to do this, but I need to move Friday’s gutter repair."],["ai","No trouble at all. I can do Monday at eight or Tuesday at two."],["cu","Tuesday at two."],["ai","Done — moved to Tuesday at two, and the Friday slot is already released for someone else. See you then!"]],appt:"<b>Service:</b> Gutter repair — rescheduled<br><b>New time:</b> Tuesday, 2:00 PM<br><b>Note:</b> Recognized as a returning customer by phone number · old slot instantly freed"}
+];
+var STATS=[
+{title:"Calls Handled",sub:"Every call answered in under two rings — zero sent to voicemail.",rows:[["📅","New bookings","Inspections, repairs, estimates — straight onto the calendar","38%"],["💵","Quote requests","Ranges quoted honestly, estimate visits booked","27%"],["💬","Messages taken","Delivered to the owner instantly","19%"],["📞","Questions answered","Hours, service area, insurance process","16%"]]},
+{title:"After-Hours Calls Caught",sub:"Nights and weekends — when storms hit and competitors go to voicemail.",rows:[["🌧️","Storm-night surge","Inspection requests the evening after a storm","peak"],["🚨","Active leaks","Talked through damage control, flagged urgent","live help"],["🌙","Late researchers","Homeowners comparing roofers at 10 PM — you answered, they stopped looking","won"]]},
+{title:"Appointments Booked",sub:"Booked directly into the calendar with confirmations and day-before reminders.",rows:[["📅","Dana W. — storm inspection","Thursday 9:00 AM · free · insurance photos","confirmed"],["📅","Miguel R. — reroof estimate","Saturday 10:00 AM · $15–24k job","high value"],["📅","Priya S. — gutter repair","Tuesday 2:00 PM · rescheduled cleanly","confirmed"],["📅","Plus the rest of the week","Every one confirmed back before booking","✓"]]},
+{title:"Leads Captured",sub:"Callers who were not ready to book — name, number, and what they need, saved and followed up.",rows:[["✨","Insurance-claim callers","Waiting on adjusters — follow-up scheduled","warm"],["✨","Price shoppers","Quoted ranges, callback booked with a specific day","warm"],["✨","Commercial inquiry","Property manager, multi-building — owner alerted","hot"]]}
+];
+function esc(s){return String(s==null?"":s);}
+function openCall(i){var d=CALLS[i];if(!d)return;
+var chips='<span class="chip b">'+d.dur+'</span><span class="chip '+d.sc+'">'+d.sent+'</span><span class="chip g">'+d.outcome+'</span>';
+var convo=d.convo.map(function(t){return '<div class="bub '+(t[0]==="ai"?"ai":"cu")+'"><div class="who">'+(t[0]==="ai"?"Riley (AI)":"Caller")+'</div>'+esc(t[1])+'</div>';}).join("");
+document.getElementById("azdmBody").innerHTML='<div class="mh"><h2>'+d.title+'</h2><button class="mclose" onclick="azdmClose()">Close</button></div><div style="font-size:13px;color:#8892aa">'+d.when+'</div><div class="chips">'+chips+'</div><div class="mlabel">Conversation</div><div class="convo">'+convo+'</div><div class="mlabel">Result</div><div class="apptbox">'+d.appt+'</div>';
+document.getElementById("azdmOv").style.display="block";}
+function openStat(i){var b=STATS[i];if(!b)return;
+var num="";try{num=document.querySelectorAll(".stats .stat .num")[i].textContent+" ";}catch(e){}
+var rows=b.rows.map(function(r){return '<div class="brow"><div class="ico">'+r[0]+'</div><div style="flex:1"><div class="t">'+r[1]+'</div><div class="d">'+r[2]+'</div></div><div style="font-size:11.5px;color:#3a4058;white-space:nowrap;padding-top:2px">'+r[3]+'</div></div>';}).join("");
+document.getElementById("azdmBody").innerHTML='<div class="mh"><h2>'+num+b.title+'</h2><button class="mclose" onclick="azdmClose()">Close</button></div><div style="font-size:13px;color:#8892aa;margin-bottom:14px">'+b.sub+'</div>'+rows;
+document.getElementById("azdmOv").style.display="block";}
+window.azdmClose=function(){document.getElementById("azdmOv").style.display="none";};
+document.getElementById("azdmOv").addEventListener("click",function(e){if(e.target.id==="azdmOv")window.azdmClose();});
+document.addEventListener("click",function(e){
+var item=e.target.closest("#callfeed .item");
+if(item){var idx=[].indexOf.call(item.parentElement.children,item);openCall(idx);return;}
+var stat=e.target.closest(".stats .stat");
+if(stat){var sidx=[].indexOf.call(stat.parentElement.children,stat);openStat(sidx);}
+});
+var mo=new MutationObserver(function(){var s=document.querySelector(".stats");if(s&&!document.getElementById("azHint")){var d=document.createElement("div");d.id="azHint";d.className="azhint";d.textContent="💡 Click any box or call to see the full conversation and details";s.parentElement.insertBefore(d,s.nextSibling);}});
+var root=document.getElementById("root");if(root)mo.observe(root,{childList:true});
+})();</script>
 </body>
 </html>
