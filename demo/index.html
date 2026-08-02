@@ -65,6 +65,8 @@ body{font-family:'Inter',-apple-system,sans-serif;background:radial-gradient(120
 .state{text-align:center;padding:70px 20px;color:var(--g4)}.state .big{font-size:46px;margin-bottom:12px}.state h3{font-size:20px;font-weight:800;color:#fff;margin-bottom:6px}
 .demobar{background:rgba(245,158,11,.14);border:1px solid rgba(245,158,11,.4);color:#fcd34d;font-size:12.5px;font-weight:700;padding:9px 14px;border-radius:10px;margin-top:16px;text-align:center}
 .footer{text-align:center;color:var(--g6);font-size:12.5px;margin-top:40px;padding-top:22px;border-top:1px solid var(--line)}.footer b{color:var(--g4)}.footer a{color:var(--electric);text-decoration:none}
+.tradestrip{margin-top:26px;text-align:center;color:var(--g5);font-size:13.5px}
+.tradestrip a{color:var(--electric);text-decoration:none;font-weight:600;margin:0 8px}
 @media(max-width:820px){.stats{grid-template-columns:repeat(2,1fr)}.cols{grid-template-columns:1fr}}
 @media(max-width:480px){.hdr h1{font-size:22px}}
 
@@ -101,6 +103,7 @@ body{font-family:'Inter',-apple-system,sans-serif;background:radial-gradient(120
   <div id="root">
     <div class="state"><div class="big">📊</div><h3>Loading Your Dashboard…</h3></div>
   </div>
+  <div class="tradestrip" id="tradestrip" style="display:none">See it for your trade: <a href="/demo/barbershop/">💈 Barbershop</a> · <a href="/demo/plumbing/">🔧 Plumbing &amp; Trades</a></div>
 </div>
 </div>
 
@@ -149,6 +152,8 @@ function render(d,demo){
    +'</div></div>';
   h+='<div class="footer">Your AI receptionist never sleeps, never takes a day off, and never sends a caller to voicemail.<br>Questions? <a href="mailto:aiden@azaisystems.com">aiden@azaisystems.com</a> · Updated '+new Date().toLocaleString()+'</div>';
   root.innerHTML=h;
+  var ts=document.getElementById("tradestrip");
+  if(ts){ts.style.display=demo?"block":"none";}
   var rc=d.recentCalls||[];var cf=document.getElementById("callfeed");
   if(!rc.length){cf.innerHTML='<div style="color:var(--g5);font-size:13px;padding:8px">No calls in this period yet.</div>';}
   else{cf.innerHTML=rc.map(function(c){var when=c.started_at?new Date(c.started_at).toLocaleString(undefined,{month:'short',day:'numeric',hour:'numeric',minute:'2-digit'}):'';var cat=(c.category||'').toLowerCase();var ic=cat.indexOf('book')!==-1?'📅':cat.indexOf('message')!==-1||cat.indexOf('msg')!==-1?'💬':cat.indexOf('quote')!==-1?'💵':'📞';return '<div class="item"><div class="ico">'+ic+'</div><div class="m"><div class="t">'+esc(c.caller_name||"Caller")+'</div><div class="d">'+esc(c.category||"Call Handled")+'</div></div><div class="time">'+when+'</div></div>';}).join('');}
