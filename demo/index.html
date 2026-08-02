@@ -241,5 +241,29 @@ var mo=new MutationObserver(function(){var s=document.querySelector(".stats");if
 var root=document.getElementById("root");if(root)mo.observe(root,{childList:true});
 var hintTries=0;var ht=setInterval(function(){hintTries++;var s=document.querySelector(".stats");if(s&&!document.getElementById("azHint")){var d=document.createElement("div");d.id="azHint";d.className="azhint";d.textContent="💡 Click any box or call to see the full conversation and details";s.parentElement.insertBefore(d,s.nextSibling);clearInterval(ht);}else if(hintTries>20){clearInterval(ht);}},500);
 })();</script>
+<script>/*azaiSeeMyCall*/(function(){
+var isDash=location.pathname.indexOf("/dashboard")===0||location.pathname.indexOf("/demo")===0&&!/[?&]c=/.test(location.search)||/[?&]c=demo\b/.test(location.search)||location.pathname.indexOf("/demo/")===0;
+if(location.pathname.indexOf("/dashboard")===0){var m=/[?&]c=([^&]*)/.exec(location.search);if(m&&decodeURIComponent(m[1])!=="demo")return;}
+var API="https://itsaidendavid.app.n8n.cloud/webhook/azai-demo-lookup";
+var card=document.createElement("div");
+card.style.cssText="max-width:1000px;margin:14px auto 0;padding:0 22px";
+card.innerHTML='<div style="background:linear-gradient(90deg,rgba(16,185,129,.10),rgba(77,166,255,.08));border:1px solid rgba(16,185,129,.28);border-radius:16px;padding:16px 20px"><div style="font-size:14.5px;font-weight:800;color:#fff">\ud83d\udcde Just called the demo line? See your own call.</div><div style="font-size:12.5px;color:#8892aa;margin-top:3px">Enter the number you called from \u2014 your conversation appears within a minute of hanging up. Held for 48 hours, then deleted.</div><div style="display:flex;gap:8px;margin-top:12px;flex-wrap:wrap"><input id="azmcPhone" inputmode="tel" placeholder="(555) 123-4567" style="flex:1;min-width:180px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:10px;padding:11px 14px;color:#fff;font-size:14px;font-family:inherit;outline:none"><button id="azmcBtn" style="background:#10b981;color:#04140d;border:none;font-weight:700;font-size:14px;padding:11px 20px;border-radius:10px;cursor:pointer;font-family:inherit">Show my call</button></div><div id="azmcOut" style="margin-top:12px"></div></div>';
+function mount(){var bar=document.querySelector(".demobar");
+if(bar&&bar.parentElement){bar.parentElement.insertBefore(card,bar.nextSibling);}else{var w=document.querySelector(".wrap");if(w){w.insertBefore(card,w.firstChild);}else{document.body.insertBefore(card,document.body.firstChild);}}
+var btn=document.getElementById("azmcBtn");
+btn.addEventListener("click",go);
+document.getElementById("azmcPhone").addEventListener("keydown",function(e){if(e.key==="Enter")go();});}
+async function go(){var out=document.getElementById("azmcOut");var p=String(document.getElementById("azmcPhone").value||"").replace(/[^0-9]/g,"").slice(-10);
+if(p.length!==10){out.innerHTML='<div style="color:#f59e0b;font-size:13px">Please enter the full 10-digit number you called from.</div>';return;}
+out.innerHTML='<div style="color:#8892aa;font-size:13px">Looking up your call\u2026</div>';
+try{var r=await fetch(API+"?phone="+p);var d=await r.json();
+if(!d.ok){out.innerHTML='<div style="color:#f59e0b;font-size:13px">'+(d.error||"Not found")+'</div>';return;}
+var lines=String(d.transcript||"").split(/\n+/).filter(Boolean);
+var convo=lines.map(function(ln){var ai=/^(AI|Assistant|Riley)\s*:/i.test(ln);var txt=ln.replace(/^[^:]{1,12}:\s*/,"");
+return '<div style="max-width:86%;padding:9px 13px;border-radius:13px;font-size:13px;line-height:1.5;margin-bottom:7px;color:#e8eaf0;'+(ai?"background:rgba(77,166,255,.1);border:1px solid rgba(77,166,255,.18);margin-right:auto;border-bottom-left-radius:4px":"background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);margin-left:auto;border-bottom-right-radius:4px")+'"><div style="font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:'+(ai?"#4da6ff":"#555f78")+';margin-bottom:2px">'+(ai?"Riley (AI)":"You")+'</div>'+txt+'</div>';}).join("");
+out.innerHTML='<div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:14px 16px"><div style="font-size:12px;color:#10b981;font-weight:700;margin-bottom:6px">\u2705 Your call \u00b7 '+new Date(d.at).toLocaleString()+'</div><div style="font-size:13.5px;color:#c0c8e0;margin-bottom:12px"><b style="color:#fff">What the AI logged:</b> '+(d.summary||"(no summary)")+'</div><div style="font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#555f78;margin-bottom:8px">Your conversation</div><div style="display:flex;flex-direction:column">'+ (convo||'<div style="color:#8892aa;font-size:13px">Transcript processing \u2014 try again in a minute.</div>')+'</div><div style="font-size:12px;color:#8892aa;margin-top:10px">This is exactly what would land on your dashboard and in your inbox \u2014 for every call, automatically.</div></div>';
+}catch(e){out.innerHTML='<div style="color:#ef4444;font-size:13px">Could not reach the lookup service \u2014 try again shortly.</div>';}}
+if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",mount);}else{mount();}
+})();</script>
 </body>
 </html>
