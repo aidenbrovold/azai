@@ -269,5 +269,17 @@ footer p { color: #3d4560; font-size: 13px; }
   });
 })();
 </script>
+<script>/*azaiTierFix*/(function(){
+var t=(new URLSearchParams(location.search).get("tier")||"").toLowerCase();
+if(!t)return;
+var of=window.fetch;
+window.fetch=function(u,o){
+try{if(String(u).indexOf("azai-intake")>-1&&o&&typeof o.body==="string"){
+var b=JSON.parse(o.body);
+if(!b.tier||!String(b.tier).trim()){b.tier=t;o.body=JSON.stringify(b);}
+}}catch(e){}
+return of.apply(this,arguments);
+};
+})();</script>
 </body>
 </html>
