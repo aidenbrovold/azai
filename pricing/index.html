@@ -436,5 +436,14 @@ document.querySelectorAll('nav ul li a').forEach(link => {
   });
 })();
 </script>
+<script>/*azaiRepCapture*/(function(){
+try{
+var m=/[?&]rep=([^&#]+)/.exec(location.search);
+if(m){var code=decodeURIComponent(m[1]).slice(0,24);localStorage.setItem("azai_ref_rep",code);localStorage.setItem("azai_ref_at",String(Date.now()));}
+var rep=localStorage.getItem("azai_ref_rep")||"";
+if(rep){var links=document.querySelectorAll("a[href*='buy.stripe.com']");
+for(var i=0;i<links.length;i++){var h=links[i].getAttribute("href");if(h.indexOf("client_reference_id")===-1){links[i].setAttribute("href",h+(h.indexOf("?")===-1?"?":"&")+"client_reference_id=rep_"+encodeURIComponent(rep));}}}
+}catch(e){}
+})();</script>
 </body>
 </html>
