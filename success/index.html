@@ -281,5 +281,15 @@ if(!b.tier||!String(b.tier).trim()){b.tier=t;o.body=JSON.stringify(b);}
 return of.apply(this,arguments);
 };
 })();</script>
+<script>/*azaiRepAttach*/(function(){
+var of=window.fetch;
+window.fetch=function(u,o){try{
+var url=(typeof u==="string")?u:(u&&u.url)||"";
+if(url.indexOf("azai-intake")!==-1&&o&&o.body&&typeof o.body==="string"){
+var rep="";try{rep=localStorage.getItem("azai_ref_rep")||"";}catch(e){}
+if(rep){var b=JSON.parse(o.body);if(!b.rep){b.rep=rep;b.repCode=rep;}o=Object.assign({},o,{body:JSON.stringify(b)});}
+}}catch(e){}
+return of.apply(this,[u,o]);};
+})();</script>
 </body>
 </html>
