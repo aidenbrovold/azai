@@ -137,18 +137,18 @@ function render(d,demo){
     h+='<div class="note">🤖 Your AI receptionist is '+(live?"live and ready":"being set up")+'. As calls come in during this period, every call, appointment, and lead will appear here automatically — try switching to <b>All Time</b> above.</div>';
   }
   h+='<div class="stats">'
-   +'<div class="stat"><div class="lbl">📞 Calls Handled</div><div class="num" data-count="'+(d.calls||0)+'">0</div><div class="foot good">'+n(d.successful)+' Resolved</div></div>'
-   +'<div class="stat"><div class="lbl">🌙 After Hours</div><div class="num" data-count="'+(d.afterHours||0)+'">0</div><div class="foot">Nights &amp; Weekends Caught</div></div>'
-   +'<div class="stat"><div class="lbl">📅 Appointments</div><div class="num" data-count="'+(d.bookings||0)+'">0</div><div class="foot">Booked Into Your Calendar</div></div>'
-   +'<div class="stat"><div class="lbl">✨ Leads Captured</div><div class="num" data-count="'+(d.leads||0)+'">0</div><div class="foot">New Opportunities</div></div>'
+   +'<div class="stat"><div class="lbl">📞 Calls handled</div><div class="num" data-count="'+(d.calls||0)+'">0</div><div class="foot good">'+n(d.successful)+' Resolved</div></div>'
+   +'<div class="stat"><div class="lbl">🌙 After hours</div><div class="num" data-count="'+(d.afterHours||0)+'">0</div><div class="foot">Nights and weekends caught</div></div>'
+   +'<div class="stat"><div class="lbl">📅 Appointments</div><div class="num" data-count="'+(d.bookings||0)+'">0</div><div class="foot">Booked into your calendar</div></div>'
+   +'<div class="stat"><div class="lbl">✨ Leads captured</div><div class="num" data-count="'+(d.leads||0)+'">0</div><div class="foot">New opportunities</div></div>'
    +'</div>';
   h+='<div class="roi"><div class="ic">📈</div><div class="txt">Your AI handled <b>'+n(d.calls)+' calls</b>'+(hours>0?', saved you about <b>'+hours+' hours</b> on the phone':'')+(d.afterHours>0?', and caught <b>'+n(d.afterHours)+'</b> after-hours calls you’d have missed':'')+'.</div><div class="big"><div class="n">$'+n(estVal)+'</div><div class="c">Est. Booked Value</div></div></div>';
-  h+='<div class="cols"><div class="panel"><h3>📞 Recent Calls <span class="cnt">Latest</span></h3><div class="feed" id="callfeed"></div></div>'
-   +'<div class="panel"><h3>📊 At a Glance</h3>'
-   +'<div class="mrow"><span class="k">Upcoming Appointments</span><span class="v" style="color:var(--green)">'+n(d.upcoming)+'</span></div>'
-   +'<div class="mrow"><span class="k">Calls Resolved</span><span class="v">'+n(d.successful)+'</span></div>'
+  h+='<div class="cols"><div class="panel"><h3>📞 Recent calls <span class="cnt">Latest</span></h3><div class="feed" id="callfeed"></div></div>'
+   +'<div class="panel"><h3>📊 At a glance</h3>'
+   +'<div class="mrow"><span class="k">Upcoming appointments</span><span class="v" style="color:var(--green)">'+n(d.upcoming)+'</span></div>'
+   +'<div class="mrow"><span class="k">Calls resolved</span><span class="v">'+n(d.successful)+'</span></div>'
    +'<div class="mrow"><span class="k">Minutes on the Phone for You</span><span class="v">'+n(d.minutes)+'</span></div>'
-   +'<div class="mrow"><span class="k">Leads Captured</span><span class="v">'+n(d.leads)+'</span></div>'
+   +'<div class="mrow"><span class="k">Leads captured</span><span class="v">'+n(d.leads)+'</span></div>'
    +'</div></div>';
   h+='<div class="footer">Your AI receptionist never sleeps, never takes a day off, and never sends a caller to voicemail.<br>Questions? <a href="mailto:aiden@azaisystems.com">aiden@azaisystems.com</a> · Updated '+new Date().toLocaleString()+'</div>';
   root.innerHTML=h;
@@ -213,10 +213,10 @@ var CALLS=[
 {title:"Priya S. — Reschedule",when:"Wednesday, 4:22 PM",dur:"1m 12s",sent:"Positive",sc:"g",outcome:"Moved · no slot lost",convo:[["ai","Summit Roofing, this is Riley — hi Priya, welcome back! What can I do for you?"],["cu","I hate to do this, but I need to move Friday’s gutter repair."],["ai","No trouble at all. I can do Monday at eight or Tuesday at two."],["cu","Tuesday at two."],["ai","Done — moved to Tuesday at two, and the Friday slot is already released for someone else. See you then!"]],appt:"<b>Service:</b> Gutter repair — rescheduled<br><b>New time:</b> Tuesday, 2:00 PM<br><b>Note:</b> Recognized as a returning customer by phone number · old slot instantly freed"}
 ];
 var STATS=[
-{title:"Calls Handled",sub:"Every call answered in under two rings — zero sent to voicemail.",rows:[["📅","New bookings","Inspections, repairs, estimates — straight onto the calendar","38%"],["💵","Quote requests","Ranges quoted honestly, estimate visits booked","27%"],["💬","Messages taken","Delivered to the owner instantly","19%"],["📞","Questions answered","Hours, service area, insurance process","16%"]]},
+{title:"Calls handled",sub:"Every call answered in under two rings — zero sent to voicemail.",rows:[["📅","New bookings","Inspections, repairs, estimates — straight onto the calendar","38%"],["💵","Quote requests","Ranges quoted honestly, estimate visits booked","27%"],["💬","Messages taken","Delivered to the owner instantly","19%"],["📞","Questions answered","Hours, service area, insurance process","16%"]]},
 {title:"After-Hours Calls Caught",sub:"Nights and weekends — when storms hit and competitors go to voicemail.",rows:[["🌧️","Storm-night surge","Inspection requests the evening after a storm","peak"],["🚨","Active leaks","Talked through damage control, flagged urgent","live help"],["🌙","Late researchers","Homeowners comparing roofers at 10 PM — you answered, they stopped looking","won"]]},
 {title:"Appointments Booked",sub:"Booked directly into the calendar with confirmations and day-before reminders.",rows:[["📅","Dana W. — storm inspection","Thursday 9:00 AM · free · insurance photos","confirmed"],["📅","Miguel R. — reroof estimate","Saturday 10:00 AM · $15–24k job","high value"],["📅","Priya S. — gutter repair","Tuesday 2:00 PM · rescheduled cleanly","confirmed"],["📅","Plus the rest of the week","Every one confirmed back before booking","✓"]]},
-{title:"Leads Captured",sub:"Callers who were not ready to book — name, number, and what they need, saved and followed up.",rows:[["✨","Insurance-claim callers","Waiting on adjusters — follow-up scheduled","warm"],["✨","Price shoppers","Quoted ranges, callback booked with a specific day","warm"],["✨","Commercial inquiry","Property manager, multi-building — owner alerted","hot"]]}
+{title:"Leads captured",sub:"Callers who were not ready to book — name, number, and what they need, saved and followed up.",rows:[["✨","Insurance-claim callers","Waiting on adjusters — follow-up scheduled","warm"],["✨","Price shoppers","Quoted ranges, callback booked with a specific day","warm"],["✨","Commercial inquiry","Property manager, multi-building — owner alerted","hot"]]}
 ];
 function esc(s){return String(s==null?"":s);}
 function openCall(i){var d=CALLS[i];if(!d)return;
