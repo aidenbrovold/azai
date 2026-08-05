@@ -1,263 +1,182 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <script>  
- !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="init capture register register_once register_for_session unregister opt_out_capturing has_opted_out_capturing opt_in_capturing reset isFeatureEnabled getFeatureFlag getFeatureFlagPayload reloadFeatureFlags group identify setPersonProperties setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroups onFeatureFlags addFeatureFlagsHandler onSessionId getSurveys getActiveMatchingSurveys renderSurvey canRenderSurvey getNextSurveyStep".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);  
- posthog.init('<YOUR_PROJECT_API_KEY>', {  
- api_host: 'https://us.i.posthog.com',  
- defaults: '2026-01-30'  
- })  
-</script> 
-<meta charset="UTF-8">
-<link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Book A Prospect | A To Z AI Systems (Internal)</title>
-<meta name="robots" content="noindex,nofollow">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Book a call | A to Z AI Systems</title>
+<link rel="icon" href="/favicon.svg">
 <style>
-*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
-:root{
-  --navy:#050508;--dark:#0d0d14;--blue:#3b82f6;--blue-light:#60a5fa;
-  --cyan:#38bdf8;--white:#fff;--gray-100:#12121c;--gray-300:#c0c8e0;
-  --gray-400:#8892aa;--gray-500:#555f78;--green:#10b981;--electric:#4da6ff;
-}
-body{
-  font-family:'Inter',-apple-system,sans-serif;color:var(--white);
-  background:radial-gradient(circle at top,rgba(77,166,255,0.18) 0%,transparent 32%),var(--navy);
-  min-height:100vh;line-height:1.6;display:flex;align-items:center;justify-content:center;padding:32px 16px;
-}
-.card{
-  width:100%;max-width:540px;
-  background:linear-gradient(180deg,rgba(18,18,28,0.96),rgba(9,9,14,0.98));
-  border:1px solid rgba(77,166,255,0.18);border-radius:22px;padding:38px 34px;
-  box-shadow:0 24px 80px rgba(0,0,0,0.45);
-}
-.tag{display:inline-block;background:rgba(77,166,255,0.1);border:1px solid rgba(77,166,255,0.3);
-  color:var(--electric);font-size:12px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;
-  padding:6px 14px;border-radius:999px;margin-bottom:16px;}
-h1{font-size:26px;font-weight:800;letter-spacing:-0.5px;margin-bottom:6px;}
-.sub{color:var(--gray-400);font-size:14.5px;margin-bottom:26px;}
-label{display:block;font-size:13px;font-weight:600;color:var(--gray-300);margin:16px 0 7px;}
-input,select{
-  width:100%;background:rgba(255,255,255,0.04);border:1px solid rgba(77,166,255,0.18);
-  border-radius:10px;padding:13px 15px;color:var(--white);font-size:15px;font-family:inherit;transition:border-color .2s;
-}
-input:focus,select:focus{outline:none;border-color:var(--electric);}
-.row{display:flex;gap:12px;}
-.row>div{flex:1;}
-.hint{font-size:12px;color:var(--gray-500);margin-top:6px;}
-button{
-  width:100%;margin-top:26px;background:var(--electric);color:#050508;border:none;cursor:pointer;
-  padding:15px;border-radius:10px;font-size:16px;font-weight:800;font-family:inherit;transition:all .2s;
-  box-shadow:0 0 20px rgba(77,166,255,0.35);
-}
-button:hover{background:var(--blue-light);transform:translateY(-1px);box-shadow:0 8px 30px rgba(77,166,255,0.5);}
-button:disabled{opacity:.6;cursor:not-allowed;transform:none;}
-.status{margin-top:18px;padding:14px 16px;border-radius:10px;font-size:14px;display:none;}
-.status.ok{display:block;background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.3);color:#7ef0c0;}
-.status.err{display:block;background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.3);color:#fca5a5;}
-.status a{color:var(--electric);}
-.foot{margin-top:24px;padding-top:18px;border-top:1px solid rgba(77,166,255,0.1);font-size:12px;color:var(--gray-500);text-align:center;}
-.slot-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:4px;}
-.slot-btn{margin:0;padding:12px 10px;border-radius:9px;border:1px solid rgba(77,166,255,0.22);background:rgba(77,166,255,0.05);color:var(--white);font-size:14px;font-weight:600;cursor:pointer;box-shadow:none;transition:all .15s;text-align:center;width:100%;}
-.slot-btn:hover{border-color:var(--electric);background:rgba(77,166,255,0.12);transform:translateY(-1px);box-shadow:none;}
-.linkbtn{width:auto;margin:12px 0 0;padding:0;background:none;border:none;box-shadow:none;color:var(--gray-400);font-size:13px;font-weight:600;cursor:pointer;}
-.linkbtn:hover{color:var(--electric);background:none;transform:none;box-shadow:none;}
-.chosen{background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.3);color:#7ef0c0;border-radius:10px;padding:13px 15px;font-size:15px;font-weight:600;}
-.slot-taken{opacity:.55;border-color:rgba(239,68,68,0.3)!important;background:rgba(239,68,68,0.06)!important;}
-.slot-taken:hover{border-color:rgba(239,68,68,0.6)!important;background:rgba(239,68,68,0.1)!important;}
-.slot-tag{display:inline-block;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.4px;color:#fca5a5;background:rgba(239,68,68,0.15);padding:1px 6px;border-radius:5px;margin-left:4px;vertical-align:middle;}
-@media (max-width:480px){.slot-grid{grid-template-columns:1fr;}}
+  :root{--navy:#0B1120;--blue:#4DA6FF;--ink:#1A2233;--grey:#5C6880;--line:#DCE2EC;--soft:#F4F7FB}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;background:#fff;color:var(--ink);-webkit-font-smoothing:antialiased}
+  .top{background:var(--navy);padding:22px 20px}
+  .top .wrap{max-width:760px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+  .logo{font-size:20px;font-weight:800;color:#fff}
+  .logo span{color:var(--blue)}
+  .top .ph{color:#93A2BC;font-size:14px}
+  .top .ph a{color:#93A2BC;text-decoration:none}
+  main{max-width:760px;margin:0 auto;padding:34px 20px 70px}
+  h1{font-size:26px;line-height:1.25;margin-bottom:10px}
+  .sub{color:var(--grey);font-size:15px;line-height:1.55;margin-bottom:26px}
+  .step{margin-bottom:26px}
+  .step h2{font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:var(--grey);margin-bottom:12px}
+  .chips{display:flex;flex-wrap:wrap;gap:9px}
+  .chip{border:1px solid var(--line);background:#fff;border-radius:10px;padding:11px 15px;font-size:14.5px;cursor:pointer;transition:.12s;font-family:inherit;color:var(--ink)}
+  .chip:hover{border-color:var(--blue);background:var(--soft)}
+  .chip[aria-pressed="true"]{background:var(--navy);border-color:var(--navy);color:#fff}
+  .chip:disabled{opacity:.35;cursor:default}
+  label{display:block;font-size:13.5px;color:var(--grey);margin:0 0 6px}
+  input{width:100%;border:1px solid var(--line);border-radius:10px;padding:12px 14px;font-size:15px;font-family:inherit;color:var(--ink)}
+  input:focus{outline:none;border-color:var(--blue)}
+  .row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  @media(max-width:560px){.row{grid-template-columns:1fr}}
+  .go{margin-top:20px;width:100%;background:var(--navy);color:#fff;border:0;border-radius:11px;padding:15px;font-size:16px;font-weight:700;cursor:pointer;font-family:inherit}
+  .go:hover{background:#16203a}
+  .go:disabled{opacity:.45;cursor:default}
+  .muted{color:var(--grey);font-size:13px;margin-top:14px;line-height:1.5}
+  .note{background:var(--soft);border-radius:11px;padding:15px 17px;font-size:14px;color:var(--grey);line-height:1.55;margin-bottom:26px}
+  .note b{color:var(--ink)}
+  .done{text-align:center;padding:40px 10px}
+  .done .tick{width:56px;height:56px;border-radius:50%;background:#0E7C4A;color:#fff;display:flex;align-items:center;justify-content:center;font-size:28px;margin:0 auto 18px}
+  .done h2{font-size:22px;margin-bottom:10px}
+  .err{color:#B3261E;font-size:14px;margin-top:12px}
+  .foot{text-align:center;padding:26px 16px;font-size:13px;color:var(--grey);border-top:1px solid rgba(0,0,0,.07)}
+  .foot a{color:var(--grey)}
+  .load{color:var(--grey);font-size:14px}
 </style>
 </head>
 <body>
-<div class="card">
-  <div class="tag">Internal · Book A Prospect</div>
-  <h1>Set Up A Consultation</h1>
-  <p class="sub">Use this right after a cold call. Fills the prospect's calendar invite + Google Meet link automatically — it's also their first proof the AI works.</p>
 
-  <label for="name">Prospect Name</label>
-  <input id="name" type="text" placeholder="e.g. Mike Reynolds" autocomplete="off">
+<div class="top"><div class="wrap">
+  <div class="logo">A to Z <span>AI</span></div>
+  <div class="ph">Or just call <a href="tel:+14244756287">(424) 475-6287</a></div>
+</div></div>
 
-  <label for="email">Prospect Email</label>
-  <input id="email" type="email" placeholder="mike@reynoldsplumbing.com" autocomplete="off">
+<main>
+  <div id="form">
+    <h1>Book a 15-minute call</h1>
+    <p class="sub">Pick a time that works and I'll call you. No pitch deck, no pressure &mdash; I'll answer your questions and show you what the AI actually does.</p>
 
-  <label for="service">What They're Interested In (Optional)</label>
-  <input id="service" type="text" placeholder="e.g. AI receptionist for after-hours calls">
+    <div class="note">Want to hear it before we talk? Call <b>(424) 475-6287</b> right now and try to stump it. That's our own AI receptionist answering.</div>
 
-  <label style="margin-top:22px;">Pick A Day</label>
-  <div id="dayLoading" class="hint" style="margin-top:2px;">Loading your available days…</div>
-  <div class="slot-grid" id="dayGrid" style="display:none;"></div>
+    <div class="step">
+      <h2>1. Pick a day</h2>
+      <div class="chips" id="days"><span class="load">Loading available days&hellip;</span></div>
+    </div>
 
-  <div id="timeWrap" style="display:none;">
-    <label style="margin-top:20px;">Pick A Time <span id="timeDayLabel" style="color:var(--gray-500);font-weight:500;"></span></label>
-    <div class="slot-grid" id="timeGrid"></div>
-    <button type="button" class="linkbtn" onclick="backToDays()">← Different Day</button>
+    <div class="step" id="timeStep" style="display:none">
+      <h2>2. Pick a time <span id="tz" style="text-transform:none;letter-spacing:0"></span></h2>
+      <div class="chips" id="times"></div>
+    </div>
+
+    <div class="step" id="whoStep" style="display:none">
+      <h2>3. Your details</h2>
+      <div class="row">
+        <div><label for="nm">Your name</label><input id="nm" autocomplete="name" placeholder="Jane Smith"></div>
+        <div><label for="em">Email</label><input id="em" type="email" autocomplete="email" placeholder="jane@yourbusiness.com"></div>
+      </div>
+      <div style="margin-top:14px"><label for="bz">Business name</label><input id="bz" placeholder="Smith Plumbing"></div>
+      <button class="go" id="go">Confirm my call</button>
+      <div class="err" id="err" style="display:none"></div>
+      <p class="muted">You'll get a calendar invite by email. Nothing is charged and there's no obligation.</p>
+    </div>
   </div>
 
-  <div id="chosenWrap" style="display:none;margin-top:18px;">
-    <div class="chosen" id="chosenLabel"></div>
-    <button type="button" class="linkbtn" onclick="backToTimes()">← Change Time</button>
+  <div id="done" class="done" style="display:none">
+    <div class="tick">&#10003;</div>
+    <h2>You're booked</h2>
+    <p class="sub" id="doneWhen"></p>
+    <p class="muted">A calendar invite is on its way to your inbox. Talk soon.<br>Need to change it? Just reply to that invite or call (424) 475-6287.</p>
   </div>
+</main>
 
-  <div class="hint" style="margin-top:14px;">Arizona time · 30-minute consultation · only times you're actually free are shown.</div>
-
-  <button id="bookBtn" onclick="book()" disabled>Pick A Time To Continue</button>
-
-  <div class="status" id="status"></div>
-
-  <div class="foot">Fires the same booking system as the website — invite, Meet link, owner alert, and sheet log all happen automatically.</div>
-</div>
+<div class="foot">&copy; 2026 A to Z AI Systems &middot; <a href="/privacy/">Privacy policy</a> &middot; <a href="/terms/">Terms of service</a></div>
 
 <script>
-var DAYS_URL  = "https://itsaidendavid.app.n8n.cloud/webhook/azai-chat-days";
-var SLOTS_URL = "https://itsaidendavid.app.n8n.cloud/webhook/azai-chat-slots";
-var BOOK_URL  = "https://itsaidendavid.app.n8n.cloud/webhook/azai-chat-book";
+(function(){
+  var API='https://itsaidendavid.app.n8n.cloud/webhook/';
+  var chosenDay=null, chosenIso=null, chosenLabel='';
+  var daysEl=document.getElementById('days'), timesEl=document.getElementById('times');
+  var timeStep=document.getElementById('timeStep'), whoStep=document.getElementById('whoStep');
+  var errEl=document.getElementById('err'), goBtn=document.getElementById('go');
 
-var chosenSlot = null;
-
-// Load available days on page open
-(function loadDays(){
-  fetch(DAYS_URL,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({})})
-    .then(function(r){return r.json();})
-    .then(function(data){
-      var loading = document.getElementById('dayLoading');
-      var grid = document.getElementById('dayGrid');
-      if(!data || !data.ok || !data.days || !data.days.length){
-        loading.textContent = "No open days right now. Book via the website widget or call (424) 475-6287.";
-        return;
-      }
-      grid.innerHTML = '';
-      data.days.forEach(function(d){
-        var b = document.createElement('button');
-        b.type='button'; b.className='slot-btn'; b.textContent=d.label;
-        b.onclick=function(){ pickDay(d); };
-        grid.appendChild(b);
-      });
-      loading.style.display='none';
-      grid.style.display='grid';
-    })
-    .catch(function(){
-      document.getElementById('dayLoading').textContent = "Couldn't load your available days. Check your connection or call (424) 475-6287.";
-    });
-})();
-
-function pickDay(day){
-  // hide day grid, show times loading
-  document.getElementById('dayGrid').style.display='none';
-  document.getElementById('dayLoading').style.display='none';
-  var wrap = document.getElementById('timeWrap');
-  var grid = document.getElementById('timeGrid');
-  document.getElementById('timeDayLabel').textContent = '· ' + day.label;
-  grid.innerHTML = '<div class="hint" style="grid-column:1/-1;">Loading open times…</div>';
-  wrap.style.display='block';
-
-  fetch(SLOTS_URL,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({date:day.date,period:"any",showAll:true})})
-    .then(function(r){return r.json();})
-    .then(function(data){
-      if(!data || !data.ok || !data.slots || !data.slots.length){
-        grid.innerHTML = '<div class="hint" style="grid-column:1/-1;">No slots in the 9–6 window for that day. Pick another day.</div>';
-        return;
-      }
-      grid.innerHTML='';
-      data.slots.forEach(function(s){
-        var b=document.createElement('button');
-        b.type='button';
-        b.className='slot-btn' + (s.available ? '' : ' slot-taken');
-        var timeTxt = s.time || s.label.replace(/^\w+, /,'');
-        b.innerHTML = timeTxt + (s.available ? '' : ' <span class="slot-tag">' + (s.reason==='too soon'?'too soon':'booked') + '</span>');
-        b.onclick=function(){ pickTime(s); };
-        grid.appendChild(b);
-      });
-    })
-    .catch(function(){
-      grid.innerHTML = '<div class="hint" style="grid-column:1/-1;">Couldn\u2019t load times. Pick another day or call (424) 475-6287.</div>';
-    });
-}
-
-function pickTime(slot){
-  if(!slot.available){
-    var why = slot.reason === 'too soon'
-      ? "That time is within the 6-hour minimum-notice window."
-      : "You already have something on your calendar at that time.";
-    if(!confirm(why + "\n\nBook a prospect into it anyway? (This will double-book you.)")){ return; }
+  function post(path, body){
+    return fetch(API+path,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body||{})})
+      .then(function(r){return r.text();})
+      .then(function(t){ try{ return JSON.parse(t); }catch(e){ return null; } });
   }
-  chosenSlot = slot;
-  document.getElementById('timeWrap').style.display='none';
-  document.getElementById('chosenWrap').style.display='block';
-  var warn = slot.available ? '' : '  ⚠️ double-booked';
-  document.getElementById('chosenLabel').textContent = '✓ ' + slot.label + ' (' + slot.tzLabel + ')' + warn;
-  var btn = document.getElementById('bookBtn');
-  btn.disabled = false;
-  btn.textContent = 'Book & Send Invite →';
-}
 
-function backToDays(){
-  chosenSlot = null;
-  document.getElementById('timeWrap').style.display='none';
-  document.getElementById('chosenWrap').style.display='none';
-  document.getElementById('dayGrid').style.display='grid';
-  resetBtn();
-}
-function backToTimes(){
-  chosenSlot = null;
-  document.getElementById('chosenWrap').style.display='none';
-  document.getElementById('timeWrap').style.display='block';
-  resetBtn();
-}
-function resetBtn(){
-  var btn = document.getElementById('bookBtn');
-  btn.disabled = true;
-  btn.textContent = 'Pick A Time To Continue';
-}
+  function clearPressed(box){
+    var b=box.querySelectorAll('.chip');
+    for(var i=0;i<b.length;i++){ b[i].setAttribute('aria-pressed','false'); }
+  }
 
-function book(){
-  var name = document.getElementById('name').value.trim();
-  var email = document.getElementById('email').value.trim();
-  var service = document.getElementById('service').value.trim();
-  var status = document.getElementById('status');
-  var btn = document.getElementById('bookBtn');
-
-  status.className = 'status';
-  if(!name){ return showErr("Enter the prospect's name."); }
-  if(!email || email.indexOf('@')<0){ return showErr("Enter a valid email so they get the invite."); }
-  if(!chosenSlot){ return showErr("Pick a day and time first."); }
-
-  btn.disabled = true; btn.textContent = "Booking…";
-
-  fetch(BOOK_URL, {
-    method:"POST",
-    headers:{"Content-Type":"application/json"},
-    body:JSON.stringify({
-      name: name,
-      email: email,
-      datetime: chosenSlot.iso,
-      service: service || "Consultation (booked from call)"
-    })
-  })
-  .then(function(r){ return r.json(); })
-  .then(function(res){
-    if(res && res.ok){
-      btn.textContent = "Booked ✓";
-      status.className = 'status ok';
-      status.innerHTML = "✓ Booked for <strong>"+res.whenSpoken+" ("+res.tzLabel+")</strong>. Invite + Meet link sent to "+email+"."+(res.meetLink ? " <a href='"+res.meetLink+"' target='_blank'>Open Meet</a>" : "");
-    } else {
-      btn.disabled = false; btn.textContent = "Book & Send Invite →";
-      showErr("Booking didn't go through. That slot may have just been taken — pick another time.");
+  post('azai-chat-days',{sessionId:'book-'+Date.now()}).then(function(res){
+    if(!res || !res.days || !res.days.length){
+      daysEl.innerHTML='<span class="load">No open days right now &mdash; please call (424) 475-6287.</span>';
+      return;
     }
-  })
-  .catch(function(){
-    btn.disabled = false; btn.textContent = "Book & Send Invite →";
-    showErr("Couldn't reach the booking system. Check your connection and try again.");
+    daysEl.innerHTML='';
+    res.days.slice(0,8).forEach(function(d){
+      var b=document.createElement('button');
+      b.className='chip'; b.type='button'; b.textContent=d.label; b.setAttribute('aria-pressed','false');
+      b.onclick=function(){
+        clearPressed(daysEl); b.setAttribute('aria-pressed','true');
+        chosenDay=d.date; chosenIso=null; whoStep.style.display='none';
+        timeStep.style.display='block';
+        timesEl.innerHTML='<span class="load">Loading times&hellip;</span>';
+        post('azai-chat-slots',{date:d.date,day:d.date,sessionId:'book'}).then(function(sr){
+          timesEl.innerHTML='';
+          document.getElementById('tz').textContent = sr && sr.tzLabel ? '('+sr.tzLabel+' time)' : '';
+          var open=(sr&&sr.slots?sr.slots:[]).filter(function(s){return s.available!==false;});
+          if(!open.length){ timesEl.innerHTML='<span class="load">Nothing open that day &mdash; try another.</span>'; return; }
+          open.forEach(function(s){
+            var t=document.createElement('button');
+            t.className='chip'; t.type='button'; t.textContent=s.time||s.label; t.setAttribute('aria-pressed','false');
+            t.onclick=function(){
+              clearPressed(timesEl); t.setAttribute('aria-pressed','true');
+              chosenIso=s.iso; chosenLabel=s.label||s.time;
+              whoStep.style.display='block';
+              whoStep.scrollIntoView({behavior:'smooth',block:'center'});
+            };
+            timesEl.appendChild(t);
+          });
+        });
+      };
+      daysEl.appendChild(b);
+    });
   });
-}
-function showErr(msg){
-  var status = document.getElementById('status');
-  status.className = 'status err';
-  status.textContent = msg;
-  return false;
-}
+
+  goBtn.onclick=function(){
+    var name=document.getElementById('nm').value.trim();
+    var email=document.getElementById('em').value.trim();
+    var biz=document.getElementById('bz').value.trim();
+    errEl.style.display='none';
+    if(!chosenIso){ errEl.textContent='Please pick a time first.'; errEl.style.display='block'; return; }
+    if(!name || email.indexOf('@')===-1){ errEl.textContent='Please add your name and a valid email.'; errEl.style.display='block'; return; }
+    goBtn.disabled=true; goBtn.textContent='Booking…';
+    post('azai-chat-book',{
+      name:name, email:email, datetime:chosenIso,
+      service: biz ? ('Intro call - '+biz) : 'Intro call'
+    }).then(function(res){
+      if(res && res.ok){
+        document.getElementById('form').style.display='none';
+        document.getElementById('doneWhen').textContent = (res.whenSpoken || chosenLabel) + (res.tzLabel ? ' ('+res.tzLabel+' time)' : '');
+        document.getElementById('done').style.display='block';
+        window.scrollTo({top:0,behavior:'smooth'});
+      } else {
+        goBtn.disabled=false; goBtn.textContent='Confirm my call';
+        errEl.textContent='That slot just got taken. Please pick another time, or call (424) 475-6287.';
+        errEl.style.display='block';
+      }
+    }).catch(function(){
+      goBtn.disabled=false; goBtn.textContent='Confirm my call';
+      errEl.textContent='Something went wrong. Please call (424) 475-6287 and we will sort it out.';
+      errEl.style.display='block';
+    });
+  };
+})();
 </script>
 </body>
 </html>
