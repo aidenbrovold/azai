@@ -291,5 +291,31 @@ if(rep){var b=JSON.parse(o.body);if(!b.rep){b.rep=rep;b.repCode=rep;}o=Object.as
 }}catch(e){}
 return of.apply(this,[u,o]);};
 })();</script>
-<!--azaiLegalFoot--><div style="text-align:center;padding:28px 16px;font-size:13px;color:#8892aa;border-top:1px solid rgba(255,255,255,.08);margin-top:40px">© 2026 A to Z AI Systems · <a href="/privacy/" style="color:#8892aa">Privacy policy</a> · <a href="/terms/" style="color:#8892aa">Terms of service</a></div></body>
+<!--azaiLegalFoot--><div style="text-align:center;padding:28px 16px;font-size:13px;color:#8892aa;border-top:1px solid rgba(255,255,255,.08);margin-top:40px">© 2026 A to Z AI Systems · <a href="/privacy/" style="color:#8892aa">Privacy policy</a> · <a href="/terms/" style="color:#8892aa">Terms of service</a></div><!--azaiMobileForm-->
+<style>
+@media (max-width: 820px){
+  input, select, textarea { font-size: 16px !important; }
+  button, .btn, [type=submit] { min-height: 48px; }
+}
+</style>
+<script>
+(function(){
+document.addEventListener("DOMContentLoaded",function(){
+ var MAP = {
+  business:["organization","text"], owner:["name","text"],
+  notifyEmail:["email","email"], bizPhone:["tel","tel"],
+  transferPhone:["tel","tel"], carrier:["off","text"]
+ };
+ document.querySelectorAll("input").forEach(function(el){
+  var n = el.name || el.id || "";
+  var t = (el.type||"").toLowerCase();
+  if(t==="tel" || /phone/i.test(n)){ el.setAttribute("inputmode","tel"); if(!el.getAttribute("autocomplete")) el.setAttribute("autocomplete","tel"); }
+  else if(t==="email" || /email/i.test(n)){ el.setAttribute("inputmode","email"); el.setAttribute("autocapitalize","off"); el.setAttribute("autocorrect","off"); if(!el.getAttribute("autocomplete")) el.setAttribute("autocomplete","email"); }
+  else if(/business|company/i.test(n)){ if(!el.getAttribute("autocomplete")) el.setAttribute("autocomplete","organization"); }
+  else if(/owner|name/i.test(n)){ if(!el.getAttribute("autocomplete")) el.setAttribute("autocomplete","name"); }
+  if(/zip|postal/i.test(n)) el.setAttribute("inputmode","numeric");
+ });
+});
+})();
+</script></body>
 </html>
